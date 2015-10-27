@@ -11,14 +11,13 @@ require_once("scrypt.php");
 
 $link = new mysqli('localhost', 'hotel', 'reserve', 'hotel');
 $encrypt = Password::hash("decrepito2");
-if ($link) {
-	$sql = 'select rate from ';
-	$balance =0;
+if ($link->connect_error)
+	die("Connection failed: " . $link->connect_error);
 
-	$result = $link->query($sql);
-} else
-	echo 'Error';
+$sql = 'SELECT * FROM guests';
+
+$result = $link->query($sql);
+
 if (isset($result))
 	$result->close();
 $link->close();
-

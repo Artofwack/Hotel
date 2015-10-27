@@ -118,7 +118,7 @@ abstract class Password
 	 *
 	 * @return string The hashed password
 	 */
-	public static function hash($password, $salt = false, $N = 16384, $r = 8, $p = 1)
+	public static function hash($password, $salt = false, $N = 16384, $r = 10, $p = 2)
 	{
 		if ($N == 0 || ($N & ($N - 1)) != 0) {
 			throw new \InvalidArgumentException("N must be > 0 and a power of 2");
