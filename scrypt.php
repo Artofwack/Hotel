@@ -37,24 +37,35 @@ abstract class Password
 	private static $_keyLength = 32;
 
 	/**
-	 * Get the byte-length of the given string
+	 * Create a password hash
 	 *
-	 * @param string $str Input string
+	 * @param string $password The clear text password
+	 * @param string $salt     The salt to use, or null to generate a random one
+	 * @param int    $N        The CPU difficultly (must be a power of 2, > 1)
+	 * @param int    $r        The memory difficultly
+	 * @param int    $p        The parallel difficultly
 	 *
-	 * @return int
+	 * @return string The hashed password
 	 */
-	protected static function strlen($str)
+	public static function hash($password, $salt = false, $N = 16384, $r = 10, $p = 2)
 	{
-		static $isShadowed = null;
-		if ($isShadowed === null) {
-			$isShadowed = extension_loaded('mbstring') &&
-				ini_get('mbstring.func_overload') & 2;
+		if ($N == 0 || ($N & ($N - 1)) != 0) {
+			throw new \InvalidArgumentException("N must be > 0 and a power of 2");
 		}
-		if ($isShadowed) {
-			return mb_strlen($str, '8bit');
+		if ($N > PHP_INT_MAX / 128 / $r) {
+			throw new \InvalidArgumentException("Parameter N is too large");
+		}
+		if ($r > PHP_INT_MAX / 128 / $p) {
+			throw new \InvalidArgumentException("Parameter r is too large");
+		}
+		if ($salt === false) {
+			$salt = self::generateSalt();
 		} else {
-			return strlen($str);
+			// Remove dollar signs from the salt, as we use that as a separator.
+			$salt = str_replace(array('+', '$'), array('.', ''), base64_encode($salt));
 		}
+		$hash = scrypt($password, $salt, $N, $r, $p, self::$_keyLength);
+		return $N . '$' . $r . '$' . $p . '$' . $salt . '$' . $hash;
 	}
 
 	/**
@@ -108,35 +119,24 @@ abstract class Password
 	}
 
 	/**
-	 * Create a password hash
+	 * Get the byte-length of the given string
 	 *
-	 * @param string $password The clear text password
-	 * @param string $salt The salt to use, or null to generate a random one
-	 * @param int $N The CPU difficultly (must be a power of 2, > 1)
-	 * @param int $r The memory difficultly
-	 * @param int $p The parallel difficultly
+	 * @param string $str Input string
 	 *
-	 * @return string The hashed password
+	 * @return int
 	 */
-	public static function hash($password, $salt = false, $N = 16384, $r = 10, $p = 2)
+	protected static function strlen($str)
 	{
-		if ($N == 0 || ($N & ($N - 1)) != 0) {
-			throw new \InvalidArgumentException("N must be > 0 and a power of 2");
+		static $isShadowed = null;
+		if ($isShadowed === null) {
+			$isShadowed = extension_loaded('mbstring') &&
+				ini_get('mbstring.func_overload') & 2;
 		}
-		if ($N > PHP_INT_MAX / 128 / $r) {
-			throw new \InvalidArgumentException("Parameter N is too large");
-		}
-		if ($r > PHP_INT_MAX / 128 / $p) {
-			throw new \InvalidArgumentException("Parameter r is too large");
-		}
-		if ($salt === false) {
-			$salt = self::generateSalt();
+		if ($isShadowed) {
+			return mb_strlen($str, '8bit');
 		} else {
-			// Remove dollar signs from the salt, as we use that as a separator.
-			$salt = str_replace(array('+', '$'), array('.', ''), base64_encode($salt));
+			return strlen($str);
 		}
-		$hash = scrypt($password, $salt, $N, $r, $p, self::$_keyLength);
-		return $N . '$' . $r . '$' . $p . '$' . $salt . '$' . $hash;
 	}
 
 	/**
