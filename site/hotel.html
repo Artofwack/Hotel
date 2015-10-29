@@ -22,8 +22,7 @@
 </head>
 
 <body>
-<!-- NAVBAR
-================================================== -->
+<!-- ================ NAV Bar ================ -->
 <div class="navbar-wrapper">
 	<div class="container">
 		<nav class="navbar navbar-inverse navbar-static-top">
@@ -43,7 +42,7 @@
 						<li><a href="hotel.html">Home</a></li>
 						<li><a href="#about">About</a></li>
 						<li><a href="#contact">Contact</a></li>
-						<li><a href="registerGuest.html">Register</a></li>
+						<li><a href="registerGuest.php">Register</a></li>
 						<li class="dropdown active">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
 							   aria-haspopup="true" aria-expanded="false">Reservations<span class="caret"></span></a>
@@ -64,11 +63,9 @@
 		</nav>
 	</div>
 </div>
-<!-- ================ NAV Bar ================ -->
 
 
-<!-- Carousel
-================================================== -->
+<!-- ================ Carousel ================ -->
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
 	<!-- Indicators -->
 	<ol class="carousel-indicators">
@@ -90,7 +87,7 @@
 						Glyphicon buttons on the left and right might not load/display properly due to web browser
 						security rules.</p>
 
-					<p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+					<p><a class="btn btn-lg btn-primary" href="registerGuest.php" role="button">Sign up today</a></p>
 				</div>
 			</div>
 		</div>
@@ -136,13 +133,9 @@
 		<span class="sr-only">Next</span>
 	</a>
 </div>
-<!-- /.carousel -->
 
 
-<!-- Marketing messaging and featurettes
-================================================== -->
-<!-- Wrap the rest of the page in another container to center all the content. -->
-
+<!-- ================ Marketing messaging and featurettes ================ -->
 <div class="container marketing">
 
 	<!-- Three columns of text below the carousel -->
@@ -258,7 +251,10 @@
 	</footer>
 
 </div>
-<!-- /.container -->
+
+
+<!-- ========== Back to top ========== -->
+<a class="back-to-top btn btn-default btn-sm" href="#"><span class="glyphicon glyphicon-chevron-up"></span></a>
 
 
 <!-- Bootstrap core JavaScript
@@ -266,6 +262,27 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
+<script type="text/javascript">
+	var amountScrolled = 300;
+
+	$(window).scroll(function () {
+		if ($(window).scrollTop() > amountScrolled) {
+			$('a.back-to-top').fadeIn('slow');
+		} else {
+			$('a.back-to-top').fadeOut('slow');
+		}
+	});
+
+
+	$('a.back-to-top').on('click', function () {
+		$('body, html').animate({
+			scrollTop: 0
+		}, 'fast');
+		return false;
+	});
+
+
+</script>
 
 </body>
 </html>

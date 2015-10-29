@@ -31,7 +31,7 @@ $result = $link->query($sql);
 if ($result->num_rows == 1) {
 	$row = $result->fetch_assoc();
 	if (Password::check($_POST['pass'], $row['passwd'])) {
-		$sql = 'INSERT INTO reservations(guestID, room, checkIN, checkOUT, balance )  VALUES ("' . $row['guestID'] . '",);'
+		$sql = "INSERT INTO reservations(guestID, room, checkIN, checkOUT, balance )  VALUES ('" . $row['guestID'] . "','0','" . $checkIN . "','" . $checkOUT . "','0');";
 	}
 
 }

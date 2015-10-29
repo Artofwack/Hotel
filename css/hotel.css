@@ -99,6 +99,17 @@ body {
 	letter-spacing: -1px;
 }
 
+/* BACK TO TOP FLOATING BUTTON
+---------------------------------------------------*/
+a.back-to-top {
+	display: none;
+	position: fixed;
+	z-index: 999;
+	right: 20px;
+	bottom: 20px;
+	background: #26ff1a;
+}
+
 /* RESPONSIVE CSS
 -------------------------------------------------- */
 
