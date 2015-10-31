@@ -1,3 +1,8 @@
+<?php
+
+session_start();
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,7 +44,7 @@
 				</div>
 				<div id="navbar" class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
-						<li><a href="hotel.html">Home</a></li>
+						<li><a href="hotel.php">Home</a></li>
 						<li><a href="#about">About</a></li>
 						<li><a href="#contact">Contact</a></li>
 						<li><a href="registerGuest.php">Register</a></li>
@@ -49,13 +54,20 @@
 							<ul class="dropdown-menu">
 								<li class="dropdown-header">New Reservations</li>
 								<li><a href="reserve.html">New Reservation</a></li>
-								<li><a href="index.html">Check Availability</a></li>
+								<li><a href="index.php">Check Availability</a></li>
 								<li><a href="#">Dining Reservations</a></li>
 								<li role="separator" class="divider"></li>
 								<li class="dropdown-header">Existing Reservations</li>
 								<li><a href="#">Check Reservation</a></li>
 								<li><a href="#">Cancel Reservation</a></li>
 							</ul>
+						</li>
+						<!-- /dropdown -->
+						<li>
+							<a href="signIn.php">Welcome<?php echo (isset($_SESSION['username'])) ? ", " . $_SESSION['username'] : "! Please Register or Sign In" ?></a>
+						</li>
+						<li>
+							<a href="#" class="glyphicon glyphicon-menu-hamburger signOut"></a>
 						</li>
 					</ul>
 				</div>
@@ -150,6 +162,7 @@
 	});
 
 </script>
+
 </body>
 </html>
 

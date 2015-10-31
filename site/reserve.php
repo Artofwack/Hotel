@@ -10,6 +10,8 @@
 require_once("../config.php");
 require_once("../scrypt.php");
 
+session_start();
+
 // Guests Info
 $firstName = $_POST['firstName'];
 $lastName = $_POST['lastName'];

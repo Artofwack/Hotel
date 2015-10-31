@@ -1,3 +1,8 @@
+<?php
+
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,11 +26,12 @@
 	<link href="../css/hotel.css" rel="stylesheet">
 </head>
 
-<body>
+<body
+">
 <!-- ================ NAV Bar ================ -->
 <div class="navbar-wrapper">
 	<div class="container">
-		<nav class="navbar navbar-inverse navbar-static-top">
+		<nav class="navbar navbar-inverse navbar-static-top" id="nav">
 			<div class="container">
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
@@ -49,13 +55,19 @@
 							<ul class="dropdown-menu">
 								<li class="dropdown-header">New Reservations</li>
 								<li><a href="reserve.html">New Reservation</a></li>
-								<li><a href="index.html">Check Availability</a></li>
+								<li><a href="index.php">Check Availability</a></li>
 								<li><a href="#">Dining Reservations</a></li>
 								<li role="separator" class="divider"></li>
 								<li class="dropdown-header">Existing Reservations</li>
 								<li><a href="#">Check Reservation</a></li>
 								<li><a href="#">Cancel Reservation</a></li>
 							</ul>
+						</li>
+						<li>
+							<a href="signIn.php">Welcome<?php echo (isset($_SESSION['username'])) ? ", " . $_SESSION['username'] : "! Please Register or Sign In" ?></a>
+						</li>
+						<li>
+							<a href="#" class="glyphicon glyphicon-menu-hamburger signOut"></a>
 						</li>
 					</ul>
 				</div>
@@ -245,7 +257,7 @@
 
 	<!-- FOOTER -->
 	<footer>
-		<p class="pull-right"><a href="#">Back to top</a></p>
+		<p class="pull-right"><a class="toppy" href="#">Back to top</a></p>
 
 		<p>&copy; 2014 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
 	</footer>
@@ -274,11 +286,15 @@
 	});
 
 
-	$('a.back-to-top').on('click', function () {
+	$('a.back-to-top, a.toppy').on('click', function () {
 		$('body, html').animate({
 			scrollTop: 0
 		}, 'fast');
 		return false;
+	});
+	/* todo: should be an AJAX call for security / Separate PHP and JAVASCRIPT */
+	$('.signOut').on('click', function () {
+		<?php session_destroy(); ?>
 	});
 
 

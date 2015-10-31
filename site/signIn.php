@@ -1,11 +1,11 @@
 <?php
 /**
- * File: registerGuest.php
+ * File: signIn.php
  *
  * Created by PhpStorm.
  * User: ArtofWack
- * Date: 10/27/2015
- * Time: 8:21 PM
+ * Date: 10/30/2015
+ * Time: 12:29 AM
  */
 
 require_once("../config.php");
@@ -14,25 +14,25 @@ require_once("../scrypt.php");
 session_start();
 
 $email = $_POST['email'];
+$pass = $_POST['pass'];
 
-if ($email != "") {
-	$firstName = $_POST['firstName'];
-	$lastName = $_POST['lastName'];
-	$encrypted = Password::hash($_POST['pass']);
-
+if (isset($email) && $email != "") {
 	$link = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_DATABASE);
 	if ($link->connect_error)
 		die(" Error: " . $link->connect_error);
 
-	$sql = 'SELECT * FROM guests WHERE email="' . $email . '";';
+	$sql = 'SELECT passwd FROM guests WHERE email="' . $email . '";';
+	$result = $link->query($sql);
 
-	if ($link->query($sql)->num_rows == 0) {
-		$sql = "INSERT INTO guests(firstName, lastName, email, passwd,checkedIn,balance) VALUES ('" . $firstName . "','" . $lastName . "','" . $email . "','" . $encrypted . "','0','0');";
-		$link->query($sql);
-
-		header('Location: reserve.html');
-	} else {
-		header('Location: hotel.php');
+	if ($result->num_rows == 1) {
+		$result = $result->fetch_assoc();
+		if (Password::check($pass, $result['passwd'])) {
+			$sql = 'SELECT * FROM guests WHERE email="' . $email . '";';
+			$result = $link->query($sql)->fetch_assoc();
+			$_SESSION['username'] = $result['firstName'] . " " . $result['lastName'];
+			$_SESSION['email'] = $email;
+			$_SESSION['guestID'] = $result['guestID'];
+		}
 	}
 }
 ?>
@@ -109,25 +109,9 @@ if ($email != "") {
 	</div>
 </div>
 
-
 <!-- ================ Form ================ -->
 <div class="container under-nav">
 	<form class="form-horizontal" method="post" action="<?php $_PHP_SELF ?>">
-		<div class="form-group">
-			<label for="firstName" class="col-sm-2 control-label">First Name</label>
-
-			<div class="col-sm-6">
-				<input type="text" class="form-control" name="firstName" id="firstName" placeholder="First Name"
-				       required autofocus>
-			</div>
-		</div>
-		<div class="form-group">
-			<label for="lastName" class="col-sm-2 control-label">Last Name</label>
-
-			<div class="col-sm-6">
-				<input type="text" class="form-control" name="lastName" id="lastName" placeholder="Last Name" required>
-			</div>
-		</div>
 		<div class="form-group">
 			<label for="email" class="col-sm-2 control-label">Email</label>
 
@@ -144,17 +128,12 @@ if ($email != "") {
 		</div>
 		<div class="form-group">
 			<div class="col-sm-offset-2 col-sm-6">
-				<button type="submit" class="btn btn-default">Register</button>
+				<button type="submit" class="btn btn-default">Sign in</button>
 			</div>
 		</div>
 	</form>
 </div>
 
-
-<!-- ================ Modal ================ -->
-<div class="modal" id="myModal">
-
-</div>
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
@@ -164,3 +143,4 @@ if ($email != "") {
 
 </body>
 </html>
+
