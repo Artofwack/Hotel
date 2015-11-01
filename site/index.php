@@ -26,11 +26,120 @@ session_start();
 
 </head>
 <body>
+<!-- ========== Log in modal ========== -->
+<div class="modal fade" id="myModal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+						aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">Log in</h4>
+			</div>
+			<div class="modal-body">
+				<!-- ================ Form ================ -->
+
+				<form class="form-horizontal" method="post" action="logIn.php" id="loginForm">
+					<div class="form-group">
+						<label for="email" class="col-sm-4 control-label">Email</label>
+
+						<div class="col-sm-6">
+							<input type="email" class="form-control" name="email" id="email" placeholder="Email"
+							       required>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="pass" class="col-sm-4 control-label">Password</label>
+
+						<div class="col-sm-6">
+							<input type="password" class="form-control" name="pass" id="pass" placeholder="Password"
+							       required>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-offset-5">
+							<button type="submit" class="btn btn-primary">Sign in</button>
+						</div>
+					</div>
+				</form>
+
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+
+
+<!-- ========== Register modal ========== -->
+<div class="modal fade" id="registerModal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+						aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">Register</h4>
+			</div>
+			<div class="modal-body well">
+				<!-- ================ Form ================ -->
+
+				<form class="form-horizontal" method="post" action="register.php">
+					<div class="form-group">
+						<label for="firstName" class="col-sm-4 control-label">First Name</label>
+
+						<div class="col-sm-6">
+							<input type="text" class="form-control" name="firstName" id="firstName"
+							       placeholder="First Name"
+							       required autofocus>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="lastName" class="col-sm-4 control-label">Last Name</label>
+
+						<div class="col-sm-6">
+							<input type="text" class="form-control" name="lastName" id="lastName"
+							       placeholder="Last Name" required>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="regEmail" class="col-sm-4 control-label">Email</label>
+
+						<div class="col-sm-6">
+							<input type="email" class="form-control" name="regEmail" placeholder="Email" required>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="regPass" class="col-sm-4 control-label">Password</label>
+
+						<div class="col-sm-6">
+							<input type="password" class="form-control" name="regPass" placeholder="Password"
+							       required>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-offset-5 col-sm-3">
+							<button type="submit" class="btn btn-primary">Register</button>
+						</div>
+					</div>
+				</form>
+
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
 
 <!-- ================ NAV Bar ================ -->
 <div class="navbar-wrapper">
 	<div class="container">
-		<nav class="navbar navbar-inverse navbar-static-top">
+		<nav class="navbar navbar-inverse navbar-static-top" id="nav">
 			<div class="container">
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
@@ -62,9 +171,9 @@ session_start();
 								<li><a href="#">Cancel Reservation</a></li>
 							</ul>
 						</li>
-						<!-- /dropdown -->
 						<li>
-							<a href="signIn.php">Welcome<?php echo (isset($_SESSION['username'])) ? ", " . $_SESSION['username'] : "! Please Register or Sign In" ?></a>
+							<a href="#" id="login" data-toggle="modal"
+							   data-target="#myModal">Welcome<?php echo isset($_SESSION['username']) ? ", " . $_SESSION['username'] : "! Please Sign In" ?></a>
 						</li>
 						<li>
 							<a href="#" class="glyphicon glyphicon-menu-hamburger signOut"></a>
