@@ -30,7 +30,7 @@ if ($email != "") {
 		$sql = "INSERT INTO guests(firstName, lastName, email, passwd,checkedIn,balance) VALUES ('" . $firstName . "','" . $lastName . "','" . $email . "','" . $encrypted . "','0','0');";
 		$link->query($sql);
 
-		header('Location: reserve.html');
+		header('Location: reserve.php');
 	} else {
 		header('Location: hotel.php');
 	}
@@ -63,7 +63,7 @@ if ($email != "") {
 <!-- ================ NAV Bar ================ -->
 <div class="navbar-wrapper">
 	<div class="container">
-		<nav class="navbar navbar-inverse navbar-static-top">
+		<nav class="navbar navbar-inverse navbar-static-top" id="nav">
 			<div class="container">
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
@@ -86,7 +86,7 @@ if ($email != "") {
 							   aria-haspopup="true" aria-expanded="false">Reservations<span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li class="dropdown-header">New Reservations</li>
-								<li><a href="reserve.html">New Reservation</a></li>
+								<li><a href="reserve.php">New Reservation</a></li>
 								<li><a href="index.php">Check Availability</a></li>
 								<li><a href="#">Dining Reservations</a></li>
 								<li role="separator" class="divider"></li>
@@ -95,12 +95,11 @@ if ($email != "") {
 								<li><a href="#">Cancel Reservation</a></li>
 							</ul>
 						</li>
-						<!-- /dropdown -->
 						<li>
-							<a href="signIn.php">Welcome<?php echo (isset($_SESSION['username'])) ? ", " . $_SESSION['username'] : "! Please Register or Sign In" ?></a>
+							<a href="signIn.php">Welcome<?php echo isset($_SESSION['username']) ? ", " . $_SESSION['username'] : "! Please Register or Sign In" ?></a>
 						</li>
 						<li>
-							<a href="#" class="glyphicon glyphicon-menu-hamburger signOut"></a>
+							<a href="logout.php" class="glyphicon glyphicon-log-out signOut"></a>
 						</li>
 					</ul>
 				</div>

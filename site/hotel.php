@@ -26,8 +26,119 @@ session_start();
 	<link href="../css/hotel.css" rel="stylesheet">
 </head>
 
-<body
-">
+<body>
+
+<!-- ========== Log in modal ========== -->
+<div class="modal fade" id="myModal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+						aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">Log in</h4>
+			</div>
+			<div class="modal-body">
+				<!-- ================ Form ================ -->
+
+				<form class="form-horizontal" method="post" action="logIn.php" id="loginForm">
+					<div class="form-group">
+						<label for="email" class="col-sm-4 control-label">Email</label>
+
+						<div class="col-sm-6">
+							<input type="email" class="form-control" name="email" id="email" placeholder="Email"
+							       required>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="pass" class="col-sm-4 control-label">Password</label>
+
+						<div class="col-sm-6">
+							<input type="password" class="form-control" name="pass" id="pass" placeholder="Password"
+							       required>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-offset-5">
+							<button type="submit" class="btn btn-primary">Sign in</button>
+						</div>
+					</div>
+				</form>
+
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+
+
+<!-- ========== Register modal ========== -->
+<div class="modal fade" id="registerModal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+						aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">Register</h4>
+			</div>
+			<div class="modal-body well">
+				<!-- ================ Form ================ -->
+
+				<form class="form-horizontal" method="post" action="register.php">
+					<div class="form-group">
+						<label for="firstName" class="col-sm-4 control-label">First Name</label>
+
+						<div class="col-sm-6">
+							<input type="text" class="form-control" name="firstName" id="firstName"
+							       placeholder="First Name"
+							       required autofocus>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="lastName" class="col-sm-4 control-label">Last Name</label>
+
+						<div class="col-sm-6">
+							<input type="text" class="form-control" name="lastName" id="lastName"
+							       placeholder="Last Name" required>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="regEmail" class="col-sm-4 control-label">Email</label>
+
+						<div class="col-sm-6">
+							<input type="email" class="form-control" name="regEmail" placeholder="Email" required>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="regPass" class="col-sm-4 control-label">Password</label>
+
+						<div class="col-sm-6">
+							<input type="password" class="form-control" name="regPass" placeholder="Password"
+							       required>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-offset-5 col-sm-3">
+							<button type="submit" class="btn btn-primary">Register</button>
+						</div>
+					</div>
+				</form>
+
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+
+
 <!-- ================ NAV Bar ================ -->
 <div class="navbar-wrapper">
 	<div class="container">
@@ -45,29 +156,32 @@ session_start();
 				</div>
 				<div id="navbar" class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
-						<li><a href="hotel.html">Home</a></li>
+						<li><a href="hotel.php" class="active">Home</a></li>
 						<li><a href="#about">About</a></li>
 						<li><a href="#contact">Contact</a></li>
-						<li><a href="registerGuest.php">Register</a></li>
-						<li class="dropdown active">
+						<li><a href="#" data-toggle="modal" data-target="#registerModal">Register</a></li>
+						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
 							   aria-haspopup="true" aria-expanded="false">Reservations<span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li class="dropdown-header">New Reservations</li>
-								<li><a href="reserve.html">New Reservation</a></li>
+								<li><a href="reserve.php">New Reservation</a></li>
 								<li><a href="index.php">Check Availability</a></li>
 								<li><a href="#">Dining Reservations</a></li>
-								<li role="separator" class="divider"></li>
+								<li class="divider"></li>
 								<li class="dropdown-header">Existing Reservations</li>
 								<li><a href="#">Check Reservation</a></li>
 								<li><a href="#">Cancel Reservation</a></li>
 							</ul>
 						</li>
 						<li>
-							<a href="signIn.php">Welcome<?php echo (isset($_SESSION['username'])) ? ", " . $_SESSION['username'] : "! Please Register or Sign In" ?></a>
+							<!--<a href="signIn.php">Welcome<?php echo isset($_SESSION['username']) ? ", " . $_SESSION['username'] : "! Please Register or Sign In" ?></a>
+							-->
+							<a href="#" id="login" data-toggle="modal"
+							   data-target="#myModal">Welcome<?php echo isset($_SESSION['username']) ? ", " . $_SESSION['username'] : "! Please Sign In" ?></a>
 						</li>
 						<li>
-							<a href="#" class="glyphicon glyphicon-menu-hamburger signOut"></a>
+							<a href="logout.php" class="glyphicon glyphicon-log-out signOut"></a>
 						</li>
 					</ul>
 				</div>
@@ -168,7 +282,7 @@ session_start();
 		<!-- /.col-lg-4 -->
 		<div class="col-lg-4">
 			<img class="img-circle"
-			     src="../images/swimming-pool-hotel-barcelo-jandia-mar37-2633.jpg"
+			     src="../images/hotel-generic.jpg"
 			     alt="Generic placeholder image" width="140" height="140">
 
 			<h2>Heading</h2>
@@ -182,7 +296,7 @@ session_start();
 		<!-- /.col-lg-4 -->
 		<div class="col-lg-4">
 			<img class="img-circle"
-			     src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
+			     src="../images/hotel-generic.jpg"
 			     alt="Generic placeholder image" width="140" height="140">
 
 			<h2>Heading</h2>
@@ -212,7 +326,8 @@ session_start();
 				commodo.</p>
 		</div>
 		<div class="col-md-5">
-			<img class="featurette-image img-responsive center-block" src="../images/hotel-generic.jpg"
+			<img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto"
+			     src="../images/costa-sur-resort-and-spa-1.jpg"
 			     alt="Generic placeholder image">
 		</div>
 	</div>
@@ -230,6 +345,7 @@ session_start();
 		</div>
 		<div class="col-md-5 col-md-pull-7">
 			<img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto"
+			     src="../images/costa-sur-resort-and-spa-1.jpg"
 			     alt="Generic placeholder image">
 		</div>
 	</div>
@@ -246,6 +362,7 @@ session_start();
 		</div>
 		<div class="col-md-5">
 			<img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto"
+			     src="../images/swimming-pool-hotel-barcelo-jandia-mar37-2633.jpg"
 			     alt="Generic placeholder image">
 		</div>
 	</div>
@@ -253,7 +370,6 @@ session_start();
 	<hr class="featurette-divider">
 
 	<!-- /END THE FEATURETTES -->
-
 
 	<!-- FOOTER -->
 	<footer>
@@ -285,18 +401,12 @@ session_start();
 		}
 	});
 
-
 	$('a.back-to-top, a.toppy').on('click', function () {
 		$('body, html').animate({
 			scrollTop: 0
 		}, 'fast');
 		return false;
 	});
-	/* todo: should be an AJAX call for security / Separate PHP and JAVASCRIPT */
-	$('.signOut').on('click', function () {
-		<?php session_destroy(); ?>
-	});
-
 
 </script>
 
