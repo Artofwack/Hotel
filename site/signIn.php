@@ -1,35 +1,42 @@
 <?php
 /**
- * File: registerGuest.php
+ * File: signIn.php
  *
  * Created by PhpStorm.
  * User: ArtofWack
- * Date: 10/27/2015
- * Time: 8:21 PM
+ * Date: 10/30/2015
+ * Time: 12:29 AM
  */
 
 require_once("../config.php");
 require_once("../scrypt.php");
 
-$firstName = $_POST['firstName'];
-$lastName = $_POST['lastName'];
+session_start();
+
 $email = $_POST['email'];
-$encrypted = Password::hash($_POST['pass']);
+$pass = $_POST['pass'];
 
 if (isset($email) && $email != "") {
 	$link = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_DATABASE);
 	if ($link->connect_error)
 		die(" Error: " . $link->connect_error);
 
-	$sql = 'SELECT * FROM guests WHERE email="' . $email . '";';
+	$sql = 'SELECT passwd FROM guests WHERE email="' . $email . '";';
 	$result = $link->query($sql);
 
-	if ($result->num_rows == 0) {
-		$sql = "INSERT INTO guests(firstName, lastName, email, passwd,checkedIn,balance) VALUES ('" . $firstName . "','" . $lastName . "','" . $email . "','" . $encrypted . "','0','0');";
-		$result = $link->query($sql);
-		header('Location: reserve.html');
-	} else {
-		header('Location: hotel.html');
+	if ($result->num_rows == 1) {
+		$result = $result->fetch_assoc();
+		if (Password::check($pass, $result['passwd'])) {
+			$sql = 'SELECT * FROM guests WHERE email="' . $email . '";';
+			$result = $link->query($sql)->fetch_assoc();
+			$_SESSION['username'] = $result['firstName'] . " " . $result['lastName'];
+			$_SESSION['email'] = $email;
+			$_SESSION['guestID'] = $result['guestID'];
+			header('Location: hotel.php');
+		} else {
+			session_unset();
+		}
+
 	}
 }
 ?>
@@ -60,7 +67,7 @@ if (isset($email) && $email != "") {
 <!-- ================ NAV Bar ================ -->
 <div class="navbar-wrapper">
 	<div class="container">
-		<nav class="navbar navbar-inverse navbar-static-top">
+		<nav class="navbar navbar-inverse navbar-static-top" id="nav">
 			<div class="container">
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
@@ -74,23 +81,29 @@ if (isset($email) && $email != "") {
 				</div>
 				<div id="navbar" class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
-						<li><a href="hotel.html">Home</a></li>
+						<li><a href="hotel.php">Home</a></li>
 						<li><a href="#about">About</a></li>
 						<li><a href="#contact">Contact</a></li>
-						<li><a href="registerGuest.php">Register</a></li>
+						<li><a href="#" data-toggle="modal" data-target="#registerModal">Register</a></li>
 						<li class="dropdown active">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
 							   aria-haspopup="true" aria-expanded="false">Reservations<span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li class="dropdown-header">New Reservations</li>
-								<li><a href="reserve.html">New Reservation</a></li>
-								<li><a href="index.html">Check Availability</a></li>
+								<li><a href="reserve.php">New Reservation</a></li>
+								<li><a href="index.php">Check Availability</a></li>
 								<li><a href="#">Dining Reservations</a></li>
 								<li role="separator" class="divider"></li>
 								<li class="dropdown-header">Existing Reservations</li>
 								<li><a href="#">Check Reservation</a></li>
 								<li><a href="#">Cancel Reservation</a></li>
 							</ul>
+						</li>
+						<li>
+							<a href="signIn.php">Welcome<?php echo isset($_SESSION['username']) ? ", " . $_SESSION['username'] : "! Please Register or Sign In" ?></a>
+						</li>
+						<li>
+							<a href="logout.php" class="glyphicon glyphicon-log-out signOut"></a>
 						</li>
 					</ul>
 				</div>
@@ -102,21 +115,6 @@ if (isset($email) && $email != "") {
 <!-- ================ Form ================ -->
 <div class="container under-nav">
 	<form class="form-horizontal" method="post" action="<?php $_PHP_SELF ?>">
-		<div class="form-group">
-			<label for="firstName" class="col-sm-2 control-label">First Name</label>
-
-			<div class="col-sm-6">
-				<input type="text" class="form-control" name="firstName" id="firstName" placeholder="First Name"
-				       required autofocus>
-			</div>
-		</div>
-		<div class="form-group">
-			<label for="lastName" class="col-sm-2 control-label">Last Name</label>
-
-			<div class="col-sm-6">
-				<input type="text" class="form-control" name="lastName" id="lastName" placeholder="Last Name" required>
-			</div>
-		</div>
 		<div class="form-group">
 			<label for="email" class="col-sm-2 control-label">Email</label>
 
@@ -145,5 +143,7 @@ if (isset($email) && $email != "") {
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
+
 </body>
 </html>
+

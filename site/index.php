@@ -1,3 +1,8 @@
+<?php
+
+session_start();
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,23 +44,30 @@
 				</div>
 				<div id="navbar" class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
-						<li><a href="hotel.html">Home</a></li>
+						<li><a href="hotel.php">Home</a></li>
 						<li><a href="#about">About</a></li>
 						<li><a href="#contact">Contact</a></li>
-						<li><a href="registerGuest.php">Register</a></li>
+						<li><a href="#" data-toggle="modal" data-target="#registerModal">Register</a></li>
 						<li class="dropdown active">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
 							   aria-haspopup="true" aria-expanded="false">Reservations<span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li class="dropdown-header">New Reservations</li>
-								<li><a href="reserve.html">New Reservation</a></li>
-								<li><a href="index.html">Check Availability</a></li>
+								<li><a href="reserve.php">New Reservation</a></li>
+								<li><a href="index.php">Check Availability</a></li>
 								<li><a href="#">Dining Reservations</a></li>
 								<li role="separator" class="divider"></li>
 								<li class="dropdown-header">Existing Reservations</li>
 								<li><a href="#">Check Reservation</a></li>
 								<li><a href="#">Cancel Reservation</a></li>
 							</ul>
+						</li>
+						<!-- /dropdown -->
+						<li>
+							<a href="signIn.php">Welcome<?php echo (isset($_SESSION['username'])) ? ", " . $_SESSION['username'] : "! Please Register or Sign In" ?></a>
+						</li>
+						<li>
+							<a href="#" class="glyphicon glyphicon-menu-hamburger signOut"></a>
 						</li>
 					</ul>
 				</div>
@@ -128,17 +140,18 @@
 			todayHighlight: 'True',
 			autoclose: 'True'
 		});
+
 		$('.startDate').datepicker()
-				.on('changeDate', function (selected) {
-					//$('.output').html('<h1>' + $(this).datepicker('getDate').toLocaleDateString());
-					$('.output').val($(this).datepicker('getDate').toLocaleDateString());
-					//$('.endDate').datepicker('setStartDate','selected.date');
-				});
+			.on('changeDate', function (selected) {
+				$('.output').val($(this).datepicker('getDate').toLocaleDateString());
+				$('.endDate').datepicker('setStartDate', selected.date);
+			});
+
 		$('.endDate').datepicker()
-				.on('changeDate', function (selected) {
-					//$('#out').html('<h1> ' + $(this).datepicker('getDate').toLocaleDateString());
-					$('.out').val($(this).datepicker('getDate').toLocaleDateString());
-				});
+			.on('changeDate', function (selected) {
+				$('.out').val($(this).datepicker('getDate').toLocaleDateString());
+			});
+
 		$('.nightsButton').on('click', function () {
 			var d1 = $('.startDate').datepicker('getDate');
 			var d2 = $('.endDate').datepicker('getDate');
@@ -150,6 +163,7 @@
 	});
 
 </script>
+
 </body>
 </html>
 
