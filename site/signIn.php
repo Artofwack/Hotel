@@ -32,7 +32,11 @@ if (isset($email) && $email != "") {
 			$_SESSION['username'] = $result['firstName'] . " " . $result['lastName'];
 			$_SESSION['email'] = $email;
 			$_SESSION['guestID'] = $result['guestID'];
+			header('Location: hotel.php');
+		} else {
+			session_unset();
 		}
+
 	}
 }
 ?>
@@ -63,7 +67,7 @@ if (isset($email) && $email != "") {
 <!-- ================ NAV Bar ================ -->
 <div class="navbar-wrapper">
 	<div class="container">
-		<nav class="navbar navbar-inverse navbar-static-top">
+		<nav class="navbar navbar-inverse navbar-static-top" id="nav">
 			<div class="container">
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
@@ -80,13 +84,13 @@ if (isset($email) && $email != "") {
 						<li><a href="hotel.php">Home</a></li>
 						<li><a href="#about">About</a></li>
 						<li><a href="#contact">Contact</a></li>
-						<li><a href="registerGuest.php">Register</a></li>
+						<li><a href="#" data-toggle="modal" data-target="#registerModal">Register</a></li>
 						<li class="dropdown active">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
 							   aria-haspopup="true" aria-expanded="false">Reservations<span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li class="dropdown-header">New Reservations</li>
-								<li><a href="reserve.html">New Reservation</a></li>
+								<li><a href="reserve.php">New Reservation</a></li>
 								<li><a href="index.php">Check Availability</a></li>
 								<li><a href="#">Dining Reservations</a></li>
 								<li role="separator" class="divider"></li>
@@ -95,12 +99,11 @@ if (isset($email) && $email != "") {
 								<li><a href="#">Cancel Reservation</a></li>
 							</ul>
 						</li>
-						<!-- /dropdown -->
 						<li>
-							<a href="signIn.php">Welcome<?php echo (isset($_SESSION['username'])) ? ", " . $_SESSION['username'] : "! Please Register or Sign In" ?></a>
+							<a href="signIn.php">Welcome<?php echo isset($_SESSION['username']) ? ", " . $_SESSION['username'] : "! Please Register or Sign In" ?></a>
 						</li>
 						<li>
-							<a href="#" class="glyphicon glyphicon-menu-hamburger signOut"></a>
+							<a href="logout.php" class="glyphicon glyphicon-log-out signOut"></a>
 						</li>
 					</ul>
 				</div>
