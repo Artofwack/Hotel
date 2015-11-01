@@ -269,7 +269,7 @@ session_start();
 	<div class="row">
 		<div class="col-lg-4">
 			<img class="img-circle"
-			     src="../images/hotel-generic.jpg"
+			     src="../images/Hotel.jpg"
 			     alt="Generic placeholder image" width="140" height="140">
 
 			<h2>Heading</h2>
