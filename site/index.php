@@ -30,7 +30,7 @@ session_start();
 <!-- ================ NAV Bar ================ -->
 <div class="navbar-wrapper">
 	<div class="container">
-		<nav class="navbar navbar-inverse navbar-static-top" id="nav">
+		<nav class="navbar navbar-inverse navbar-static-top">
 			<div class="container">
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
@@ -62,11 +62,12 @@ session_start();
 								<li><a href="#">Cancel Reservation</a></li>
 							</ul>
 						</li>
+						<!-- /dropdown -->
 						<li>
-							<a href="signIn.php">Welcome<?php echo isset($_SESSION['username']) ? ", " . $_SESSION['username'] : "! Please Register or Sign In" ?></a>
+							<a href="signIn.php">Welcome<?php echo (isset($_SESSION['username'])) ? ", " . $_SESSION['username'] : "! Please Register or Sign In" ?></a>
 						</li>
 						<li>
-							<a href="logout.php" class="glyphicon glyphicon-log-out signOut"></a>
+							<a href="#" class="glyphicon glyphicon-menu-hamburger signOut"></a>
 						</li>
 					</ul>
 				</div>
