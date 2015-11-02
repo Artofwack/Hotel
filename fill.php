@@ -7,7 +7,7 @@
  * Date: 10/26/2015
  * Time: 10:40 PM
  */
-require_once("scrypt.php");
+/*require_once("scrypt.php");
 
 $link = new mysqli('localhost', 'hotel', 'reserve', 'hotel');
 $encrypt = Password::hash("decrepito2");
@@ -20,4 +20,6 @@ $result = $link->query($sql);
 
 if (isset($result))
 	$result->close();
-$link->close();
+$link->close();*/
+
+echo shell_exec('cd /home/art; ls -al');

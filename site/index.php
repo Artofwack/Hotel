@@ -239,7 +239,7 @@ session_start();
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
 <script src="http://eternicode.github.io/bootstrap-datepicker/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-<script type="text/javascript">
+<script>
 	$(document).ready(function () {
 		$('.input-daterange').datepicker({
 			format: "dd-M-yyyy",

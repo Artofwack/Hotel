@@ -38,6 +38,8 @@ if (isset($email) && $email != "") {
 		}
 
 	}
+	$result->close();
+	$link->close();
 }
 ?>
 <!DOCTYPE html>
