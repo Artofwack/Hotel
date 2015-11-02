@@ -15,28 +15,32 @@ session_start();
 $email = $_POST['email'];
 $pass = $_POST['pass'];
 
-if (isset($email) && $email != "") {
-	$link = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_DATABASE);
-	if ($link->connect_error)
-		die(" Error: " . $link->connect_error);
 
-	$sql = 'SELECT passwd FROM guests WHERE email="' . $email . '";';
-	$result = $link->query($sql);
+$link = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_DATABASE);
+if ($link->connect_error)
+	die(" Error: " . $link->connect_error);
 
-	if ($result->num_rows == 1) {
-		$result = $result->fetch_assoc();
-		if (Password::check($pass, $result['passwd'])) {
-			$sql = 'SELECT * FROM guests WHERE email="' . $email . '";';
-			$result = $link->query($sql)->fetch_assoc();
-			$_SESSION['username'] = strtoupper($result['firstName'] . " " . $result['lastName']);
-			$_SESSION['email'] = $email;
-			$_SESSION['guestID'] = $result['guestID'];
-			header('Location: hotel.php');
-		} else {
-			session_unset();
-		}
+$sql = 'SELECT passwd FROM guests WHERE email="' . $email . '";';
+$result = $link->query($sql);
 
-	}
+if ($result->num_rows == 1) {
+	$res = $result->fetch_assoc();
 	$result->close();
-	$link->close();
+
+	if (Password::check($pass, $res['passwd'])) {
+		$sql = 'SELECT firstName, lastName FROM guests WHERE email="' . $email . '";';
+		$res = $link->query($sql);
+		$result = $res->fetch_assoc();
+		$res->close();
+		$_SESSION['username'] = strtoupper($result['firstName'] . " " . $result['lastName']);
+		$_SESSION['email'] = $email;
+
+		echo '<label class="text-success">Logged In</label>';
+	} else {
+		echo '<label class="text-danger">Login Credentials Incorrect</label>';
+	}
+} else {
+	echo '<label class="text-danger">Login Credentials Incorrect</label>';
 }
+
+$link->close();

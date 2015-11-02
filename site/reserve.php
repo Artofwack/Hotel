@@ -43,41 +43,40 @@ session_start();
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-						aria-hidden="true">&times;</span></button>
+				<button type="button" class="close loginClose" data-dismiss="modal" aria-label="Close"><span
+							aria-hidden="true">&times;</span></button>
 				<h4 class="modal-title">Log in</h4>
 			</div>
 			<div class="modal-body">
 				<!-- ================ Form ================ -->
-
-				<form class="form-horizontal" method="post" action="logIn.php" id="loginForm">
+				<form class="form-horizontal" id="loginForm">
 					<div class="form-group">
-						<label for="email" class="col-md-4 control-label">Email</label>
+						<label for="email" class="col-sm-4 control-label">Email</label>
 
-						<div class="col-md-6 col-sm-4">
+						<div class="col-sm-6">
 							<input type="email" class="form-control" name="email" id="email" placeholder="Email"
 							       required>
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="pass" class="col-md-4 control-label">Password</label>
+						<label for="pass" class="col-sm-4 control-label">Password</label>
 
-						<div class="col-md-6 col-sm-4">
+						<div class="col-sm-6">
 							<input type="password" class="form-control" name="pass" id="pass" placeholder="Password"
 							       required>
 						</div>
 					</div>
 					<div class="form-group">
-						<div class="col-md-offset-6 col-sm-offset-4 col-xs-offset-4">
-							<button type="submit" class="btn btn-primary">Sign in</button>
+						<div class="col-sm-offset-5">
+							<button type="button" class="btn btn-primary loginButton">Sign in</button>
 						</div>
 					</div>
 				</form>
 
 			</div>
 			<div class="modal-footer">
+				<span id="notice"></span>
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-
 			</div>
 		</div>
 		<!-- /.modal-content -->
@@ -92,13 +91,12 @@ session_start();
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-						aria-hidden="true">&times;</span></button>
+							aria-hidden="true">&times;</span></button>
 				<h4 class="modal-title">Register</h4>
 			</div>
 			<div class="modal-body well">
 				<!-- ================ Form ================ -->
-
-				<form class="form-horizontal" method="post" action="register.php">
+				<form class="form-horizontal">
 					<div class="form-group">
 						<label for="firstName" class="col-sm-4 control-label">First Name</label>
 
@@ -120,20 +118,22 @@ session_start();
 						<label for="regEmail" class="col-sm-4 control-label">Email</label>
 
 						<div class="col-sm-6">
-							<input type="email" class="form-control" name="regEmail" placeholder="Email" required>
+							<input type="email" class="form-control" name="regEmail" id="regEmail" placeholder="Email"
+							       required>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="regPass" class="col-sm-4 control-label">Password</label>
 
 						<div class="col-sm-6">
-							<input type="password" class="form-control" name="regPass" placeholder="Password"
+							<input type="password" class="form-control" name="regPass" id="regPass"
+							       placeholder="Password"
 							       required>
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-sm-offset-5 col-sm-3">
-							<button type="submit" class="btn btn-primary">Register</button>
+							<button type="button" class="btn btn-primary regButton">Register</button>
 						</div>
 					</div>
 				</form>
@@ -166,11 +166,11 @@ session_start();
 				</div>
 				<div id="navbar" class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
-						<li><a href="hotel.php" class="active">Home</a></li>
+						<li><a href="hotel.php">Home</a></li>
 						<li><a href="#about">About</a></li>
 						<li><a href="#contact">Contact</a></li>
 						<li><a href="#" data-toggle="modal" data-target="#registerModal">Register</a></li>
-						<li class="dropdown">
+						<li class="dropdown active">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
 							   aria-haspopup="true" aria-expanded="false">Reservations<span class="caret"></span></a>
 							<ul class="dropdown-menu">
@@ -184,6 +184,8 @@ session_start();
 								<li><a href="#">Cancel Reservation</a></li>
 							</ul>
 						</li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
 						<li>
 							<!--<a href="signIn.php">Welcome<?php echo isset($_SESSION['username']) ? ", " . $_SESSION['username'] : "! Please Register or Sign In" ?></a>
 							-->
@@ -228,19 +230,26 @@ session_start();
 		</form>
 	</div>
 </div>
+
+
+<!-- ================ Command Line ================ -->
 <div>
-	<pre id="output" class="text-capitalize"></pre>
+	<div>
+		<pre id="output" class="text-capitalize"></pre>
+	</div>
+	<div><a class="btn btn-primary" href="#" id="systemBtn">Files...</a></div>
+	<div>
+		<pre class="filesystem"></pre>
+	</div>
 </div>
-<div><a class="btn btn-primary" href="#" id="systemBtn">Files...</a></div>
-<div>
-	<pre class="filesystem"></pre>
-</div>
+
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
+<script src="../js/login.js"></script>
 <script>
 	$(document).ready(function () {
 		$('.tabby').on('click', function () {

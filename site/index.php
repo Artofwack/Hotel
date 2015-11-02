@@ -1,4 +1,12 @@
 <?php
+/**
+ * File: index.php
+ *
+ * Created by PhpStorm.
+ * User: ArtofWack
+ * Date: 10/27/2015
+ * Time: 7:58 PM
+ */
 
 session_start();
 
@@ -6,7 +14,7 @@ session_start();
 <!DOCTYPE html>
 <html>
 <head>
-	<title>index</title>
+	<title>Hotel California</title>
 
 	<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
@@ -31,14 +39,13 @@ session_start();
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+				<button type="button" class="close loginClose" data-dismiss="modal" aria-label="Close"><span
 						aria-hidden="true">&times;</span></button>
 				<h4 class="modal-title">Log in</h4>
 			</div>
 			<div class="modal-body">
 				<!-- ================ Form ================ -->
-
-				<form class="form-horizontal" method="post" action="logIn.php" id="loginForm">
+				<form class="form-horizontal" id="loginForm">
 					<div class="form-group">
 						<label for="email" class="col-sm-4 control-label">Email</label>
 
@@ -57,15 +64,15 @@ session_start();
 					</div>
 					<div class="form-group">
 						<div class="col-sm-offset-5">
-							<button type="submit" class="btn btn-primary">Sign in</button>
+							<button type="button" class="btn btn-primary loginButton">Sign in</button>
 						</div>
 					</div>
 				</form>
 
 			</div>
 			<div class="modal-footer">
+				<span id="notice"></span>
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-
 			</div>
 		</div>
 		<!-- /.modal-content -->
@@ -85,8 +92,7 @@ session_start();
 			</div>
 			<div class="modal-body well">
 				<!-- ================ Form ================ -->
-
-				<form class="form-horizontal" method="post" action="register.php">
+				<form class="form-horizontal">
 					<div class="form-group">
 						<label for="firstName" class="col-sm-4 control-label">First Name</label>
 
@@ -108,20 +114,22 @@ session_start();
 						<label for="regEmail" class="col-sm-4 control-label">Email</label>
 
 						<div class="col-sm-6">
-							<input type="email" class="form-control" name="regEmail" placeholder="Email" required>
+							<input type="email" class="form-control" name="regEmail" id="regEmail" placeholder="Email"
+							       required>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="regPass" class="col-sm-4 control-label">Password</label>
 
 						<div class="col-sm-6">
-							<input type="password" class="form-control" name="regPass" placeholder="Password"
+							<input type="password" class="form-control" name="regPass" id="regPass"
+							       placeholder="Password"
 							       required>
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-sm-offset-5 col-sm-3">
-							<button type="submit" class="btn btn-primary">Register</button>
+							<button type="button" class="btn btn-primary regButton">Register</button>
 						</div>
 					</div>
 				</form>
@@ -165,18 +173,22 @@ session_start();
 								<li><a href="reserve.php">New Reservation</a></li>
 								<li><a href="index.php">Check Availability</a></li>
 								<li><a href="#">Dining Reservations</a></li>
-								<li role="separator" class="divider"></li>
+								<li class="divider"></li>
 								<li class="dropdown-header">Existing Reservations</li>
 								<li><a href="#">Check Reservation</a></li>
 								<li><a href="#">Cancel Reservation</a></li>
 							</ul>
 						</li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
 						<li>
+							<!--<a href="signIn.php">Welcome<?php /*echo isset($_SESSION['username']) ? ", " . $_SESSION['username'] : "! Please Register or Sign In" */ ?></a>
+							-->
 							<a href="#" id="login" data-toggle="modal"
 							   data-target="#myModal">Welcome<?php echo isset($_SESSION['username']) ? ", " . $_SESSION['username'] : "! Please Sign In" ?></a>
 						</li>
 						<li>
-							<a href="#" class="glyphicon glyphicon-menu-hamburger signOut"></a>
+							<a href="logout.php" class="glyphicon glyphicon-log-out signOut"></a>
 						</li>
 					</ul>
 				</div>
@@ -238,15 +250,16 @@ session_start();
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
+<script src="../js/login.js"></script>
 <script src="http://eternicode.github.io/bootstrap-datepicker/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
 <script>
 	$(document).ready(function () {
+		/* Initialize date range picker */
 		$('.input-daterange').datepicker({
 			format: "dd-M-yyyy",
 			startDate: '0d',
 			endDate: '+3m',
 			todayBtn: "linked",
-			todayHighlight: 'True',
 			autoclose: 'True'
 		});
 
@@ -261,6 +274,7 @@ session_start();
 				$('.out').val($(this).datepicker('getDate').toLocaleDateString());
 			});
 
+		/* Calulate number of nights from date range selected*/
 		$('.nightsButton').on('click', function () {
 			var d1 = $('.startDate').datepicker('getDate');
 			var d2 = $('.endDate').datepicker('getDate');
@@ -270,7 +284,6 @@ session_start();
 			}
 		});
 	});
-
 </script>
 
 </body>
