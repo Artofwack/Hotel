@@ -27,7 +27,6 @@ session_start();
 </head>
 
 <body>
-
 <!-- ========== Log in modal ========== -->
 <div class="modal fade" id="myModal">
 	<div class="modal-dialog">
@@ -42,23 +41,23 @@ session_start();
 
 				<form class="form-horizontal" method="post" action="logIn.php" id="loginForm">
 					<div class="form-group">
-						<label for="email" class="col-sm-4 control-label">Email</label>
+						<label for="email" class="col-md-4 control-label">Email</label>
 
-						<div class="col-sm-6">
+						<div class="col-md-6 col-sm-4">
 							<input type="email" class="form-control" name="email" id="email" placeholder="Email"
 							       required>
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="pass" class="col-sm-4 control-label">Password</label>
+						<label for="pass" class="col-md-4 control-label">Password</label>
 
-						<div class="col-sm-6">
+						<div class="col-md-6 col-sm-4">
 							<input type="password" class="form-control" name="pass" id="pass" placeholder="Password"
 							       required>
 						</div>
 					</div>
 					<div class="form-group">
-						<div class="col-sm-offset-5">
+						<div class="col-md-offset-6 col-sm-offset-4 col-xs-offset-4">
 							<button type="submit" class="btn btn-primary">Sign in</button>
 						</div>
 					</div>
@@ -236,7 +235,7 @@ session_start();
 		</div>
 		<div class="item">
 			<img class="third-slide"
-			     src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
+			     src="../images/costa-sur-resort-and-spa-1.jpg"
 			     alt="Third slide">
 
 			<div class="container">
@@ -391,7 +390,7 @@ session_start();
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
-<script type="text/javascript">
+<script>
 	var amountScrolled = 300;
 
 	$(window).scroll(function () {

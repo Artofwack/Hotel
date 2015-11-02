@@ -28,7 +28,7 @@ if (isset($email) && $email != "") {
 		if (Password::check($pass, $result['passwd'])) {
 			$sql = 'SELECT * FROM guests WHERE email="' . $email . '";';
 			$result = $link->query($sql)->fetch_assoc();
-			$_SESSION['username'] = $result['firstName'] . " " . $result['lastName'];
+			$_SESSION['username'] = strtoupper($result['firstName'] . " " . $result['lastName']);
 			$_SESSION['email'] = $email;
 			$_SESSION['guestID'] = $result['guestID'];
 			header('Location: hotel.php');
@@ -37,4 +37,6 @@ if (isset($email) && $email != "") {
 		}
 
 	}
+	$result->close();
+	$link->close();
 }
