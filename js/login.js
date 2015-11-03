@@ -4,8 +4,6 @@
 $(document).ready(function () {
 	/* Log in using ajax post request */
 	$('.loginButton').on('click', function () {
-		var notice = $('#notice');
-		var modal = $('#myModal');
 		$.post('logIn.php', {
 				'email': $('#email').val(),
 				'pass': $('#pass').val()
@@ -14,7 +12,7 @@ $(document).ready(function () {
 					$('#myModal').modal('hide');
 					location.reload();
 				} else {
-					notice.html(data);
+					$('#notice').html(data);
 				}
 			}
 		);

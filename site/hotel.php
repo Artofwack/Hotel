@@ -415,7 +415,7 @@ session_start();
 	$('a.back-to-top, a.toppy').on('click', function () {
 		$('body, html').animate({
 			scrollTop: 0
-		}, 'fast');
+		}, 'slow');
 		return false;
 	});
 

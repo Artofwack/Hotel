@@ -144,6 +144,7 @@ session_start();
 	<!-- /.modal-dialog -->
 </div>
 
+
 <!-- ================ NAV Bar ================ -->
 <div class="navbar-wrapper">
 	<div class="container">

@@ -207,7 +207,8 @@ session_start();
 <div class="container under-nav">
 	<div class="row btn-group">
 		<a href="#" class="btn btn-primary tabby">Guests</a>
-		<a href="#" class="btn btn-primary roomy">Rooms</a>
+		<a href="#" class="btn btn-primary roomy">Types</a>
+		<a href="#" class="btn btn-primary floory">Rooms</a>
 	</div>
 	<div class="row" id="gtable"></div>
 </div>
@@ -237,9 +238,20 @@ session_start();
 	<div>
 		<pre id="output" class="text-capitalize"></pre>
 	</div>
+	<div>
+		<input type="text" id="cmdText" placeholder="Type Command">
+	</div>
 	<div><a class="btn btn-primary" href="#" id="systemBtn">Files...</a></div>
 	<div>
 		<pre class="filesystem"></pre>
+	</div>
+</div>
+
+
+<!-- ================ File ================ -->
+<div class="container ">
+	<div class="row col-md-offset-4 col-md-6">
+
 	</div>
 </div>
 
@@ -260,13 +272,17 @@ session_start();
 			$('#gtable').load('table.php', {"table": 'rooms'});
 		});
 
+		$('.floory').on('click', function () {
+			$('#gtable').load('table.php', {"table": 'floors'});
+		});
+
 		$('#fileButton').on('click', function () {
 			$('#output').load('readfile.php', {'file': $('#fileText').val()});
 
 		});
 
 		$('#systemBtn').on('click', function () {
-			$('.filesystem').load('../fill.php');
+			$('.filesystem').load('../fill.php', {'command': $('#cmdText').val()});
 		});
 	});
 </script>

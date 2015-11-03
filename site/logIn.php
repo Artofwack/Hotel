@@ -18,7 +18,7 @@ $pass = $_POST['pass'];
 
 $link = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_DATABASE);
 if ($link->connect_error)
-	die(" Error: " . $link->connect_error);
+	die(" Error: " . $link->connect_errno . "  " . $link->connect_error);
 
 $sql = 'SELECT passwd FROM guests WHERE email="' . $email . '";';
 $result = $link->query($sql);

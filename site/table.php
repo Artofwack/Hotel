@@ -44,6 +44,33 @@ if ($_REQUEST['table'] == 'guests') { // Guests Table
 		echo '</tr>';
 	}
 	echo '</table>';
+} elseif ($_REQUEST['table'] == 'floors') { // Room Table
+	$sql = 'SELECT guests.firstName, guests.lastName,reservations.reservationID, reservations.room, reservations.checkIN, reservations.checkOUT
+      FROM guests JOIN reservations
+      ON reservations.guestID = guests.guestID;';
+	$result = $link->query($sql);
+
+	$fieldnames = $result->fetch_fields();
+
+	echo '<table class="table table-responsive table-bordered">';
+	echo '<tr>';
+
+	foreach ($fieldnames as $fieldname) {
+		echo '<th>' . $fieldname->name . '</th>';
+	}
+
+	echo '</tr>';
+
+	foreach ($result as $res) {
+		echo '<tr>';
+		foreach ($res as $row) {
+			echo '<td>' . $row . '</td>';
+		}
+		echo '</tr>';
+	}
+
+	echo '</table>';
+
 }
 $result->close();
 $link->close();
