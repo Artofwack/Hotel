@@ -49,7 +49,7 @@ session_start();
 			</div>
 			<div class="modal-body">
 				<!-- ================ Form ================ -->
-				<form class="form-horizontal" id="loginForm">
+				<form class="form-horizontal" id="loginForm" method="post">
 					<div class="form-group">
 						<label for="email" class="col-sm-4 control-label">Email</label>
 
@@ -96,7 +96,7 @@ session_start();
 			</div>
 			<div class="modal-body well">
 				<!-- ================ Form ================ -->
-				<form class="form-horizontal">
+				<form class="form-horizontal" method="post">
 					<div class="form-group">
 						<label for="firstName" class="col-sm-4 control-label">First Name</label>
 
@@ -261,6 +261,7 @@ session_start();
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
+<script src="../js/jquery.validate.min.js"></script>
 <script src="../js/login.js"></script>
 <script>
 	$(document).ready(function () {
