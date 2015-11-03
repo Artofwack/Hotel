@@ -24,10 +24,10 @@ if ($link->connect_error)
 
 $sql = "SELECT * FROM guests WHERE email='" . $email . "'; ";
 
-if ($link->query($sql)->num_rows == 0) {
+if ($link->query($sql)->num_rows == 0 && $email != '' && $firstName != '' && $lastName != '' && $_POST['pass'] != '') {
 	$sql = "INSERT INTO guests(firstName, lastName, email, passwd,checkedIn,balance)
 		VALUES ('" . $firstName . "','" . $lastName . "','" . $email . "','" . $encrypted . "','0','0');";
 	$link->query($sql);
 } else
-	echo '<label class="text-danger">Email already exists</label>'; // Not safe: should not indicate if email exists in DB
+	echo '<label class="text-danger">Cannot create guest</label>'; // Not safe: should not indicate if email exists in DB
 $link->close();

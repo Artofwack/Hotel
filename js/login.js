@@ -2,6 +2,9 @@
  * Created by ArtofWack on 11/2/2015.
  */
 $(document).ready(function () {
+	$('form').validate();
+	$('.regForm').validate();
+
 	/* Log in using ajax post request */
 	$('.loginButton').on('click', function () {
 		$.post('logIn.php', {
@@ -31,7 +34,7 @@ $(document).ready(function () {
 				$('#registerModal').modal('hide');
 				location.reload();
 			} else {
-				$('nav').hide();
+				$('modal').hide();
 			}
 		});
 	});
