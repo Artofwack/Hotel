@@ -1,46 +1,46 @@
 <?php
-/**
- * File: logIn.php
- *
- * Created by PhpStorm.
- * User: ArtofWack
- * Date: 10/31/2015
- * Time: 9:58 PM
- */
-require_once("../config.php");
-require_once("../scrypt.php");
+	/**
+	 * File: logIn.php
+	 *
+	 * Created by PhpStorm.
+	 * User: ArtofWack
+	 * Date: 10/31/2015
+	 * Time: 9:58 PM
+	 */
+	require_once("../config.php");
+	require_once("../scrypt.php");
 
-session_start();
+	session_start();
 
-$email = $_POST['email'];
-$pass = $_POST['pass'];
+	$email = $_POST['email'];
+	$pass = $_POST['pass'];
 
 
-$link = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_DATABASE);
-if ($link->connect_error)
-	die(" Error: " . $link->connect_errno . "  " . $link->connect_error);
+	$link = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_DATABASE);
+	if ($link->connect_error)
+		die(" Error: " . $link->connect_errno . "  " . $link->connect_error);
 
-$sql = 'SELECT passwd FROM guests WHERE email="' . $email . '";';
-$result = $link->query($sql);
+	$sql = 'SELECT passwd FROM guests WHERE email="' . $email . '";';
+	$result = $link->query($sql);
 
-if ($result->num_rows == 1) {
-	$res = $result->fetch_assoc();
-	$result->close();
+	if ($result->num_rows == 1) {
+		$res = $result->fetch_assoc();
+		$result->close();
 
-	if (Password::check($pass, $res['passwd'])) {
-		$sql = 'SELECT firstName, lastName FROM guests WHERE email="' . $email . '";';
-		$res = $link->query($sql);
-		$result = $res->fetch_assoc();
-		$res->close();
-		$_SESSION['username'] = strtoupper($result['firstName'] . " " . $result['lastName']);
-		$_SESSION['email'] = $email;
+		if (Password::check($pass, $res['passwd'])) {
+			$sql = 'SELECT firstName, lastName FROM guests WHERE email="' . $email . '";';
+			$res = $link->query($sql);
+			$result = $res->fetch_assoc();
+			$res->close();
+			$_SESSION['username'] = strtoupper($result['firstName'] . " " . $result['lastName']);
+			$_SESSION['email'] = $email;
 
-		echo '<label class="text-success">Logged In</label>';
+			echo '<label class="text-success">Logged In</label>';
+		}else {
+			echo '<label class="text-danger">Login Credentials Incorrect</label>';
+		}
 	} else {
 		echo '<label class="text-danger">Login Credentials Incorrect</label>';
 	}
-} else {
-	echo '<label class="text-danger">Login Credentials Incorrect</label>';
-}
 
-$link->close();
+	$link->close();

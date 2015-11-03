@@ -1,46 +1,46 @@
 <?php
-/**
- * File: signIn.php
- *
- * Created by PhpStorm.
- * User: ArtofWack
- * Date: 10/30/2015
- * Time: 12:29 AM
- */
+	/**
+	 * File: signIn.php
+	 *
+	 * Created by PhpStorm.
+	 * User: ArtofWack
+	 * Date: 10/30/2015
+	 * Time: 12:29 AM
+	 */
 
-require_once("../config.php");
-require_once("../scrypt.php");
+	require_once("../config.php");
+	require_once("../scrypt.php");
 
-session_start();
+	session_start();
 
-$email = $_POST['email'];
-$pass = $_POST['pass'];
+	$email = $_POST['email'];
+	$pass = $_POST['pass'];
 
-if (isset($email) && $email != "") {
-	$link = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_DATABASE);
-	if ($link->connect_error)
-		die(" Error: " . $link->connect_error);
+	if (isset($email) && $email != "") {
+		$link = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_DATABASE);
+		if ($link->connect_error)
+			die(" Error: " . $link->connect_error);
 
-	$sql = 'SELECT passwd FROM guests WHERE email="' . $email . '";';
-	$result = $link->query($sql);
+		$sql = 'SELECT passwd FROM guests WHERE email="' . $email . '";';
+		$result = $link->query($sql);
 
-	if ($result->num_rows == 1) {
-		$result = $result->fetch_assoc();
-		if (Password::check($pass, $result['passwd'])) {
-			$sql = 'SELECT * FROM guests WHERE email="' . $email . '";';
-			$result = $link->query($sql)->fetch_assoc();
-			$_SESSION['username'] = $result['firstName'] . " " . $result['lastName'];
-			$_SESSION['email'] = $email;
-			$_SESSION['guestID'] = $result['guestID'];
-			header('Location: hotel.php');
-		} else {
-			session_unset();
+		if ($result->num_rows == 1) {
+			$result = $result->fetch_assoc();
+			if (Password::check($pass, $result['passwd'])) {
+				$sql = 'SELECT * FROM guests WHERE email="' . $email . '";';
+				$result = $link->query($sql)->fetch_assoc();
+				$_SESSION['username'] = $result['firstName'] . " " . $result['lastName'];
+				$_SESSION['email'] = $email;
+				$_SESSION['guestID'] = $result['guestID'];
+				header('Location: hotel.php');
+			}else {
+				session_unset();
+			}
+
 		}
-
+		$result->close();
+		$link->close();
 	}
-	$result->close();
-	$link->close();
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">

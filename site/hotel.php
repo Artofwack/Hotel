@@ -1,14 +1,14 @@
 <?php
-/**
- * File: hotel.php
- *
- * Created by PhpStorm.
- * User: ArtofWack
- * Date: 10/27/2015
- * Time: 7:58 PM
- */
+	/**
+	 * File: hotel.php
+	 *
+	 * Created by PhpStorm.
+	 * User: ArtofWack
+	 * Date: 10/27/2015
+	 * Time: 7:58 PM
+	 */
 
-session_start();
+	session_start();
 
 ?>
 <!DOCTYPE html>
@@ -41,7 +41,7 @@ session_start();
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close loginClose" data-dismiss="modal" aria-label="Close"><span
-							aria-hidden="true">&times;</span></button>
+						aria-hidden="true">&times;</span></button>
 				<h4 class="modal-title">Log in</h4>
 			</div>
 			<div class="modal-body">
@@ -88,7 +88,7 @@ session_start();
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-							aria-hidden="true">&times;</span></button>
+						aria-hidden="true">&times;</span></button>
 				<h4 class="modal-title">Register</h4>
 			</div>
 			<div class="modal-body well">
@@ -219,8 +219,8 @@ session_start();
 					<h1>Example headline.</h1>
 
 					<p>Note: If you're viewing this page via a <code>file://</code> URL, the "next" and "previous"
-						Glyphicon buttons on the left and right might not load/display properly due to web browser
-						security rules.</p>
+					   Glyphicon buttons on the left and right might not load/display properly due to web browser
+					   security rules.</p>
 
 					<p><a class="btn btn-lg btn-primary" href="#" data-toggle="modal" data-target="#myModal"
 					      role="button">Sign up today</a></p>
@@ -237,7 +237,7 @@ session_start();
 					<h1>Another example headline.</h1>
 
 					<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida
-						at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+					   at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
 
 					<p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
 				</div>
@@ -253,7 +253,7 @@ session_start();
 					<h1>One more for good measure.</h1>
 
 					<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida
-						at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+					   at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
 
 					<p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
 				</div>
@@ -284,8 +284,8 @@ session_start();
 			<h2>Heading</h2>
 
 			<p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies
-				vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo
-				cursus magna.</p>
+			   vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo
+			   cursus magna.</p>
 
 			<p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
 		</div>
@@ -298,8 +298,8 @@ session_start();
 			<h2>Heading</h2>
 
 			<p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras
-				mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-				condimentum nibh.</p>
+			   mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris
+			   condimentum nibh.</p>
 
 			<p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
 		</div>
@@ -312,8 +312,8 @@ session_start();
 			<h2>Heading</h2>
 
 			<p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula
-				porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut
-				fermentum massa justo sit amet risus.</p>
+			   porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut
+			   fermentum massa justo sit amet risus.</p>
 
 			<p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
 		</div>
@@ -332,8 +332,9 @@ session_start();
 					class="text-muted">It'll blow your mind.</span></h2>
 
 			<p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod
-				semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus
-				commodo.</p>
+			                semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus,
+			                tellus ac cursus
+			                commodo.</p>
 		</div>
 		<div class="col-md-5">
 			<img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto"
@@ -350,8 +351,9 @@ session_start();
 			</h2>
 
 			<p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod
-				semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus
-				commodo.</p>
+			                semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus,
+			                tellus ac cursus
+			                commodo.</p>
 		</div>
 		<div class="col-md-5 col-md-pull-7">
 			<img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto"
@@ -367,8 +369,9 @@ session_start();
 			<h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
 
 			<p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod
-				semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus
-				commodo.</p>
+			                semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus,
+			                tellus ac cursus
+			                commodo.</p>
 		</div>
 		<div class="col-md-5">
 			<img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto"
