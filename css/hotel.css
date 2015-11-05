@@ -12,6 +12,11 @@ body {
 	margin-top: 80px;
 }
 
+.red-row {
+	background-color: red;
+	color: white;
+}
+
 /* CUSTOMIZE THE NAVBAR
 -------------------------------------------------- */
 

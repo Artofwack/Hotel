@@ -8,7 +8,7 @@
  * Time: 10:40 PM
  */
 
-require_once("../config.php");
+require_once('../connect_DB.php');
 require_once("../scrypt.php");
 
 session_start();
@@ -17,10 +17,6 @@ $firstName = $_POST['firstName'];
 $lastName = $_POST['lastName'];
 $email = $_POST['email'];
 $encrypted = Password::hash($_POST['pass']);
-
-$link = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_DATABASE);
-if ($link->connect_error)
-	die(" Error: " . $link->connect_error);
 
 $sql = "SELECT * FROM guests WHERE email='" . $email . "'; ";
 

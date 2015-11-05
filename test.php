@@ -1,11 +1,11 @@
 <?php
 /**
- * File: reserve.php
+ * File: test.php
  *
  * Created by PhpStorm.
  * User: ArtofWack
- * Date: 10/27/2015
- * Time: 7:58 PM
+ * Date: 11/4/2015
+ * Time: 12:12 AM
  */
 
 require_once("../config.php");
@@ -44,7 +44,7 @@ session_start();
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close loginClose" data-dismiss="modal" aria-label="Close"><span
-							aria-hidden="true">&times;</span></button>
+						aria-hidden="true">&times;</span></button>
 				<h4 class="modal-title">Log in</h4>
 			</div>
 			<div class="modal-body">
@@ -91,7 +91,7 @@ session_start();
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-							aria-hidden="true">&times;</span></button>
+						aria-hidden="true">&times;</span></button>
 				<h4 class="modal-title">Register</h4>
 			</div>
 			<div class="modal-body well">
@@ -205,21 +205,61 @@ session_start();
 
 <!-- ================ Reserve ================ -->
 <div class="container under-nav">
-	<div class="row btn-group butts">
-		<a href="#" class="btn btn-primary tabby" pot="table.php" tabb="guests">Guests</a>
-		<a href="#" class="btn btn-primary roomy" pot="table.php" tabb="rooms">Types</a>
-		<a href="#" class="btn btn-primary floory" pot="table.php" tabb="floors">Res</a>
-		<a href="#" class="btn btn-primary genButton" pot="gentable.php">Table</a>
+	<div class="row btn-group">
+		<a href="#" class="btn btn-primary tabby">Guests</a>
+		<a href="#" class="btn btn-primary roomy">Types</a>
+		<a href="#" class="btn btn-primary floory">Rooms</a>
+		<a href="#" class="btn btn-primary genButton">Table</a>
 	</div>
 	<div>
 		<label for="genTable">Table:</label>
 		<input type="text" id="genTable" name="genTable">
 	</div>
-
+	<div class="row" id="gtable"></div>
 </div>
 
-<div id="gtable" class="container table-responsive"></div>
-<div id="clicked"></div>
+
+<!-- ================ File ================ -->
+<div class="container file">
+	<div class="row col-md-offset-4 col-md-6">
+		<form class="form-horizontal" name="fileForm" id="fileForm" method="get" action="readfile.php">
+			<div class="form-group">
+				<label class="control-label col-md-2" for="fileText">File</label>
+
+				<div class="col-md-offset-2 col-md-4">
+					<input class="form-control" id="fileText" name="fileText" type="text">
+				</div>
+			</div>
+			<div class="form-group">
+				<a class="btn btn-primary" href="#" id="fileButton">Read</a>
+			</div>
+		</form>
+	</div>
+</div>
+
+
+<!-- ================ Command Line ================ -->
+<div>
+	<div>
+		<pre id="output" class="text-capitalize"></pre>
+	</div>
+	<div>
+		<input type="text" id="cmdText" placeholder="Type Command">
+	</div>
+	<div><a class="btn btn-primary" href="#" id="systemBtn">Files...</a></div>
+	<div>
+		<pre class="filesystem"></pre>
+	</div>
+</div>
+
+
+<!-- ================ File ================ -->
+<div class="container ">
+	<div class="row col-md-offset-4 col-md-6">
+
+	</div>
+</div>
+
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
@@ -230,53 +270,27 @@ session_start();
 <script src="../js/login.js"></script>
 <script>
 	$(document).ready(function () {
-		/*$('.tabby').on('click', function () {
-		 $.post('table.php',{table:'guests'},function(data){
-		 $('#gtable').html(data);
-		 rowSelector();
-		 });
-		 //$('#gtable').load('table.php', {"table": 'guests'},rowSelector());
+		$('.tabby').on('click', function () {
+			$('#gtable').load('table.php', {"table": 'guests'});
 		});
 
 		$('.roomy').on('click', function () {
-		 $('#gtable').load('table.php', {"table": 'rooms'},rowSelector());
+			$('#gtable').load('table.php', {"table": 'rooms'});
 		});
 
 		$('.floory').on('click', function () {
-		 $('#gtable').load('table.php', {"table": 'floors'},rowSelector());
-		});
-		 */
-		$('.genButton').on('click', function () {
-			$.post('gentable.php', {'table': $('#genTable').val()}, function (data) {
-				$('#gtable').html(data);
-				rowSelector();
-			});
-		});
-
-		$('.butts > .btn:not(".genButton")').on('click', function () {
-			var sel = $(this);
-			$.post(sel.attr('pot'), {table: sel.attr('tabb')}, function (data) {
-				$('#gtable').html(data);
-				rowSelector();
-			});
+			$('#gtable').load('table.php', {"table": 'floors'});
 		});
 
 		$('#fileButton').on('click', function () {
 			$('#output').load('readfile.php', {'file': $('#fileText').val()});
+
 		});
 
 		$('#systemBtn').on('click', function () {
 			$('.filesystem').load('../fill.php', {'command': $('#cmdText').val()});
 		});
-
-
 	});
-	function rowSelector() {
-		$('td').on('click', function () {
-			$(this).closest('tr').toggleClass('red-row');
-		});
-	}
-
 </script>
 </body>
 </html>
