@@ -1,14 +1,14 @@
 <?php
-	/**
-	 * File: index.php
-	 *
-	 * Created by PhpStorm.
-	 * User: ArtofWack
-	 * Date: 10/27/2015
-	 * Time: 7:58 PM
-	 */
+/**
+ * File: index.php
+ *
+ * Created by PhpStorm.
+ * User: ArtofWack
+ * Date: 10/27/2015
+ * Time: 7:58 PM
+ */
 
-	session_start();
+session_start();
 
 ?>
 <!DOCTYPE html>

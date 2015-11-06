@@ -10,10 +10,10 @@
 require_once("../config.php");
 require_once("../scrypt.php");
 
-	session_start();
+session_start();
 
-	$email = $_POST['email'];
-	$pass = $_POST['pass'];
+$email = $_POST['email'];
+$pass = $_POST['pass'];
 
 
 $link = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_DATABASE);

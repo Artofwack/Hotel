@@ -1,17 +1,17 @@
 <?php
-	/**
-	 * File: reserve.php
-	 *
-	 * Created by PhpStorm.
-	 * User: ArtofWack
-	 * Date: 10/27/2015
-	 * Time: 7:58 PM
-	 */
+/**
+ * File: reserve.php
+ *
+ * Created by PhpStorm.
+ * User: ArtofWack
+ * Date: 10/27/2015
+ * Time: 7:58 PM
+ */
 
-	require_once("../config.php");
-	require_once("../scrypt.php");
+require_once("../config.php");
+require_once("../scrypt.php");
 
-	session_start();
+session_start();
 
 ?>
 <!DOCTYPE html>
@@ -236,15 +236,15 @@
 		 rowSelector();
 		 });
 		 //$('#gtable').load('table.php', {"table": 'guests'},rowSelector());
-		});
+		 });
 
-		$('.roomy').on('click', function () {
+		 $('.roomy').on('click', function () {
 		 $('#gtable').load('table.php', {"table": 'rooms'},rowSelector());
-		});
+		 });
 
-		$('.floory').on('click', function () {
+		 $('.floory').on('click', function () {
 		 $('#gtable').load('table.php', {"table": 'floors'},rowSelector());
-		});
+		 });
 		 */
 		$('.genButton').on('click', function () {
 			$.post('gentable.php', {'table': $('#genTable').val()}, function (data) {
