@@ -8,7 +8,11 @@
  * Time: 5:39 PM
  */
 
-require_once('../connect_DB.php');
+require_once('../config.php');
+
+$link = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_DATABASE);
+if ($link->connect_error)
+	die(" Error: " . $link->connect_error);
 
 if ($_REQUEST['table'] == 'guests') { // Guests Table
 

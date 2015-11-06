@@ -1,17 +1,17 @@
 <?php
-/**
- * File: reserve.php
- *
- * Created by PhpStorm.
- * User: ArtofWack
- * Date: 10/27/2015
- * Time: 7:58 PM
- */
+	/**
+	 * File: reserve.php
+	 *
+	 * Created by PhpStorm.
+	 * User: ArtofWack
+	 * Date: 10/27/2015
+	 * Time: 7:58 PM
+	 */
 
-require_once("../config.php");
-require_once("../scrypt.php");
+	require_once("../config.php");
+	require_once("../scrypt.php");
 
-session_start();
+	session_start();
 
 ?>
 <!DOCTYPE html>
@@ -44,7 +44,7 @@ session_start();
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close loginClose" data-dismiss="modal" aria-label="Close"><span
-							aria-hidden="true">&times;</span></button>
+						aria-hidden="true">&times;</span></button>
 				<h4 class="modal-title">Log in</h4>
 			</div>
 			<div class="modal-body">
@@ -91,7 +91,7 @@ session_start();
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-							aria-hidden="true">&times;</span></button>
+						aria-hidden="true">&times;</span></button>
 				<h4 class="modal-title">Register</h4>
 			</div>
 			<div class="modal-body well">

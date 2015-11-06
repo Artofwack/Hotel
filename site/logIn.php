@@ -7,13 +7,18 @@
  * Date: 10/31/2015
  * Time: 9:58 PM
  */
-require_once('../connect_DB.php');
+require_once("../config.php");
 require_once("../scrypt.php");
 
-session_start();
+	session_start();
 
-$email = $_POST['email'];
-$pass = $_POST['pass'];
+	$email = $_POST['email'];
+	$pass = $_POST['pass'];
+
+
+$link = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_DATABASE);
+if ($link->connect_error)
+	die(" Error: " . $link->connect_errno . "  " . $link->connect_error);
 
 $sql = 'SELECT passwd FROM guests WHERE email="' . $email . '";';
 $result = $link->query($sql);
