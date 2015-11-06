@@ -11,7 +11,7 @@ $(document).ready(function () {
 					'email': $('#email').val(),
 					'pass': $('#pass').val()
 				}, function (data) {
-					if (data == '<label class="text-success">Logged In</label>') {
+			if (data === 'logged') {
 						$('#myModal').modal('hide');
 						location.reload();
 					} else {

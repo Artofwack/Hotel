@@ -32,6 +32,8 @@ session_start();
 	        integrity="sha256-IF1P9CSIVOaY4nBb5jATvBGnxMn/4dB9JNTLqdxKN9w= sha512-UsfHxnPESse3RgYeaoQ7X2yXYSY5f6sB6UT48+F2GhNLqjbPhtwV2WCUQ3eQxeghkbl9PioaTOHNA+T0wNki2w=="
 	        crossorigin="anonymous">
 	-->
+	<!-- Bootstrap JASNY additional components-->
+	<link href="../css/jasny-bootstrap.min.css" rel="stylesheet" media="screen">
 
 	<!-- Custom styles for this template -->
 	<link href="../css/hotel.css" rel="stylesheet">
@@ -75,8 +77,8 @@ session_start();
 
 			</div>
 			<div class="modal-footer">
-				<span id="notice"></span>
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<label class="text-danger" id="notice"></label>
+				<button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
 			</div>
 		</div>
 		<!-- /.modal-content -->
@@ -226,26 +228,11 @@ session_start();
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="../js/jquery.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
+<script src="../js/jasny-bootstrap.min.js"></script>
 <script src="../js/jquery.validate.min.js"></script>
 <script src="../js/login.js"></script>
 <script>
 	$(document).ready(function () {
-		/*$('.tabby').on('click', function () {
-		 $.post('table.php',{table:'guests'},function(data){
-		 $('#gtable').html(data);
-		 rowSelector();
-		 });
-		 //$('#gtable').load('table.php', {"table": 'guests'},rowSelector());
-		 });
-
-		 $('.roomy').on('click', function () {
-		 $('#gtable').load('table.php', {"table": 'rooms'},rowSelector());
-		 });
-
-		 $('.floory').on('click', function () {
-		 $('#gtable').load('table.php', {"table": 'floors'},rowSelector());
-		 });
-		 */
 		$('.genButton').on('click', function () {
 			$.post('gentable.php', {'table': $('#genTable').val()}, function (data) {
 				$('#gtable').html(data);

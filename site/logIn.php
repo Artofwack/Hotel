@@ -15,7 +15,6 @@ session_start();
 $email = $_POST['email'];
 $pass = $_POST['pass'];
 
-
 $link = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_DATABASE);
 if ($link->connect_error)
 	die(" Error: " . $link->connect_errno . "  " . $link->connect_error);
@@ -25,24 +24,23 @@ $result = $link->query($sql);
 
 if ($result->num_rows == 1) {
 	$res = $result->fetch_assoc();
-	$result->close();
+	echo $res[0];
 
 	if (Password::check($pass, $res['passwd'])) {
 		$sql = 'SELECT firstName, lastName FROM guests WHERE email="' . $email . '";';
-		$res = $link->query($sql);
-		$result = $res->fetch_assoc();
-		$res->close();
-		$_SESSION['username'] = strtoupper($result['firstName'] . " " . $result['lastName']);
+		$result = $link->query($sql);
+		$res = $result->fetch_assoc();
+		$_SESSION['username'] = strtoupper($res['firstName'] . " " . $res['lastName']);
 		$_SESSION['email'] = $email;
+		echo 'logged';
 
-		echo '<label class="text-success">Logged In</label>';
 	} else {
-		echo '<label class="text-danger">Login Credentials Incorrect</label>';
+		echo 'Login Credentials Incorrect';
 	}
 } else {
-	echo '<label class="text-danger">Login Credentials Incorrect</label>';
+	echo 'Login Credentials Incorrect';
 }
 
 if (isset($result))
-	$result->close();
+	$result->free();
 $link->close();

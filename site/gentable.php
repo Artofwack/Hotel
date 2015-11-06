@@ -23,25 +23,25 @@ if ($link->query("SHOW TABLES LIKE '" . $table . "' ")->num_rows == 1) {
 	$result = $link->query($sql);
 	$fieldnames = $result->fetch_fields();
 
-	echo '<table class="table table-bordered ';
-	echo 'table-' . $table . '">';
-	echo '<tr>';
+	echo '<table class="table table-bordered table-hover ';
+	echo 'table-' . $table . '" >';
+	echo '<thead><tr>';
 
 	foreach ($fieldnames as $fieldname) {
 		echo '<th>' . strtoupper($fieldname->name) . '</th>';
 	}
 
-	echo '</tr>';
+	echo '</tr></thead><tbody data-link="row" class="rowlink">';
 
 	foreach ($result as $res) {
-		echo '<tr class="rowwy tab-gen" id="row-' . $i++ . '">';
+		echo '<tr class="rowwy tab-gen" id="row-' . ++$i . '">';
 		foreach ($res as $row) {
-			echo '<td>' . $row . '</td>';
+			echo '<td><a href=what.php?row=' . $i . ' target=_blank></a>' . $row . '</td>';
 		}
 		echo '</tr>';
 	}
 
-	echo '</table>';
+	echo '</tbody></table>';
 
 	if (isset($result))
 		$result->close();
