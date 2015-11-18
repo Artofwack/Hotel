@@ -36,7 +36,7 @@ session_start();
 
 <body>
 <!-- ========== Log in modal ========== -->
-<div class="modal fade" id="myModal">
+<span class="modal fade" id="myModal">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -79,11 +79,11 @@ session_start();
 		<!-- /.modal-content -->
 	</div>
 	<!-- /.modal-dialog -->
-</div>
+</span>
 
 
 <!-- ========== Register modal ========== -->
-<div class="modal fade" id="registerModal">
+<span class="modal fade" id="registerModal">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -91,7 +91,7 @@ session_start();
 						aria-hidden="true">&times;</span></button>
 				<h4 class="modal-title">Register</h4>
 			</div>
-			<div class="modal-body well">
+			<div class="modal-body">
 				<!-- ================ Form ================ -->
 				<form class="form-horizontal regForm" method="post">
 					<div class="form-group">
@@ -137,13 +137,14 @@ session_start();
 
 			</div>
 			<div class="modal-footer">
+				<label class="text-danger" id="notice2"></label>
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 			</div>
 		</div>
 		<!-- /.modal-content -->
 	</div>
 	<!-- /.modal-dialog -->
-</div>
+</span>
 
 
 <!-- ================ NAV Bar ================ -->

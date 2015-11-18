@@ -88,17 +88,17 @@ session_start();
 
 
 <!-- ========== Register modal ========== -->
-<div class="modal fade" id="registerModal">
+<span class="modal fade" id="registerModal">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-						aria-hidden="true">&times;</span></button>
+							aria-hidden="true">&times;</span></button>
 				<h4 class="modal-title">Register</h4>
 			</div>
-			<div class="modal-body well">
+			<div class="modal-body">
 				<!-- ================ Form ================ -->
-				<form class="form-horizontal" method="post">
+				<form class="form-horizontal regForm" method="post">
 					<div class="form-group">
 						<label for="firstName" class="col-sm-4 control-label">First Name</label>
 
@@ -142,13 +142,14 @@ session_start();
 
 			</div>
 			<div class="modal-footer">
+				<label class="text-danger" id="notice2"></label>
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 			</div>
 		</div>
 		<!-- /.modal-content -->
 	</div>
 	<!-- /.modal-dialog -->
-</div>
+</span>
 
 
 <!-- ================ NAV Bar ================ -->
@@ -169,8 +170,8 @@ session_start();
 				<div id="navbar" class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
 						<li><a href="hotel.php">Home</a></li>
-						<li><a href="#about">About</a></li>
-						<li><a href="#contact">Contact</a></li>
+						<li><a href="#">About</a></li>
+						<li><a href="#">Contact</a></li>
 						<li><a href="#" data-toggle="modal" data-target="#registerModal">Register</a></li>
 						<li class="dropdown active">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
