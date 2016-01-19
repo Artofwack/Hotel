@@ -241,6 +241,9 @@ session_start();
 				<div class="col-md-offset-2 col-md-2">
 					<a class="btn btn-md btn-default nightsButton" href="#" role="button">Calculate Nights</a>
 				</div>
+				<div class="col-md-2">
+					<a class="btn btn-md btn-default reserveButton" href="#" role="button">Reserve</a>
+				</div>
 			</div>
 		</form>
 	</div>
@@ -285,6 +288,20 @@ session_start();
 				var diff = Math.floor((d2.getTime() - d1.getTime()) / 86400000);
 				$('.nights').val(diff.toString());
 			}
+		});
+
+		/* Reserve*/
+		$('.reserveButton').on('click', function () {
+			var d1 = $('.startDate').datepicker('getDate');
+			var d2 = $('.endDate').datepicker('getDate');
+
+			$.post('makeres.php', {
+				'checkIN': d1,
+				'checkOUT': d2,
+				'roomType': 'type'
+			}, function (data) {
+
+			});
 		});
 	});
 </script>

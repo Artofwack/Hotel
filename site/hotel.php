@@ -390,6 +390,8 @@ session_start();
 		<p class="pull-right"><a class="toppy" href="#">Back to top</a></p>
 
 		<p>&copy; 2014 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+
+		<p><a href="../admin.php">Admin Logon</a></p>
 	</footer>
 
 </div>
@@ -420,7 +422,7 @@ session_start();
 	$('a.back-to-top, a.toppy').on('click', function () {
 		$('body, html').animate({
 			scrollTop: 0
-		}, 'slow');
+		}, 'fast');
 		return false;
 	});
 
