@@ -1,21 +1,15 @@
 <?php
-/**
- * File: reserve.php
- *
- * Created by PhpStorm.
- * User: ArtofWack
- * Date: 10/27/2015
- * Time: 7:58 PM
- */
-
-require_once("../config.php");
-require_once("../scrypt.php");
+	/**
+	 * Created by PhpStorm.
+	 * User: lab
+	 * Date: 1/20/2016
+	 * Time: 2:57 AM
+	 */
 
 session_start();
 
-?>
-<!DOCTYPE html>
-<html lang="en">
+	?>
+<html>
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -32,8 +26,6 @@ session_start();
 	        integrity="sha256-IF1P9CSIVOaY4nBb5jATvBGnxMn/4dB9JNTLqdxKN9w= sha512-UsfHxnPESse3RgYeaoQ7X2yXYSY5f6sB6UT48+F2GhNLqjbPhtwV2WCUQ3eQxeghkbl9PioaTOHNA+T0wNki2w=="
 	        crossorigin="anonymous">
 	-->
-	<!-- Bootstrap JASNY additional components-->
-	<link href="../css/jasny-bootstrap.min.css" rel="stylesheet" media="screen">
 
 	<!-- Custom styles for this template -->
 	<link href="../css/hotel.css" rel="stylesheet">
@@ -93,7 +85,7 @@ session_start();
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-							aria-hidden="true">&times;</span></button>
+						aria-hidden="true">&times;</span></button>
 				<h4 class="modal-title">Register</h4>
 			</div>
 			<div class="modal-body">
@@ -206,65 +198,30 @@ session_start();
 </div>
 
 
-<!-- ================ Reserve ================ -->
+<!-- ================ Check Reservations ================= -->
 <div class="container under-nav">
-	<div class="row btn-group butts">
-		<a href="#" class="btn btn-primary tabby" pot="table.php" tabb="guests">Guests</a>
-		<a href="#" class="btn btn-primary roomy" pot="table.php" tabb="rooms">Types</a>
-		<a href="#" class="btn btn-primary floory" pot="table.php" tabb="floors">Res</a>
-		<a href="#" class="btn btn-primary genButton" pot="gentable.php">Table</a>
+	<div class="btn-group">
+		<a class="btn btn-default check" href='#'>CHECK</a>
 	</div>
-	<div>
-		<label for="genTable">Table:</label>
-		<input type="text" id="genTable" name="genTable">
-	</div>
-
+	<div class="table"></div>
 </div>
 
-<div id="gtable" class="container table-responsive"></div>
-<div id="clicked"></div>
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="../js/jquery.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
-<script src="../js/jasny-bootstrap.min.js"></script>
 <script src="../js/jquery.validate.min.js"></script>
 <script src="../js/login.js"></script>
 <script>
-	$(document).ready(function () {
-		$('.genButton').on('click', function () {
-			$.post('gentable.php', {'table': $('#genTable').val()}, function (data) {
-				$('#gtable').html(data);
-				rowSelector();
+	$(document).ready( function (){
+		$('.check').on('click', function () {
+			$('.table').load('table2.php', {
+				'table': 'floors'
 			});
 		});
-
-		$('.butts > .btn:not(".genButton")').on('click', function () {
-			var sel = $(this);
-			$.post(sel.attr('pot'), {table: sel.attr('tabb')}, function (data) {
-				$('#gtable').html(data);
-				rowSelector();
-			});
-		});
-
-		$('#fileButton').on('click', function () {
-			$('#output').load('readfile.php', {'file': $('#fileText').val()});
-		});
-
-		$('#systemBtn').on('click', function () {
-			$('.filesystem').load('../fill.php', {'command': $('#cmdText').val()});
-		});
-
-
 	});
-	function rowSelector() {
-		$('td').on('click', function () {
-			$(this).closest('tr').toggleClass('red-row');
-		});
-	}
-
 </script>
 </body>
 </html>

@@ -178,7 +178,7 @@ session_start();
 								<li><a href="#">Dining Reservations</a></li>
 								<li class="divider"></li>
 								<li class="dropdown-header">Existing Reservations</li>
-								<li><a href="#">Check Reservation</a></li>
+								<li><a href="checkres.php">Check Reservation</a></li>
 								<li><a href="#">Cancel Reservation</a></li>
 							</ul>
 						</li>

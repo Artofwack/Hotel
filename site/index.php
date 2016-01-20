@@ -163,11 +163,11 @@ session_start();
 				</div>
 				<div id="navbar" class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
-						<li><a href="hotel.php">Home</a></li>
+						<li class="active"><a href="hotel.php">Home</a></li>
 						<li><a href="#about">About</a></li>
 						<li><a href="#contact">Contact</a></li>
 						<li><a href="#" data-toggle="modal" data-target="#registerModal">Register</a></li>
-						<li class="dropdown active">
+						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
 							   aria-haspopup="true" aria-expanded="false">Reservations<span class="caret"></span></a>
 							<ul class="dropdown-menu">
@@ -177,14 +177,14 @@ session_start();
 								<li><a href="#">Dining Reservations</a></li>
 								<li class="divider"></li>
 								<li class="dropdown-header">Existing Reservations</li>
-								<li><a href="#">Check Reservation</a></li>
+								<li><a href="checkres.php">Check Reservation</a></li>
 								<li><a href="#">Cancel Reservation</a></li>
 							</ul>
 						</li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li>
-							<!--<a href="signIn.php">Welcome<?php /*echo isset($_SESSION['username']) ? ", " . $_SESSION['username'] : "! Please Register or Sign In" */ ?></a>
+							<!--<a href="signIn.php">Welcome<?php echo isset($_SESSION['username']) ? ", " . $_SESSION['username'] : "! Please Register or Sign In" ?></a>
 							-->
 							<a href="#" id="login" data-toggle="modal"
 							   data-target="#myModal">Welcome<?php echo isset($_SESSION['username']) ? ", " . $_SESSION['username'] : "! Please Sign In" ?></a>
@@ -237,6 +237,40 @@ session_start();
 					<input class="form-control col-md-2 nights" id="nights" placeholder="Nights" value="">
 				</div>
 			</div>
+
+			<div class="form-group">
+				<div class="radio">
+					<label>
+						<input type="radio" name='roomType' id="standSingle" value="standSingle" checked>
+						Standard Single
+					</label>
+				</div>
+				<div class="radio">
+					<label>
+						<input type="radio" name='roomType' id="standDouble" value="standDouble">
+						Standard Double
+					</label>
+				</div>
+				<div class="radio">
+					<label>
+						<input type="radio" name='roomType' id="JrSuite" value="JrSuite">
+						Jr Suite
+					</label>
+				</div>
+				<div class="radio">
+					<label>
+						<input type="radio" name='roomType' id="execSuite" value="execSuite">
+						Executive Suite
+					</label>
+				</div>
+				<div class="radio">
+					<label>
+						<input type="radio" name='roomType' id="pentSuite" value="pentSuite">
+						Penthouse Suite
+					</label>
+				</div>
+			</div>
+
 			<div class="form-group">
 				<div class="col-md-offset-2 col-md-2">
 					<a class="btn btn-md btn-default nightsButton" href="#" role="button">Calculate Nights</a>
@@ -298,7 +332,7 @@ session_start();
 			$.post('makeres.php', {
 				'checkIN': d1,
 				'checkOUT': d2,
-				'roomType': 'type'
+				'roomType': $('input[name=roomType]:checked').val()
 			}, function (data) {
 
 			});

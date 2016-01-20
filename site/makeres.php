@@ -32,3 +32,5 @@ $checkOUT = $date->format("Y-m-d");
 $sql = "INSERT INTO reservations(guestID, room, checkIN, checkOUT, balance)";
 $sql .= " VALUES ('" . $guestID . "', '1', '" . $checkIN . "' , '" . $checkOUT . "' ,'0');";
 $link->query($sql);
+
+/* TODO: add log */
