@@ -306,7 +306,6 @@ session_start();
 		$('.startDate').datepicker()
 			.on('changeDate', function (selected) {
 				$('.output').val($(this).datepicker('getDate').toLocaleDateString());
-				$('.endDate').datepicker('setStartDate', selected.date);
 			});
 
 		$('.endDate').datepicker()

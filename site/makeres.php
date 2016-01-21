@@ -24,25 +24,27 @@ $result = $link->query($sql)->fetch_assoc();
 
 $guestID = $result['guestID'];
 
-/* TODO: Check if user is logged in */
+/* TODO: Notify if user is not logged in */
+if ($guestID != 0) {
+	/* Convert datepicker.js date string to formatted date object for MYSQL */
+	$date = DATETIME::createFromFormat("D M d Y H:i:s+", $checkIN);
+	$checkIN = $date->format("Y-m-d");
+	$date = DATETIME::createFromFormat("D M d Y H:i:s+", $checkOUT);
+	$checkOUT = $date->format("Y-m-d");
 
-$date = DATETIME::createFromFormat("D M d Y H:i:s+", $checkIN);
-$checkIN = $date->format("Y-m-d");
-$date = DATETIME::createFromFormat("D M d Y H:i:s+", $checkOUT);
-$checkOUT = $date->format("Y-m-d");
+	/* TODO: Check availability */
 
-/* TODO: Check availability */
+	$sql = "INSERT INTO reservations (guestID, roomType, checkIN, checkOUT)";
+	$sql .= " VALUES ('" . $guestID . "', '" . $_POST['roomType'] . "', '" . $checkIN . "' , '" . $checkOUT . "');";
+	$link->query($sql);
 
-$sql = "INSERT INTO reservations (guestID, roomType, checkIN, checkOUT)";
-$sql .= " VALUES ('" . $guestID . "', '" . $_POST['roomType'] . "', '" . $checkIN . "' , '" . $checkOUT . "');";
-$link->query($sql);
+	$file = fopen("../files/guestLOG.log", "a");
+	if ($file) {
+		fwrite($file, $_SESSION['email'] . "\t Created Reservation @ " . date('m-d-Y - H:i:s') . "\n");
+		fclose($file);
+	}
 
-$file = fopen("../files/guestLOG.log", "a");
-if ($file) {
-	fwrite($file, $_SESSION['email'] . "\t Created Reservation @ " . date('m-d-Y - H:i:s') . "\n");
-	fclose($file);
+	/* TODO: Send confirmation email */
+
+	shell_exec('../execs/sendmail.sh');
 }
-
-/* TODO: Send confirmation email */
-
-shell_exec('../execs/sendmail.sh');

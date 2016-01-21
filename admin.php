@@ -20,27 +20,49 @@ session_start();
 
 	<title>Hotel California</title>
 
-	<!-- Bootstrap core CSS -->
-	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.24.3/css/uikit.min.css"/>
 
-	<!-- Bootstrap Cosmo Theme CSS -->
-	<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/cosmo/bootstrap.min.css" rel="stylesheet"
-	      integrity="sha256-IF1P9CSIVOaY4nBb5jATvBGnxMn/4dB9JNTLqdxKN9w= sha512-UsfHxnPESse3RgYeaoQ7X2yXYSY5f6sB6UT48+F2GhNLqjbPhtwV2WCUQ3eQxeghkbl9PioaTOHNA+T0wNki2w=="
-	      crossorigin="anonymous">
-
-
-	<!-- Custom styles for this template -->
-	<link href="css/hotel.css" rel="stylesheet">
 </head>
 
 <body>
-<!-- ================ Reserve ================ -->
-<div class="container under-nav">
-	<div class="row btn-group butts">
-		<a href="#" class="btn btn-primary tabby" pot="site/table.php" tabb="guests">Guests</a>
-		<a href="#" class="btn btn-primary roomy" pot="site/table.php" tabb="rooms">Types</a>
-		<a href="#" class="btn btn-primary floory" pot="site/table.php" tabb="floors">Res</a>
-		<a href="#" class="btn btn-primary genButton" pot="site/gentable.php">Table</a>
+
+<!-- ================ Nav Bar ================ -->
+<div class="uk-container uk-container-center uk-margin-top uk-margin-large-bottom">
+
+	<nav class="uk-navbar uk-margin-large-bottom">
+		<a class="uk-navbar-brand uk-hidden-small" href="site/hotel.php">Hotel California</a>
+		<ul class="uk-navbar-nav uk-hidden-small">
+			<li>
+				<a href="site/hotel.php">Frontpage</a>
+			</li>
+			<li class="uk-active">
+				<a href="#">Portfolio</a>
+			</li>
+			<li>
+				<a href="#">Blog</a>
+			</li>
+			<li>
+				<a href="#">Documentation</a>
+			</li>
+			<li>
+				<a href="#">Contact</a>
+			</li>
+			<li>
+				<a href="#">Login</a>
+			</li>
+		</ul>
+		<a href="#offcanvas" class="uk-navbar-toggle uk-visible-small" data-uk-offcanvas></a>
+		<div class="uk-navbar-brand uk-navbar-center uk-visible-small">Brand</div>
+	</nav>
+
+
+	<!-- ================ Panel ================ -->
+	<div class="uk-container">
+		<div class="uk-form-row butts">
+			<a href="#" class=" uk-button uk-button-primary tabby" pot="site/table.php" tabb="guests">Guests</a>
+			<a href="#" class="uk-button uk-button-primary roomy" pot="site/table.php" tabb="rooms">Types</a>
+			<a href="#" class="uk-button uk-button-primary floory" pot="site/table.php" tabb="floors">Res</a>
+			<a href="#" class="uk-button uk-button-primary genButton" pot="site/gentable.php">Table</a>
 	</div>
 	<div>
 		<label for="genTable">Table:</label>
@@ -49,13 +71,12 @@ session_start();
 
 </div>
 
-<div id="gtable" class="container table-responsive"></div>
+	<div id="gtable" class="uk-container-center uk-table"></div>
 <div id="clicked"></div>
 
 
 <script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jasny-bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.24.3/js/uikit.min.js"></script>
 <script>
 	$(document).ready(function () {
 		$('.genButton').on('click', function () {
@@ -65,7 +86,7 @@ session_start();
 			});
 		});
 
-		$('.butts > .btn:not(".genButton")').on('click', function () {
+		$('.butts > .uk-button:not(".genButton")').on('click', function () {
 			var sel = $(this);
 			$.post(sel.attr('pot'), {table: sel.attr('tabb')}, function (data) {
 				$('#gtable').html(data);
