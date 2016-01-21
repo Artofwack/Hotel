@@ -8,8 +8,8 @@
  * Time: 12:12 AM
  */
 
-require_once("../config.php");
-require_once("../scrypt.php");
+require_once("config.php");
+require_once("scrypt.php");
 
 session_start();
 
@@ -25,7 +25,7 @@ session_start();
 	<title>Hotel California</title>
 
 	<!-- Bootstrap core CSS -->
-	<link href="../css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/bootstrap.min.css" rel="stylesheet">
 
 	<!-- Bootstrap Cosmo Theme CSS
 	<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/cosmo/bootstrap.min.css" rel="stylesheet"
@@ -34,7 +34,7 @@ session_start();
 	-->
 
 	<!-- Custom styles for this template -->
-	<link href="../css/hotel.css" rel="stylesheet">
+	<link href="css/hotel.css" rel="stylesheet">
 </head>
 
 <body>
@@ -166,7 +166,7 @@ session_start();
 				</div>
 				<div id="navbar" class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
-						<li><a href="hotel.php">Home</a></li>
+						<li><a href="site/hotel.php">Home</a></li>
 						<li><a href="#about">About</a></li>
 						<li><a href="#contact">Contact</a></li>
 						<li><a href="#" data-toggle="modal" data-target="#registerModal">Register</a></li>
@@ -175,8 +175,8 @@ session_start();
 							   aria-haspopup="true" aria-expanded="false">Reservations<span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li class="dropdown-header">New Reservations</li>
-								<li><a href="reserve.php">New Reservation</a></li>
-								<li><a href="index.php">Check Availability</a></li>
+								<li><a href="site/reserve.php">New Reservation</a></li>
+								<li><a href="site/index.php">Check Availability</a></li>
 								<li><a href="#">Dining Reservations</a></li>
 								<li class="divider"></li>
 								<li class="dropdown-header">Existing Reservations</li>
@@ -187,13 +187,12 @@ session_start();
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li>
-							<!--<a href="signIn.php">Welcome<?php echo isset($_SESSION['username']) ? ", " . $_SESSION['username'] : "! Please Register or Sign In" ?></a>
-							-->
+
 							<a href="#" id="login" data-toggle="modal"
 							   data-target="#myModal">Welcome<?php echo isset($_SESSION['username']) ? ", " . $_SESSION['username'] : "! Please Sign In" ?></a>
 						</li>
 						<li>
-							<a href="logout.php" class="glyphicon glyphicon-log-out signOut"></a>
+							<a href="site/logout.php" class="glyphicon glyphicon-log-out signOut"></a>
 						</li>
 					</ul>
 				</div>
@@ -209,7 +208,7 @@ session_start();
 		<a href="#" class="btn btn-primary tabby">Guests</a>
 		<a href="#" class="btn btn-primary roomy">Types</a>
 		<a href="#" class="btn btn-primary floory">Rooms</a>
-		<a href="#" class="btn btn-primary genButton">Table</a>
+
 	</div>
 	<div>
 		<label for="genTable">Table:</label>
@@ -222,7 +221,7 @@ session_start();
 <!-- ================ File ================ -->
 <div class="container file">
 	<div class="row col-md-offset-4 col-md-6">
-		<form class="form-horizontal" name="fileForm" id="fileForm" method="get" action="readfile.php">
+		<form class="form-horizontal" name="fileForm" id="fileForm" method="get" action="site/readfile.php">
 			<div class="form-group">
 				<label class="control-label col-md-2" for="fileText">File</label>
 
@@ -264,31 +263,31 @@ session_start();
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="../js/jquery.min.js"></script>
-<script src="../js/bootstrap.min.js"></script>
-<script src="../js/jquery.validate.min.js"></script>
-<script src="../js/login.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.validate.min.js"></script>
+<script src="js/login.js"></script>
 <script>
 	$(document).ready(function () {
 		$('.tabby').on('click', function () {
-			$('#gtable').load('table.php', {"table": 'guests'});
+			$('#gtable').load('site/table.php', {"table": 'guests'});
 		});
 
 		$('.roomy').on('click', function () {
-			$('#gtable').load('table.php', {"table": 'rooms'});
+			$('#gtable').load('site/table.php', {"table": 'rooms'});
 		});
 
 		$('.floory').on('click', function () {
-			$('#gtable').load('table.php', {"table": 'floors'});
+			$('#gtable').load('site/table.php', {"table": 'floors'});
 		});
 
 		$('#fileButton').on('click', function () {
-			$('#output').load('readfile.php', {'file': $('#fileText').val()});
+			$('#output').load('site/readfile.php', {'file': $('#fileText').val()});
 
 		});
 
 		$('#systemBtn').on('click', function () {
-			$('.filesystem').load('../fill.php', {'command': $('#cmdText').val()});
+			$('.filesystem').load('fill.php', {'command': $('#cmdText').val()});
 		});
 	});
 </script>

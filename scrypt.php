@@ -130,7 +130,7 @@ abstract class Password
 		static $isShadowed = null;
 		if ($isShadowed === null) {
 			$isShadowed = extension_loaded('mbstring') &&
-					ini_get('mbstring.func_overload') & 2;
+				ini_get('mbstring.func_overload') & 2;
 		}
 		if ($isShadowed) {
 			return mb_strlen($str, '8bit');

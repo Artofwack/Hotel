@@ -1,14 +1,14 @@
 <?php
-	/**
-	 * Created by PhpStorm.
-	 * User: lab
-	 * Date: 1/20/2016
-	 * Time: 2:57 AM
-	 */
+/**
+ * Created by PhpStorm.
+ * User: lab
+ * Date: 1/20/2016
+ * Time: 2:57 AM
+ */
 
 session_start();
 
-	?>
+?>
 <html>
 <head>
 	<meta charset="utf-8">
@@ -215,7 +215,7 @@ session_start();
 <script src="../js/jquery.validate.min.js"></script>
 <script src="../js/login.js"></script>
 <script>
-	$(document).ready( function (){
+	$(document).ready(function () {
 		$('.check').on('click', function () {
 			$('.table').load('table2.php', {
 				'table': 'floors'

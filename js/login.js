@@ -9,16 +9,16 @@ $(document).ready(function () {
 	/* Log in using ajax post request */
 	$('.loginButton').on('click', function () {
 		$.post('logIn.php', {
-					'email': $('#email').val(),
-					'pass': $('#pass').val()
-				}, function (data) {
-					if (data === 'logged') {
-						$('#myModal').modal('hide');
-						location.reload();
-					} else {
-						$('#notice').html(data);
+				'email': $('#email').val(),
+				'pass': $('#pass').val()
+			}, function (data) {
+				if (data === 'logged') {
+					$('#myModal').modal('hide');
+					location.reload();
+				} else {
+					$('#notice').html(data);
 				}
-				}
+			}
 		);
 	});
 
@@ -27,17 +27,17 @@ $(document).ready(function () {
 		reg_form.validate();
 		if (reg_form.valid()) {
 			$.post('register.php', {
-						'firstName': $('#firstName').val(),
-						'lastName': $('#lastName').val(),
-						'email': $('#regEmail').val(),
-						'pass': $('#regPass').val()
-					}, function (data) {
-						if (data === '') {
-							$('#registerModal').modal('hide');
-						} else {
-							$('#notice2').html(data);
-						}
+					'firstName': $('#firstName').val(),
+					'lastName': $('#lastName').val(),
+					'email': $('#regEmail').val(),
+					'pass': $('#regPass').val()
+				}, function (data) {
+					if (data === '') {
+						$('#registerModal').modal('hide');
+					} else {
+						$('#notice2').html(data);
 					}
+				}
 			);
 		} else {
 			$('#notice2').text("Validation Error");

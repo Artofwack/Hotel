@@ -40,7 +40,7 @@ session_start();
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close loginClose" data-dismiss="modal" aria-label="Close"><span
-							aria-hidden="true">&times;</span></button>
+						aria-hidden="true">&times;</span></button>
 				<h4 class="modal-title">Log in</h4>
 			</div>
 			<div class="modal-body">
@@ -87,7 +87,7 @@ session_start();
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-							aria-hidden="true">&times;</span></button>
+						aria-hidden="true">&times;</span></button>
 				<h4 class="modal-title">Register</h4>
 			</div>
 			<div class="modal-body">
@@ -241,31 +241,31 @@ session_start();
 			<div class="form-group">
 				<div class="radio">
 					<label>
-						<input type="radio" name='roomType' id="standSingle" value="standSingle" checked>
+						<input type="radio" name='roomType' id="standSingle" value="1" checked>
 						Standard Single
 					</label>
 				</div>
 				<div class="radio">
 					<label>
-						<input type="radio" name='roomType' id="standDouble" value="standDouble">
+						<input type="radio" name='roomType' id="standDouble" value="2">
 						Standard Double
 					</label>
 				</div>
 				<div class="radio">
 					<label>
-						<input type="radio" name='roomType' id="JrSuite" value="JrSuite">
+						<input type="radio" name='roomType' id="JrSuite" value="3">
 						Jr Suite
 					</label>
 				</div>
 				<div class="radio">
 					<label>
-						<input type="radio" name='roomType' id="execSuite" value="execSuite">
+						<input type="radio" name='roomType' id="execSuite" value="4">
 						Executive Suite
 					</label>
 				</div>
 				<div class="radio">
 					<label>
-						<input type="radio" name='roomType' id="pentSuite" value="pentSuite">
+						<input type="radio" name='roomType' id="pentSuite" value="5">
 						Penthouse Suite
 					</label>
 				</div>
@@ -333,8 +333,6 @@ session_start();
 				'checkIN': d1,
 				'checkOUT': d2,
 				'roomType': $('input[name=roomType]:checked').val()
-			}, function (data) {
-
 			});
 		});
 	});

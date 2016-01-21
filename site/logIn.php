@@ -33,6 +33,11 @@ if ($result->num_rows == 1) {
 		$_SESSION['username'] = strtoupper($res['firstName'] . " " . $res['lastName']);
 		$_SESSION['email'] = $email;
 		echo 'logged';
+		$file = fopen("../files/guestLOG.log", "a");
+		if ($file) {
+			fwrite($file, $_SESSION['email'] . "\t Logged In           @ " . date('m-d-Y - H:i:s') . "\n");
+			fclose($file);
+		}
 
 	} else {
 		echo 'Login Credentials Incorrect';
