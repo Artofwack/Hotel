@@ -20,12 +20,11 @@ session_start();
 
 	<title>Hotel California</title>
 
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.24.3/css/uikit.min.css"/>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.24.3/css/uikit.gradient.min.css"/>
 
 </head>
 
 <body>
-
 <!-- ================ Nav Bar ================ -->
 <div class="uk-container uk-container-center uk-margin-top uk-margin-large-bottom">
 
@@ -54,29 +53,28 @@ session_start();
 		<a href="#offcanvas" class="uk-navbar-toggle uk-visible-small" data-uk-offcanvas></a>
 		<div class="uk-navbar-brand uk-navbar-center uk-visible-small">Brand</div>
 	</nav>
+</div>
 
 
-	<!-- ================ Panel ================ -->
-	<div class="uk-container">
-		<div class="uk-form-row butts">
-			<a href="#" class=" uk-button uk-button-primary tabby" pot="site/table.php" tabb="guests">Guests</a>
-			<a href="#" class="uk-button uk-button-primary roomy" pot="site/table.php" tabb="rooms">Types</a>
-			<a href="#" class="uk-button uk-button-primary floory" pot="site/table.php" tabb="floors">Res</a>
-			<a href="#" class="uk-button uk-button-primary genButton" pot="site/gentable.php">Table</a>
+<!-- ================ Panel ================ -->
+<div class="uk-container uk-container-center">
+	<div class="uk-form-row butts">
+		<a href="#" class=" uk-button uk-button-primary tabby" pot="site/table.php" tabb="guests">Guests</a>
+		<a href="#" class="uk-button uk-button-primary roomy" pot="site/table.php" tabb="rooms">Types</a>
+		<a href="#" class="uk-button uk-button-primary floory" pot="site/table.php" tabb="floors">Res</a>
+		<a href="#" class="uk-button uk-button-primary genButton" pot="site/gentable.php">Table</a>
 	</div>
 	<div>
 		<label for="genTable">Table:</label>
 		<input type="text" id="genTable" name="genTable">
 	</div>
-
 </div>
 
-	<div id="gtable" class="uk-container-center uk-table"></div>
-<div id="clicked"></div>
+<div id="gtable" class="uk-container uk-container-center uk-block uk-table"></div>
 
-
+<!-- ================ Scripts ================ -->
 <script src="js/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.24.3/js/uikit.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.24.3/js/uikit.min.js"></script>
 <script>
 	$(document).ready(function () {
 		$('.genButton').on('click', function () {
