@@ -7,18 +7,18 @@
  * 2. Remove default list style
  */
 .uk-dotnav {
-	display: -ms-flexbox;
-	display: -webkit-flex;
-	display: flex;
-	-ms-flex-wrap: wrap;
-	-webkit-flex-wrap: wrap;
-	flex-wrap: wrap;
+	display           : -ms-flexbox;
+	display           : -webkit-flex;
+	display           : flex;
+	-ms-flex-wrap     : wrap;
+	-webkit-flex-wrap : wrap;
+	flex-wrap         : wrap;
 	/* 1 */
-	margin-left: -15px;
-	margin-top: -15px;
+	margin-left       : -15px;
+	margin-top        : -15px;
 	/* 2 */
-	padding: 0;
-	list-style: none;
+	padding           : 0;
+	list-style        : none;
 }
 
 /*
@@ -27,12 +27,12 @@
  */
 .uk-dotnav > * {
 	/* 1 */
-	-ms-flex: none;
-	-webkit-flex: none;
-	flex: none;
+	-ms-flex     : none;
+	-webkit-flex : none;
+	flex         : none;
 	/* 2 */
-	padding-left: 15px;
-	margin-top: 15px;
+	padding-left : 15px;
+	margin-top   : 15px;
 }
 
 /*
@@ -40,17 +40,17 @@
  */
 .uk-dotnav:before,
 .uk-dotnav:after {
-	content: "";
-	display: block;
-	overflow: hidden;
+	content  : "";
+	display  : block;
+	overflow : hidden;
 }
 
 .uk-dotnav:after {
-	clear: both;
+	clear : both;
 }
 
 .uk-dotnav > * {
-	float: left;
+	float : left;
 }
 
 /* Items
@@ -60,18 +60,18 @@
  * 1. Hide text if present
  */
 .uk-dotnav > * > * {
-	display: block;
-	box-sizing: content-box;
-	width: 20px;
-	height: 20px;
-	border-radius: 50%;
-	background: rgba(50, 50, 50, 0.1);
+	display            : block;
+	box-sizing         : content-box;
+	width              : 20px;
+	height             : 20px;
+	border-radius      : 50%;
+	background         : rgba(50, 50, 50, 0.1);
 	/* 1 */
-	text-indent: 100%;
-	overflow: hidden;
-	white-space: nowrap;
-	-webkit-transition: all 0.2s ease-in-out;
-	transition: all 0.2s ease-in-out;
+	text-indent        : 100%;
+	overflow           : hidden;
+	white-space        : nowrap;
+	-webkit-transition : all 0.2s ease-in-out;
+	transition         : all 0.2s ease-in-out;
 }
 
 /*
@@ -81,27 +81,27 @@
  */
 .uk-dotnav > * > :hover,
 .uk-dotnav > * > :focus {
-	background: rgba(50, 50, 50, 0.4);
+	background : rgba(50, 50, 50, 0.4);
 	/* 2 */
-	outline: none;
+	outline    : none;
 }
 
 /* OnClick */
 .uk-dotnav > * > :active {
-	background: rgba(50, 50, 50, 0.6);
+	background : rgba(50, 50, 50, 0.6);
 }
 
 /* Active */
 .uk-dotnav > .uk-active > * {
-	background: rgba(50, 50, 50, 0.4);
-	-webkit-transform: scale(1.3);
-	transform: scale(1.3);
+	background        : rgba(50, 50, 50, 0.4);
+	-webkit-transform : scale(1.3);
+	transform         : scale(1.3);
 }
 
 /* Modifier: `uk-dotnav-contrast`
  ========================================================================== */
 .uk-dotnav-contrast > * > * {
-	background: rgba(255, 255, 255, 0.4);
+	background : rgba(255, 255, 255, 0.4);
 }
 
 /*
@@ -110,17 +110,17 @@
  */
 .uk-dotnav-contrast > * > :hover,
 .uk-dotnav-contrast > * > :focus {
-	background: rgba(255, 255, 255, 0.7);
+	background : rgba(255, 255, 255, 0.7);
 }
 
 /* OnClick */
 .uk-dotnav-contrast > * > :active {
-	background: rgba(255, 255, 255, 0.9);
+	background : rgba(255, 255, 255, 0.9);
 }
 
 /* Active */
 .uk-dotnav-contrast > .uk-active > * {
-	background: rgba(255, 255, 255, 0.9);
+	background : rgba(255, 255, 255, 0.9);
 }
 
 /* Modifier: 'uk-dotnav-vertical'
@@ -129,14 +129,14 @@
  * DEPRECATED
  */
 .uk-dotnav-vertical {
-	-ms-flex-direction: column;
-	-webkit-flex-direction: column;
-	flex-direction: column;
+	-ms-flex-direction     : column;
+	-webkit-flex-direction : column;
+	flex-direction         : column;
 }
 
 /*
  * DEPRECATED IE9 Support
  */
 .uk-dotnav-vertical > * {
-	float: none;
+	float : none;
 }

@@ -1,12 +1,12 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: lab
- * Date: 1/20/2016
- * Time: 2:57 AM
- */
+	/**
+	 * Created by PhpStorm.
+	 * User: lab
+	 * Date: 1/20/2016
+	 * Time: 2:57 AM
+	 */
 
-session_start();
+	session_start();
 
 ?>
 <html>

@@ -1,17 +1,17 @@
 <?php
-/**
- * File: test.php
- *
- * Created by PhpStorm.
- * User: ArtofWack
- * Date: 11/4/2015
- * Time: 12:12 AM
- */
+	/**
+	 * File: test.php
+	 *
+	 * Created by PhpStorm.
+	 * User: ArtofWack
+	 * Date: 11/4/2015
+	 * Time: 12:12 AM
+	 */
 
-require_once("config.php");
-require_once("scrypt.php");
+	require_once("config.php");
+	require_once("scrypt.php");
 
-session_start();
+	session_start();
 
 ?>
 <!DOCTYPE html>

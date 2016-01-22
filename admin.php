@@ -1,14 +1,14 @@
 <?php
-/**
- * File: admin.php
- *
- * Created by PhpStorm.
- * User: ArtofWack
- * Date: 1/17/2016
- * Time: 4:40 PM
- */
+	/**
+	 * File: admin.php
+	 *
+	 * Created by PhpStorm.
+	 * User: ArtofWack
+	 * Date: 1/17/2016
+	 * Time: 4:40 PM
+	 */
 
-session_start();
+	session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
