@@ -76,7 +76,7 @@ session_start();
 			asdfasdfasdfasdfasdf
 		</li>
 		<li>
-			ggggggggggggggggg
+			Contact
 		</li>
 	</ul>
 </div>

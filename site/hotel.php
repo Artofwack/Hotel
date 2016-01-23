@@ -24,11 +24,7 @@
 	<!-- Bootstrap core CSS -->
 	<link href="../css/bootstrap.min.css" rel="stylesheet">
 
-	<!-- Bootstrap Cosmo Theme CSS
-	<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/cosmo/bootstrap.min.css" rel="stylesheet"
-	        integrity="sha256-IF1P9CSIVOaY4nBb5jATvBGnxMn/4dB9JNTLqdxKN9w= sha512-UsfHxnPESse3RgYeaoQ7X2yXYSY5f6sB6UT48+F2GhNLqjbPhtwV2WCUQ3eQxeghkbl9PioaTOHNA+T0wNki2w=="
-	        crossorigin="anonymous">
-	-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.24.3/css/uikit.gradient.min.css"/>
 
 	<!-- Custom styles for this template -->
 	<link href="../css/hotel.css" rel="stylesheet">
@@ -328,7 +324,7 @@
 	<hr class="featurette-divider">
 
 	<div class="row featurette" id="about">
-		<div class="col-md-7">
+		<div class="col-md-7" data-uk-scrollspy="{cls:'uk-animation-slide-left'}">
 			<h2 class="featurette-heading">First featurette heading. <span
 					class="text-muted">It'll blow your mind.</span></h2>
 
@@ -337,7 +333,7 @@
 			                tellus ac cursus
 			                commodo.</p>
 		</div>
-		<div class="col-md-5">
+		<div class="col-md-5" data-uk-scrollspy="{cls:'uk-animation-slide-right'}">
 			<img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto"
 			     src="../images/costa-sur-resort-and-spa-1.jpg"
 			     alt="Generic placeholder image">
@@ -347,7 +343,7 @@
 	<hr class="featurette-divider">
 
 	<div class="row featurette">
-		<div class="col-md-7 col-md-push-5">
+		<div class="col-md-7 col-md-push-5" data-uk-scrollspy="{cls:'uk-animation-fade'}">
 			<h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span>
 			</h2>
 
@@ -356,7 +352,7 @@
 			                tellus ac cursus
 			                commodo.</p>
 		</div>
-		<div class="col-md-5 col-md-pull-7">
+		<div class="col-md-5 col-md-pull-7" data-uk-scrollspy="{cls:'uk-animation-slide-right'}">
 			<img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto"
 			     src="../images/costa-sur-resort-and-spa-1.jpg"
 			     alt="Generic placeholder image">
@@ -366,7 +362,7 @@
 	<hr class="featurette-divider">
 
 	<div class="row featurette" id="contact">
-		<div class="col-md-7">
+		<div class="col-md-7" data-uk-scrollspy="{cls:'uk-animation-slide-bottom'}">
 			<h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
 
 			<p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod
@@ -374,7 +370,7 @@
 			                tellus ac cursus
 			                commodo.</p>
 		</div>
-		<div class="col-md-5">
+		<div class="col-md-5" data-uk-scrollspy="{cls:'uk-animation-slide-top'}">
 			<img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto"
 			     src="../images/swimming-pool-hotel-barcelo-jandia-mar37-2633.jpg"
 			     alt="Generic placeholder image">
@@ -406,6 +402,7 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="../js/jquery.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.24.3/js/uikit.min.js"></script>
 <script src="../js/jquery.validate.min.js"></script>
 <script src="../js/login.js"></script>
 <script>
