@@ -391,7 +391,7 @@
 
 		<p>&copy; 2014 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
 
-		<p><a href="../admin.php">Admin Logon</a></p>
+		<p><a href="adminlogon.php">Admin Logon</a></p>
 	</footer>
 
 </div>

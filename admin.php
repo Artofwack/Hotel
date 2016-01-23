@@ -1,14 +1,14 @@
 <?php
-	/**
-	 * File: admin.php
-	 *
-	 * Created by PhpStorm.
-	 * User: ArtofWack
-	 * Date: 1/17/2016
-	 * Time: 4:40 PM
-	 */
+/**
+ * File: admin.php
+ *
+ * Created by PhpStorm.
+ * User: ArtofWack
+ * Date: 1/17/2016
+ * Time: 4:40 PM
+ */
 
-	session_start();
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,56 +21,66 @@
 	<title>Hotel California</title>
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.24.3/css/uikit.gradient.min.css"/>
-
+	<link rel="stylesheet" href="css/hotel.css"/>
 </head>
 
 <body>
 <!-- ================ Nav Bar ================ -->
 <div class="uk-container uk-container-center uk-margin-top uk-margin-large-bottom">
-
 	<nav class="uk-navbar uk-margin-large-bottom">
 		<a class="uk-navbar-brand uk-hidden-small" href="site/hotel.php">Hotel California</a>
 		<ul class="uk-navbar-nav uk-hidden-small">
 			<li>
 				<a href="site/hotel.php">Frontpage</a>
 			</li>
-			<li class="uk-active">
-				<a href="#">Portfolio</a>
+		</ul>
+		<ul class="uk-navbar-nav uk-hidden-small" data-uk-switcher="{connect:'#panel', animation: 'fade'}">
+			<li>
+				<a href="#">AAAAAAAAAAA</a>
 			</li>
 			<li>
-				<a href="#">Blog</a>
-			</li>
-			<li>
-				<a href="#">Documentation</a>
+				<a href="#">BBBBBBBBBBBB</a>
 			</li>
 			<li>
 				<a href="#">Contact</a>
 			</li>
+		</ul>
+		<ul class="uk-navbar-nav uk-navbar-flip uk-hidden-small">
 			<li>
-				<a href="#">Login</a>
+				<a href="site/logout.php" class='uk-icon-hover'>Logout <i class="uk-icon-sign-out"></i></a>
 			</li>
 		</ul>
 		<a href="#offcanvas" class="uk-navbar-toggle uk-visible-small" data-uk-offcanvas></a>
-		<div class="uk-navbar-brand uk-navbar-center uk-visible-small">Brand</div>
+		<div class="uk-navbar-brand uk-navbar-center uk-visible-small">Hotel California</div>
 	</nav>
 </div>
 
 
 <!-- ================ Panel ================ -->
 <div class="uk-container uk-container-center">
-	<div class="uk-form-row butts">
-		<a href="#" class=" uk-button uk-button-primary tabby" pot="site/table.php" tabb="guests">Guests</a>
-		<a href="#" class="uk-button uk-button-primary roomy" pot="site/table.php" tabb="rooms">Types</a>
-		<a href="#" class="uk-button uk-button-primary floory" pot="site/table.php" tabb="floors">Res</a>
-		<a href="#" class="uk-button uk-button-primary genButton" pot="site/gentable.php">Table</a>
-	</div>
-	<div>
-		<label for="genTable">Table:</label>
-		<input type="text" id="genTable" name="genTable">
-	</div>
+	<ul id='panel' class="uk-switcher">
+		<li>
+			<div class="uk-form-row butts">
+				<a href="#" class=" uk-button uk-button-primary tabby" pot="site/table.php" tabb="guests">Guests</a>
+				<a href="#" class="uk-button uk-button-primary roomy" pot="site/table.php" tabb="rooms">Types</a>
+				<a href="#" class="uk-button uk-button-primary floory" pot="site/table.php" tabb="floors">Res</a>
+				<a href="#" class="uk-button uk-button-primary genButton" pot="site/gentable.php">Table</a>
+			</div>
+			<div>
+				<label for="genTable">Table:</label>
+				<input type="text" id="genTable" name="genTable">
+			</div>
+			<div id="gtable" class="uk-container uk-container-center uk-block uk-table"></div>
+		</li>
+		<li>
+			asdfasdfasdfasdfasdf
+		</li>
+		<li>
+			ggggggggggggggggg
+		</li>
+	</ul>
 </div>
 
-<div id="gtable" class="uk-container uk-container-center uk-block uk-table"></div>
 
 <!-- ================ Scripts ================ -->
 <script src="js/jquery.min.js"></script>
@@ -99,6 +109,5 @@
 		}
 	});
 </script>
-
 </body>
 </html>

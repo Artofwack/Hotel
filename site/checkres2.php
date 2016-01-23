@@ -14,7 +14,7 @@
 	if ($link->connect_error)
 		die(" Error: " . $link->connect_error);
 
-	$sql = 'SELECT reservations.reservationID, room_type.name, reservations.checkIN, reservations.checkOUT
+$sql = 'SELECT reservations.reservationID, room_type.room_type, reservations.checkIN, reservations.checkOUT
 	  FROM reservations JOIN guests
       ON reservations.guestID = guests.guestID
       JOIN room_type

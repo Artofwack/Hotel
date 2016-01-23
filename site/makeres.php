@@ -48,6 +48,7 @@
 		}
 
 		/* TODO: Send confirmation email */
-
-		shell_exec('../execs/sendmail.sh');
+		$msg = 'Hello from the other side!!!!';
+		mail($email, 'Reservation Confirmation for guest id: ' . $guestID, wordwrap($msg, 70));
+		//shell_exec('../execs/sendmail.sh');
 	}

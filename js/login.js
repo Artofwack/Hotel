@@ -5,6 +5,7 @@ $(document).ready(function () {
     var loginForm = $('form');
     var reg_form = $('.regForm');
     loginForm.validate();
+	reg_form.validate();
 
     /* Log in using ajax post request */
     $('.loginButton').on('click', function () {
@@ -24,7 +25,6 @@ $(document).ready(function () {
 
     /* Register using Ajax post request */
     $('.regButton').on('click', function () {
-        reg_form.validate();
         if (reg_form.valid()) {
             $.post('register.php', {
                     'firstName': $('#firstName').val(),

@@ -182,8 +182,6 @@
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li>
-							<!--<a href="signIn.php">Welcome<?php echo isset($_SESSION['username']) ? ", " . $_SESSION['username'] : "! Please Register or Sign In" ?></a>
-							-->
 							<a href="#" id="login" data-toggle="modal"
 							   data-target="#myModal">Welcome<?php echo isset($_SESSION['username']) ? ", " . $_SESSION['username'] : "! Please Sign In" ?></a>
 						</li>
@@ -217,7 +215,7 @@
 <script>
 	$(document).ready(function () {
 		$('.check').on('click', function () {
-			$('.table').load('table2.php', {
+			$('.table').load('checkres2.php', {
 				'table': 'floors'
 			});
 		});

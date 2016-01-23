@@ -38,14 +38,14 @@
 		foreach ($result as $row) {
 			echo '<tr>';
 			echo '<td>' . $row['typeID'] . '</td>';
-			echo '<td>' . $row['name'] . '</td>';
+			echo '<td>' . $row['room_type'] . '</td>';
 			echo '<td>' . $row['available'] . '</td>';
 			echo '<td>' . $row['rate'] . '</td>';
 			echo '</tr>';
 		}
 		echo '</table>';
 	} elseif ($_REQUEST['table'] == 'floors') { // Room Table
-		$sql = 'SELECT guests.firstName, guests.lastName, reservations.reservationID, room_type.name, reservations.checkIN, reservations.checkOUT
+		$sql = 'SELECT guests.firstName, guests.lastName, reservations.reservationID, room_type.room_type, reservations.checkIN, reservations.checkOUT
 	  FROM reservations JOIN guests
       ON reservations.guestID = guests.guestID
       JOIN room_type
