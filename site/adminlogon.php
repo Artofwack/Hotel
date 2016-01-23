@@ -12,16 +12,16 @@ session_destroy();
 
 ?>
 <!DOCTYPE html>
-<html>
+<html class="uk-height-1-1">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Admin Login</title>
 	<link rel="stylesheet" href="../UIKit/css/uikit.almost-flat.min.css">
 </head>
-<body>
+<body class="uk-height-1-1">
 
-<div class="uk-vertical-align uk-text-center">
+<div class="uk-vertical-align uk-text-center uk-height-1-1">
 	<div class="uk-vertical-align-middle" style="width: 300px;">
 
 		<form class="uk-panel uk-panel-box uk-form">
