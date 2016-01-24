@@ -1,14 +1,14 @@
 <?php
-	/**
-	 * File: index.php
-	 *
-	 * Created by PhpStorm.
-	 * User: ArtofWack
-	 * Date: 10/27/2015
-	 * Time: 7:58 PM
-	 */
+/**
+ * File: index.php
+ *
+ * Created by PhpStorm.
+ * User: ArtofWack
+ * Date: 10/27/2015
+ * Time: 7:58 PM
+ */
 
-	session_start();
+session_start();
 
 ?>
 <!DOCTYPE html>
@@ -21,12 +21,7 @@
 	<!-- Bootstrap core CSS -->
 	<link href="../css/bootstrap.min.css" rel="stylesheet">
 
-	<!-- Bootstrap Cosmo Theme CSS
-	<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/cosmo/bootstrap.min.css" rel="stylesheet"
-	        integrity="sha256-IF1P9CSIVOaY4nBb5jATvBGnxMn/4dB9JNTLqdxKN9w= sha512-UsfHxnPESse3RgYeaoQ7X2yXYSY5f6sB6UT48+F2GhNLqjbPhtwV2WCUQ3eQxeghkbl9PioaTOHNA+T0wNki2w=="
-	        crossorigin="anonymous">
-	-->
-	<link href="http://eternicode.github.io/bootstrap-datepicker/bootstrap-datepicker/css/datepicker3.css"
+	<link href="https://eternicode.github.io/bootstrap-datepicker/bootstrap-datepicker/css/datepicker3.css"
 	      rel="stylesheet">
 
 	<!-- Custom styles for this project -->
@@ -174,18 +169,14 @@
 								<li class="dropdown-header">New Reservations</li>
 								<li><a href="reserve.php">New Reservation</a></li>
 								<li><a href="index.php">Check Availability</a></li>
-								<li><a href="#">Dining Reservations</a></li>
 								<li class="divider"></li>
 								<li class="dropdown-header">Existing Reservations</li>
 								<li><a href="checkres.php">Check Reservation</a></li>
-								<li><a href="#">Cancel Reservation</a></li>
 							</ul>
 						</li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li>
-							<!--<a href="signIn.php">Welcome<?php echo isset($_SESSION['username']) ? ", " . $_SESSION['username'] : "! Please Register or Sign In" ?></a>
-							-->
 							<a href="#" id="login" data-toggle="modal"
 							   data-target="#myModal">Welcome<?php echo isset($_SESSION['username']) ? ", " . $_SESSION['username'] : "! Please Sign In" ?></a>
 						</li>
@@ -291,7 +282,8 @@
 <script src="../js/bootstrap.min.js"></script>
 <script src="../js/jquery.validate.min.js"></script>
 <script src="../js/login.js"></script>
-<script src="http://eternicode.github.io/bootstrap-datepicker/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+<script
+	src="https://eternicode.github.io/bootstrap-datepicker/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
 <script>
 	$(document).ready(function () {
 		/* Initialize date range picker */
