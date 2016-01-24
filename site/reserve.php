@@ -1,17 +1,14 @@
 <?php
-	/**
-	 * File: reserve.php
-	 *
-	 * Created by PhpStorm.
-	 * User: ArtofWack
-	 * Date: 10/27/2015
-	 * Time: 7:58 PM
-	 */
+/**
+ * File: reserve.php
+ *
+ * Created by PhpStorm.
+ * User: ArtofWack
+ * Date: 10/27/2015
+ * Time: 7:58 PM
+ */
 
-	require_once("../config.php");
-	require_once("../scrypt.php");
-
-	session_start();
+session_start();
 
 ?>
 <!DOCTYPE html>
@@ -175,18 +172,14 @@
 								<li class="dropdown-header">New Reservations</li>
 								<li><a href="reserve.php">New Reservation</a></li>
 								<li><a href="index.php">Check Availability</a></li>
-								<li><a href="#">Dining Reservations</a></li>
 								<li class="divider"></li>
 								<li class="dropdown-header">Existing Reservations</li>
 								<li><a href="checkres.php">Check Reservation</a></li>
-								<li><a href="#">Cancel Reservation</a></li>
 							</ul>
 						</li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li>
-							<!--<a href="signIn.php">Welcome<?php echo isset($_SESSION['username']) ? ", " . $_SESSION['username'] : "! Please Register or Sign In" ?></a>
-							-->
 							<a href="#" id="login" data-toggle="modal"
 							   data-target="#myModal">Welcome<?php echo isset($_SESSION['username']) ? ", " . $_SESSION['username'] : "! Please Sign In" ?></a>
 						</li>

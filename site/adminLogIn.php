@@ -17,10 +17,6 @@ $username = $_POST['username'];
 $email = $_POST['email'];
 $pass = $_POST['pass'];
 
-$link = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_DATABASE);
-if ($link->connect_error)
-	die(" Error: " . $link->connect_errno . "  " . $link->connect_error);
-
 $sql = 'SELECT password FROM admins WHERE email = "' . $email . '" AND username = "' . $username . '";';
 $result = $link->query($sql);
 
