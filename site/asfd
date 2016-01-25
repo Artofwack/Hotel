@@ -16,3 +16,30 @@
 </html>
 
 https://www.digitalocean.com/community/tutorials/how-to-create-a-ssl-certificate-on-apache-for-ubuntu-14-04
+
+SELECT
+    room_num, roomtype
+FROM
+    room
+WHERE
+    room_num NOT IN (
+        SELECT
+            room.room_num
+        FROM
+            room
+        LEFT OUTER JOIN
+            room_booked ON room_booked.room_num = room.room_num
+        WHERE
+            -- room type
+            roomtype != 'Deluxe'
+            OR (
+                -- wished booking date is after or at the DOR date
+                '2014-06-01' >= dor
+                -- OR wished booking date is before the DCO date
+                AND '2014-06-01' <  dco
+            )
+    )
+ORDER BY
+    RAND()
+LIMIT 0, 1
+;

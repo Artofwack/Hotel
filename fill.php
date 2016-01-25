@@ -10,15 +10,12 @@
 require_once("scrypt.php");
 require_once('config.php');
 
-$link = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_DATABASE);
-if ($link->connect_error)
-	die("Connection failed: " . $link->connect_error);
-
 $usr = "batman";
 $email = "knight@gmail.com";
 $pass = Password::hash('dark');
 
-$sql = 'INSERT INTO admins(username,email,password) VALUES ("' . $usr . '","' . $email . '", "' . $pass . '");';
+/*$sql = 'INSERT INTO admins(username,email,password) VALUES ("' . $usr . '","' . $email . '", "' . $pass . '");';*/
+$sql = ' INSERT INTO rooms(roomType, available, floor) VALUES (5,1,6);';
 
 $result = $link->query($sql);
 

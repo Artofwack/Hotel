@@ -13,6 +13,7 @@ session_start();
 
 $checkIN = $_POST['checkIN'];
 $checkOUT = $_POST['checkOUT'];
+$roomType = $_POST['roomType'];
 $email = $_SESSION['email'];
 
 $sql = "SELECT guestID FROM guests WHERE email='" . $email . "'; ";
@@ -28,24 +29,52 @@ if ($guestID != 0) {
 	$date = DATETIME::createFromFormat("D M d Y H:i:s+", $checkOUT);
 	$checkOUT = $date->format("Y-m-d");
 
-	/* TODO: Check availability */
+	/* Select available room */
+	$sql = 'SELECT
+				roomID
+			FROM
+				rooms
+			WHERE
+				roomID
+			NOT IN (
+				SELECT
+					roomID
+				FROM
+					rooms
+				LEFT OUTER JOIN
+					reservations ON reservations.room = rooms.roomID
+				WHERE
+					roomType != "' . $roomType . '"
+				OR ("' . $checkIN . '" BETWEEN reservations.checkIN AND reservations.checkOUT)
+				OR ("' . $checkOUT . '" BETWEEN reservations.checkIN AND reservations.checkOUT)
+				OR ("' . $checkIN . '" < reservations.checkIN AND "' . $checkOUT . '" > reservations.checkOUT)
+			)
+			ORDER BY
+				Rand();';
 
-	$sql = "INSERT INTO reservations (guestID, roomType, checkIN, checkOUT)";
-	$sql .= " VALUES ('" . $guestID . "', '" . $_POST['roomType'] . "', '" . $checkIN . "' , '" . $checkOUT . "');";
-	$link->query($sql);
+	$res = $link->query($sql);
+	$result = $res->fetch_assoc();
+	$room = 0;
 
-	echo $_POST['roomType'];
+	if (mysqli_num_rows($res) != 0) {
 
-	/* Write to user log */
-	$file = fopen("../files/guestLOG.log", "a");
-	if ($file) {
-		fwrite($file, $_SESSION['email'] . "\t Created Reservation @ " . date('m-d-Y - H:i:s') . "\n");
-		fclose($file);
+		$room = $result['roomID'];
+
+		$sql = "INSERT INTO reservations (guestID, room, checkIN, checkOUT)";
+		$sql .= " VALUES ('" . $guestID . "', '" . $room . "', '" . $checkIN . "' , '" . $checkOUT . "');";
+		$link->query($sql);
+
+		/* Write to user log */
+		$file = fopen("../files/guestLOG.log", "a");
+		if ($file) {
+			fwrite($file, $_SESSION['email'] . "\t Created Reservation @ " . date('m-d-Y - H:i:s') . "\n");
+			fclose($file);
+		}
+
+		/* TODO: Send confirmation email */
+		$msg = 'Hello from the other side!!!!';
+		$msg = escapeshellarg($msg);
+		$email = escapeshellarg($email);
+		shell_exec('../execs/sendmail.sh "' . $msg . '" "' . $email . '" ');
 	}
-
-	/* TODO: Send confirmation email */
-	$msg = 'Hello from the other side!!!!';
-	$msg = escapeshellarg($msg);
-	$email = escapeshellarg($email);
-	shell_exec('../execs/sendmail.sh "' . $msg . '" "' . $email . '" ');
 }
