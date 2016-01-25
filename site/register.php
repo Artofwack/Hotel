@@ -13,8 +13,8 @@ require_once("../scrypt.php");
 
 session_start();
 
-$firstName = mysqli_real_escape_string($link, htmlspecialchars($_POST['firstName']));
-$lastName = mysqli_real_escape_string($link, htmlspecialchars($_POST['lastName']));
+$firstName = mysqli_real_escape_string($link, htmlspecialchars(ucfirst($_POST['firstName'])));
+$lastName = mysqli_real_escape_string($link, htmlspecialchars(ucfirst($_POST['lastName'])));
 $email = mysqli_real_escape_string($link, htmlspecialchars($_POST['email']));
 $encrypted = Password::hash($_POST['pass']);
 

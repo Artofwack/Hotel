@@ -31,18 +31,15 @@ session_start();
 		<a class="uk-navbar-brand uk-hidden-small" href="site/hotel.php">Hotel California</a>
 		<ul class="uk-navbar-nav uk-hidden-small">
 			<li>
-				<a href="site/hotel.php">Frontpage</a>
+				<a href="site/logout.php">Frontpage</a>
 			</li>
 		</ul>
 		<ul class="uk-navbar-nav uk-hidden-small" data-uk-switcher="{connect:'#panel', animation: 'fade'}">
 			<li>
-				<a href="#">AAAAAAAAAAA</a>
+				<a href="#" id="guests">Guests</a>
 			</li>
 			<li>
-				<a href="#">BBBBBBBBBBBB</a>
-			</li>
-			<li>
-				<a href="#">Contact</a>
+				<a href="#" id="reserve">Reservations</a>
 			</li>
 		</ul>
 		<ul class="uk-navbar-nav uk-navbar-flip uk-hidden-small">
@@ -60,23 +57,10 @@ session_start();
 <div class="uk-container uk-container-center">
 	<ul id='panel' class="uk-switcher">
 		<li>
-			<div class="uk-form-row butts">
-				<a href="#" class=" uk-button uk-button-primary tabby" pot="site/table.php" tabb="guests">Guests</a>
-				<a href="#" class="uk-button uk-button-primary roomy" pot="site/table.php" tabb="rooms">Types</a>
-				<a href="#" class="uk-button uk-button-primary floory" pot="site/table.php" tabb="floors">Res</a>
-				<a href="#" class="uk-button uk-button-primary genButton" pot="site/gentable.php">Table</a>
-			</div>
-			<div>
-				<label for="genTable">Table:</label>
-				<input type="text" id="genTable" name="genTable">
-			</div>
-			<div id="gtable" class="uk-container uk-container-center uk-block uk-table"></div>
+			<div id="guest-table" class="uk-container uk-container-center uk-block uk-table"></div>
 		</li>
 		<li>
-			asdfasdfasdfasdfasdf
-		</li>
-		<li>
-			Contact
+			<div id="res-table" class="uk-container uk-container-center uk-block uk-table"></div>
 		</li>
 	</ul>
 </div>
@@ -87,26 +71,30 @@ session_start();
 <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.24.3/js/uikit.min.js"></script>
 <script>
 	$(document).ready(function () {
-		$('.genButton').on('click', function () {
-			$.post('site/gentable.php', {'table': $('#genTable').val()}, function (data) {
-				$('#gtable').html(data);
-				rowSelector();
-			});
-		});
-
-		$('.butts > .uk-button:not(".genButton")').on('click', function () {
-			var sel = $(this);
-			$.post(sel.attr('pot'), {table: sel.attr('tabb')}, function (data) {
-				$('#gtable').html(data);
-				rowSelector();
-			});
-		});
-
 		function rowSelector() {
 			$('td').on('click', function () {
 				$(this).closest('tr').toggleClass('red-row');
 			});
 		}
+
+		$.post('site/gentable.php', {'table': 'guests'}, function (data) {
+			$('#guest-table').html(data);
+			rowSelector();
+		});
+
+		$.post('site/table.php', {'table': 'floors'}, function (data) {
+			$('#res-table').html(data);
+			rowSelector();
+		});
+
+		rowSelector();
+
+		/* Post request every time nav button is clicked */
+		/*$('#guests').on('click', function (){
+		 $('#guest-table').load('site/table.php',{table: 'guests'},function(){
+				rowSelector();
+			});
+		 });*/
 	});
 </script>
 </body>

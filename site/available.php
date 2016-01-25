@@ -13,7 +13,13 @@ $checkIN = $_POST['checkIN'];
 $checkOUT = $_POST['checkOUT'];
 $roomType = $_POST['roomType'];
 
-$sql = 'SELECT COUNT(roomID)
+/* Convert datepicker.js date string to formatted date object for MYSQL */
+$date = DATETIME::createFromFormat("D M d Y H:i:s+", $checkIN);
+$checkIN = $date->format("Y-m-d");
+$date = DATETIME::createFromFormat("D M d Y H:i:s+", $checkOUT);
+$checkOUT = $date->format("Y-m-d");
+
+$sql = 'SELECT roomID
 			FROM
 				rooms
 			WHERE
@@ -26,7 +32,12 @@ $sql = 'SELECT COUNT(roomID)
 				LEFT OUTER JOIN
 					reservations ON reservations.room = rooms.roomID
 				WHERE
-					("' . $checkIN . '" BETWEEN reservations.checkIN AND reservations.checkOUT)
+					roomType != "' . $roomType . '"
+					OR ("' . $checkIN . '" BETWEEN reservations.checkIN AND reservations.checkOUT)
 					OR ("' . $checkOUT . '" BETWEEN reservations.checkIN AND reservations.checkOUT)
 					OR ("' . $checkIN . '" < reservations.checkIN AND "' . $checkOUT . '" > reservations.checkOUT)
 			);';
+
+$res = $link->query($sql);
+
+echo mysqli_num_rows($res);

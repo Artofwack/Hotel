@@ -21,15 +21,15 @@ $result = $link->query($sql)->fetch_assoc();
 
 $guestID = $result['guestID'];
 
-/* TODO: Notify if user is not logged in */
+// TODO: Notify if user is not logged in
 if ($guestID != 0) {
-	/* Convert datepicker.js date string to formatted date object for MYSQL */
+	// Convert datepicker.js date string to formatted date object for MYSQL
 	$date = DATETIME::createFromFormat("D M d Y H:i:s+", $checkIN);
 	$checkIN = $date->format("Y-m-d");
 	$date = DATETIME::createFromFormat("D M d Y H:i:s+", $checkOUT);
 	$checkOUT = $date->format("Y-m-d");
 
-	/* Select available room */
+	// Select available room
 	$sql = 'SELECT
 				roomID
 			FROM
@@ -64,17 +64,19 @@ if ($guestID != 0) {
 		$sql .= " VALUES ('" . $guestID . "', '" . $room . "', '" . $checkIN . "' , '" . $checkOUT . "');";
 		$link->query($sql);
 
-		/* Write to user log */
+		// Write to user log
 		$file = fopen("../files/guestLOG.log", "a");
 		if ($file) {
 			fwrite($file, $_SESSION['email'] . "\t Created Reservation @ " . date('m-d-Y - H:i:s') . "\n");
 			fclose($file);
 		}
 
-		/* TODO: Send confirmation email */
+		/*
+		// TODO: Send confirmation email
 		$msg = 'Hello from the other side!!!!';
 		$msg = escapeshellarg($msg);
 		$email = escapeshellarg($email);
 		shell_exec('../execs/sendmail.sh "' . $msg . '" "' . $email . '" ');
+		*/
 	}
 }

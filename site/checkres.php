@@ -196,9 +196,6 @@ session_start();
 
 <!-- ================ Check Reservations ================= -->
 <div class="container under-nav">
-	<div class="btn-group">
-		<a class="btn btn-default check" href='#'>CHECK</a>
-	</div>
 	<div class="table"></div>
 </div>
 
@@ -212,10 +209,8 @@ session_start();
 <script src="../js/login.js"></script>
 <script>
 	$(document).ready(function () {
-		$('.check').on('click', function () {
-			$('.table').load('checkres2.php', {
-				'table': 'floors'
-			});
+		$('.table').load('checkres2.php', {
+			'table': 'floors'
 		});
 	});
 </script>
