@@ -29,23 +29,25 @@ if ($_REQUEST['table'] == 'guests') { // Guests Table
 	$sql = 'SELECT * FROM room_type;';
 	$result = $link->query($sql);
 
-	echo "<table class='table table-responsive table-bordered' id='userTable'><tr><th>Room Type ID</th><th>Description</th><th>Available</th><th>Rate</th></tr>";
+	echo "<table class='table table-responsive table-bordered' id='userTable'><tr><th>Room Type ID</th><th>Description</th><th>Rate</th></tr>";
 
 	foreach ($result as $row) {
 		echo '<tr>';
 		echo '<td>' . $row['typeID'] . '</td>';
 		echo '<td>' . $row['room_type'] . '</td>';
-		echo '<td>' . $row['available'] . '</td>';
 		echo '<td>' . $row['rate'] . '</td>';
 		echo '</tr>';
 	}
 	echo '</table>';
 } elseif ($_REQUEST['table'] == 'floors') { // Room Table
-	$sql = 'SELECT guests.firstName, guests.lastName, reservations.reservationID, room_type.room_type, reservations.checkIN, reservations.checkOUT
-	  FROM reservations JOIN guests
+	$sql = 'SELECT guests.firstName AS "FIRST NAME", guests.lastName AS "LAST NAME", reservations.reservationID AS "RESERVATION", room_type.room_type AS "ROOM TYPE", reservations.checkIN AS "CHECK IN", reservations.checkOUT AS "CHECK OUT"
+	  FROM reservations
+	  JOIN guests
       ON reservations.guestID = guests.guestID
+      JOIN rooms
+      ON reservations.room = rooms.roomID
       JOIN room_type
-      ON reservations.roomType = room_type.typeID;';
+	  ON rooms.roomType = room_type.typeID;';
 	$result = $link->query($sql);
 
 	$fieldnames = $result->fetch_fields();

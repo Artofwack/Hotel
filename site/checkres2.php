@@ -10,12 +10,16 @@ require_once('../config.php');
 
 session_start();
 
-$sql = 'SELECT reservations.reservationID, room_type.room_type, reservations.checkIN, reservations.checkOUT
-	  FROM reservations JOIN guests
-      ON reservations.guestID = guests.guestID
-      JOIN room_type
-      ON reservations.roomType = room_type.typeID
-      WHERE guests.email = "' . $_SESSION['email'] . '";';
+$sql = 'SELECT reservations.reservationID AS "RESERVATION", room_type.room_type AS "ROOM TYPE", reservations.checkIN AS "CHECK IN", reservations.checkOUT AS "CHECK OUT"
+		FROM reservations
+		JOIN guests
+		ON reservations.guestID = guests.guestID
+		JOIN rooms
+		ON reservations.room = rooms.roomID
+		JOIN room_type
+		ON rooms.roomType = room_type.typeID
+		WHERE guests.email = "' . $_SESSION['email'] . '";';
+
 $result = $link->query($sql);
 
 $fieldnames = $result->fetch_fields();

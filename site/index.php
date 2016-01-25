@@ -21,6 +21,9 @@ session_start();
 	<!-- Bootstrap core CSS -->
 	<link href="../css/bootstrap.min.css" rel="stylesheet">
 
+	<!-- UIKit Gradient CSS-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.24.3/css/uikit.gradient.min.css"/>
+
 	<link href="https://eternicode.github.io/bootstrap-datepicker/bootstrap-datepicker/css/datepicker3.css"
 	      rel="stylesheet">
 
@@ -192,43 +195,20 @@ session_start();
 
 
 <!-- ================ Form ================ -->
-<div class="container under-nav">
-	<!-- ================ Date Range ================ -->
-	<div class="row">
-		<div class="col-md-4 col-md-offset-4">
-			<div class="input-daterange input-group" id="datepicker">
-				<input type="text" class="input-sm form-control startDate" name="start"/>
-				<span class="input-group-addon">to</span>
-				<input type="text" class="input-sm form-control endDate" name="end"/>
-			</div>
-		</div>
-	</div>
+<!--<div class="container under-nav">
 	<div class="row">
 		<form class="form-horizontal">
 			<div class="form-group">
-				<label class="control-label col-md-2 ">Start Date</label>
+				<div class="col-md-4 col-md-offset-4">
+					<div class="input-daterange input-group" id="datepicker">
 
-				<div class="col-md-2">
-					<input type="text" class="col-md-2 form-control output" id="checkInDate" placeholder="Check In Date"
-					       value="">
+						<input type="text" class="input-sm form-control startDate" name="start"/>
+						<span class="input-group-addon">to</span>
+
+						<input type="text" class="input-sm form-control endDate" name="end"/>
+					</div>
 				</div>
 			</div>
-			<div class="form-group">
-				<label class="control-label col-md-2 ">End Date</label>
-
-				<div class="col-md-2">
-					<input type="text" class="col-md-2 form-control out" id="checkOutDate" placeholder="Check Out Date"
-					       value="">
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="control-label col-md-2">Nights</label>
-
-				<div class="col-md-2">
-					<input class="form-control col-md-2 nights" id="nights" placeholder="Nights" value="">
-				</div>
-			</div>
-
 			<div class="form-group">
 				<div class="radio">
 					<label>
@@ -263,23 +243,133 @@ session_start();
 			</div>
 
 			<div class="form-group">
-				<div class="col-md-offset-2 col-md-2">
-					<a class="btn btn-md btn-default nightsButton" href="#" role="button">Calculate Nights</a>
-				</div>
 				<div class="col-md-2">
 					<a class="btn btn-md btn-default reserveButton" href="#" role="button">Reserve</a>
 				</div>
 			</div>
 		</form>
 	</div>
-</div>
+</div>-->
 
+
+<!-- ================ Reserve ================ -->
+<div class="under-nav container">
+	<ul class="uk-tab" data-uk-tab="{connect:'#my-id', animation: 'slide-horizontal'}">
+		<li><a href="">DATES</a></li>
+		<li><a href="">ROOMS</a></li>
+		<li><a href="">RESERVE</a></li>
+		<li><a href="">GUEST</a></li>
+		<li><a href="">CONFIRM</a></li>
+	</ul>
+
+	<ul id="my-id" class="uk-switcher uk-margin">
+		<!-- CHOOSE DATES -->
+		<li>
+			<div class="uk-block uk-block-muted uk-block-large">
+				<div class="uk-grid">
+					<div class="uk-width-1-4">
+						<div class="input-daterange input-group" id="datepicker">
+							<input type="text" class="input-sm form-control startDate" name="start"/>
+							<span class="input-group-addon">to</span>
+							<input type="text" class="input-sm form-control endDate" name="end"/>
+						</div>
+					</div>
+					<div class="uk-width-1-4"></div>
+					<div class="uk-width-1-4"></div>
+					<div class="uk-width-1-4"><a href="" class="uk-icon-button uk-icon-arrow-circle-right"
+					                             data-uk-switcher-item="next"></a>
+					</div>
+				</div>
+			</div>
+		</li>
+
+		<!-- CHOOSE ROOM TYPE -->
+		<li>
+			<div class="uk-block uk-block-muted uk-block-large">
+				<div class="uk-grid">
+					<div class="uk-width-1-3">
+						<div class="radio">
+							<label>
+								<input type="radio" name='roomType' id="standSingle" value="1" checked>
+								Standard Single
+							</label>
+						</div>
+						<div class="radio">
+							<label>
+								<input type="radio" name='roomType' id="standDouble" value="2">
+								Standard Double
+							</label>
+						</div>
+						<div class="radio">
+							<label>
+								<input type="radio" name='roomType' id="JrSuite" value="3">
+								Jr Suite
+							</label>
+						</div>
+						<div class="radio">
+							<label>
+								<input type="radio" name='roomType' id="execSuite" value="4">
+								Executive Suite
+							</label>
+						</div>
+						<div class="radio">
+							<label>
+								<input type="radio" name='roomType' id="pentSuite" value="5">
+								Penthouse Suite
+							</label>
+						</div>
+					</div>
+					<div class="uk-width-1-3">
+
+					</div>
+					<div class="uk-width-1-3">
+						<a href="" data-uk-switcher-item="next">NEXT</a>
+					</div>
+				</div>
+			</div>
+		</li>
+		<!-- RESERVATION INFO -->
+		<li>
+			<div class="uk-block uk-block-muted uk-block-large">
+				<div class="uk-grid">
+					<div class="uk-width-1-3">
+
+					</div>
+					<div class="uk-width-1-3">
+
+					</div>
+					<div class="uk-width-1-3">
+						<a href="" data-uk-switcher-item="next">NEXT</a>
+					</div>
+				</div>
+			</div>
+		</li>
+
+		<!-- RESERVE -->
+		<li>
+			<div class="uk-block uk-block-muted uk-block-large">
+				tab 4
+				<a href="" data-uk-switcher-item="next">NEXT</a>
+			</div>
+		</li>
+
+		<!-- CONFIRMATION -->
+		<li>
+			<div class="uk-block uk-block-muted uk-block-large">
+				tab 5
+				<a href="#">DONE</a>
+			</div>
+		</li>
+
+	</ul>
+</div>
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="../js/jquery.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.24.3/js/uikit.min.js"></script>
 <script src="../js/jquery.validate.min.js"></script>
 <script src="../js/login.js"></script>
 <script
@@ -295,26 +385,28 @@ session_start();
 			autoclose: 'True'
 		});
 
-		$('.startDate').datepicker()
-			.on('changeDate', function (selected) {
-				$('.output').val($(this).datepicker('getDate').toLocaleDateString());
-			});
+		/*
+		 $('.startDate').datepicker()
+		 .on('changeDate', function (selected) {
+		 $('.output').val($(this).datepicker('getDate').toLocaleDateString());
+		 });
 
-		$('.endDate').datepicker()
-			.on('changeDate', function (selected) {
-				$('.out').val($(this).datepicker('getDate').toLocaleDateString());
-			});
+		 $('.endDate').datepicker()
+		 .on('changeDate', function (selected) {
+		 $('.out').val($(this).datepicker('getDate').toLocaleDateString());
+		 });
+		 */
 
 		/* Calulate number of nights from date range selected*/
-		$('.nightsButton').on('click', function () {
-			var d1 = $('.startDate').datepicker('getDate');
-			var d2 = $('.endDate').datepicker('getDate');
-			if (d1 && d2) {
-				var diff = Math.floor((d2.getTime() - d1.getTime()) / 86400000);
-				$('.nights').val(diff.toString());
-			}
-		});
-
+		/*$('.nightsButton').on('click', function () {
+		 var d1 = $('.startDate').datepicker('getDate');
+		 var d2 = $('.endDate').datepicker('getDate');
+		 if (d1 && d2) {
+		 var diff = Math.floor((d2.getTime() - d1.getTime()) / 86400000);
+		 $('.nights').val(diff.toString());
+		 }
+		 });
+		 */
 		/* Reserve*/
 		$('.reserveButton').on('click', function () {
 			var d1 = $('.startDate').datepicker('getDate');
