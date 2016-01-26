@@ -1,33 +1,33 @@
 <?php
 /**
+ * File: gallery.php
+ *
  * Created by PhpStorm.
- * User: lab
- * Date: 1/20/2016
- * Time: 2:57 AM
+ * User: ArtofWack
+ * Date: 1/25/2016
+ * Time: 10:56 PM
  */
 
 session_start();
-
 ?>
+<!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-
 	<title>Hotel California</title>
+
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
 	<!-- Bootstrap core CSS -->
 	<link href="../css/bootstrap.min.css" rel="stylesheet">
 
+	<!-- UIKit Gradient CSS-->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.24.3/css/uikit.gradient.min.css"/>
-	<link rel="stylesheet" href="../UIKit/css/components/notify.gradient.min.css">
+	<link rel="stylesheet" href="../UIKit/css/components/sticky.gradient.min.css">
 
-	<!-- Custom styles for this template -->
+	<!-- Custom styles for this project -->
 	<link href="../css/hotel.css" rel="stylesheet">
-</head>
 
+</head>
 <body>
 <!-- ========== Log in modal ========== -->
 <div class="modal fade" id="myModal">
@@ -154,12 +154,13 @@ session_start();
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="#">Hotel California</a>
+					<a class="navbar-brand" href="#adminLogon">Hotel California</a>
 				</div>
 				<div id="navbar" class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
 						<li class="active"><a href="hotel.php">Home</a></li>
 						<li><a href="#about">About</a></li>
+						<li><a href="gallery.php">Gallery</a></li>
 						<li><a href="#contact">Contact</a></li>
 						<li><a href="#" data-toggle="modal" data-target="#registerModal">Register</a></li>
 						<li class="dropdown">
@@ -168,7 +169,6 @@ session_start();
 							<ul class="dropdown-menu">
 								<li class="dropdown-header">New Reservations</li>
 								<li><a href="index.php">New Reservation</a></li>
-								<li><a href="reserve.php">Check Availability</a></li>
 								<li class="divider"></li>
 								<li class="dropdown-header">Existing Reservations</li>
 								<li><a href="checkres.php">Check Reservation</a></li>
@@ -191,31 +191,186 @@ session_start();
 </div>
 
 
-<!-- ================ Check Reservations ================= -->
+<!-- ================ Gallery ================ -->
 <div class="container under-nav">
-	<div class="table"></div>
+	<div class="uk-flex uk-flex-center">
+		<!-- Filter Controls -->
+		<ul id="my-id" class="uk-subnav uk-subnav-pill">
+			<li data-uk-filter=""><a href="">ALL</a></li>
+			<li data-uk-filter="filter-a"><a href="">FILTER A</a></li>
+			<li data-uk-filter="filter-b"><a href="">FILTER B</a></li>
+			<li data-uk-filter="filter-c"><a href="">FILTER C</a></li>
+		</ul>
+	</div>
+	<div class="uk-grid-width-small-1-1 uk-grid-width-medium-1-2 uk-grid-width-large-1-4 tm-grid-heights tm-grid-widths"
+	     data-uk-grid="{gutter: 20, controls: '#my-id'}">
+		<div data-uk-filter="filter-a">
+			<div class="uk-block-secondary"></div>
+		</div>
+		<div data-uk-filter="filter-c">
+			<div class="uk-block-primary">2</div>
+		</div>
+		<div data-uk-filter="filter-b">
+			<div class="uk-panel-box">3</div>
+		</div>
+		<div data-uk-filter="filter-c">
+			<div class="uk-block-primary">2</div>
+		</div>
+		<div data-uk-filter="filter-b">
+			<div class="uk-panel-box">3</div>
+		</div>
+		<div data-uk-filter="filter-c">
+			<div class="uk-block-primary">2</div>
+		</div>
+		<div data-uk-filter="filter-a">
+			<div class="uk-block-secondary">7</div>
+		</div>
+		<div data-uk-filter="filter-b">
+			<div class="uk-panel-box">8</div>
+		</div>
+		<div data-uk-filter="filter-a">
+			<div class="uk-block-secondary">4</div>
+		</div>
+		<div data-uk-filter="filter-c">
+			<div class="uk-block-primary">5</div>
+		</div>
+		<div data-uk-filter="filter-a">
+			<div class="uk-block-secondary">7</div>
+		</div>
+		<div data-uk-filter="filter-a">
+			<div class="uk-block-secondary"></div>
+		</div>
+		<div data-uk-filter="filter-c">
+			<div class="uk-block-primary">5</div>
+		</div>
+		<div data-uk-filter="filter-a">
+			<div class="uk-block-secondary">4</div>
+		</div>
+		<div data-uk-filter="filter-c">
+			<div class="uk-block-primary">5</div>
+		</div>
+		<div data-uk-filter="filter-b">
+			<div class="uk-panel-box">6</div>
+		</div>
+		<div data-uk-filter="filter-b">
+			<div class="uk-panel-box">3</div>
+		</div>
+		<div data-uk-filter="filter-a">
+			<div class="uk-block-secondary">4</div>
+		</div>
+		<div data-uk-filter="filter-c">
+			<div class="uk-block-primary">5</div>
+		</div>
+		<div data-uk-filter="filter-b">
+			<div class="uk-panel-box">6</div>
+		</div>
+		<div data-uk-filter="filter-a">
+			<div class="uk-block-secondary">7</div>
+		</div>
+		<div data-uk-filter="filter-b">
+			<div class="uk-panel-box">8</div>
+		</div>
+		<div data-uk-filter="filter-b">
+			<div class="uk-panel-box">6</div>
+		</div>
+		<div data-uk-filter="filter-a">
+			<div class="uk-block-secondary">7</div>
+		</div>
+		<div data-uk-filter="filter-b">
+			<div class="uk-panel-box">8</div>
+		</div>
+		<div data-uk-filter="filter-a">
+			<div class="uk-block-secondary"></div>
+		</div>
+		<div data-uk-filter="filter-a">
+			<div class="uk-block-secondary"></div>
+		</div>
+		<div data-uk-filter="filter-c">
+			<div class="uk-block-primary">2</div>
+		</div>
+		<div data-uk-filter="filter-b">
+			<div class="uk-panel-box">3</div>
+		</div>
+		<div data-uk-filter="filter-c">
+			<div class="uk-block-primary">2</div>
+		</div>
+		<div data-uk-filter="filter-b">
+			<div class="uk-panel-box">3</div>
+		</div>
+		<div data-uk-filter="filter-c">
+			<div class="uk-block-primary">2</div>
+		</div>
+		<div data-uk-filter="filter-a">
+			<div class="uk-block-secondary">7</div>
+		</div>
+		<div data-uk-filter="filter-b">
+			<div class="uk-panel-box">8</div>
+		</div>
+		<div data-uk-filter="filter-a">
+			<div class="uk-block-secondary">4</div>
+		</div>
+		<div data-uk-filter="filter-c">
+			<div class="uk-block-primary">5</div>
+		</div>
+		<div data-uk-filter="filter-a">
+			<div class="uk-block-secondary">7</div>
+		</div>
+		<div data-uk-filter="filter-a">
+			<div class="uk-block-secondary"></div>
+		</div>
+		<div data-uk-filter="filter-c">
+			<div class="uk-block-primary">5</div>
+		</div>
+		<div data-uk-filter="filter-a">
+			<div class="uk-block-secondary">4</div>
+		</div>
+		<div data-uk-filter="filter-c">
+			<div class="uk-block-primary">5</div>
+		</div>
+		<div data-uk-filter="filter-b">
+			<div class="uk-panel-box">6</div>
+		</div>
+		<div data-uk-filter="filter-b">
+			<div class="uk-panel-box">3</div>
+		</div>
+		<div data-uk-filter="filter-a">
+			<div class="uk-block-secondary">4</div>
+		</div>
+		<div data-uk-filter="filter-c">
+			<div class="uk-block-primary">5</div>
+		</div>
+		<div data-uk-filter="filter-b">
+			<div class="uk-panel-box">6</div>
+		</div>
+		<div data-uk-filter="filter-a">
+			<div class="uk-block-secondary">7</div>
+		</div>
+		<div data-uk-filter="filter-b">
+			<div class="uk-panel-box">8</div>
+		</div>
+		<div data-uk-filter="filter-b">
+			<div class="uk-panel-box">6</div>
+		</div>
+		<div data-uk-filter="filter-a">
+			<div class="uk-block-secondary">7</div>
+		</div>
+		<div data-uk-filter="filter-b">
+			<div class="uk-panel-box">8</div>
+		</div>
+		<div data-uk-filter="filter-a">
+			<div class="uk-block-secondary"></div>
+		</div>
+	</div>
 </div>
 
 
-<!-- Bootstrap core JavaScript
+<!-- JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="../js/jquery.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.24.3/js/uikit.min.js"></script>
-<script src="../UIKit/js/components/notify.min.js"></script>
-<script src="../js/jquery.validate.min.js"></script>
+<script src="../UIKit/js/components/grid.min.js"></script>
 <script src="../js/login.js"></script>
-<script>
-	$(document).ready(function () {
-		if ($('#login').text().charAt(7) === ',') {
-			$('.table').load('checkres2.php', {
-				'table': 'floors'
-			});
-		} else {
-			UIkit.notify('<i class="uk-icon-warning"></i> Please Sign in!!', {status: 'danger'});
-		}
-	});
-</script>
 </body>
 </html>

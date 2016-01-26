@@ -14,8 +14,10 @@ $usr = "batman";
 $email = "knight@gmail.com";
 $pass = Password::hash('dark');
 
-/*$sql = 'INSERT INTO admins(username,email,password) VALUES ("' . $usr . '","' . $email . '", "' . $pass . '");';*/
-$sql = ' INSERT INTO rooms(roomType, available, floor) VALUES (5,1,6);';
+//$sql = 'INSERT INTO admins(username,email,password) VALUES ("' . $usr . '","' . $email . '", "' . $pass . '");';
+//$sql = ' INSERT INTO rooms(roomType) VALUES (5);';
+
+
 
 $result = $link->query($sql);
 

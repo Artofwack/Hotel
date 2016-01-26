@@ -23,6 +23,8 @@ session_start();
 
 	<!-- UIKit Gradient CSS-->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.24.3/css/uikit.gradient.min.css"/>
+	<link rel="stylesheet" href="../UIKit/css/components/slidenav.gradient.min.css">
+	<link rel="stylesheet" href="../UIKit/css/components/notify.gradient.min.css">
 
 	<link href="https://eternicode.github.io/bootstrap-datepicker/bootstrap-datepicker/css/datepicker3.css"
 	      rel="stylesheet">
@@ -157,12 +159,13 @@ session_start();
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="#">Hotel California</a>
+					<a class="navbar-brand" href="#adminLogon">Hotel California</a>
 				</div>
 				<div id="navbar" class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
 						<li class="active"><a href="hotel.php">Home</a></li>
 						<li><a href="#about">About</a></li>
+						<li><a href="gallery.php">Gallery</a></li>
 						<li><a href="#contact">Contact</a></li>
 						<li><a href="#" data-toggle="modal" data-target="#registerModal">Register</a></li>
 						<li class="dropdown">
@@ -170,8 +173,7 @@ session_start();
 							   aria-haspopup="true" aria-expanded="false">Reservations<span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li class="dropdown-header">New Reservations</li>
-								<li><a href="reserve.php">New Reservation</a></li>
-								<li><a href="index.php">Check Availability</a></li>
+								<li><a href="index.php">New Reservation</a></li>
 								<li class="divider"></li>
 								<li class="dropdown-header">Existing Reservations</li>
 								<li><a href="checkres.php">Check Reservation</a></li>
@@ -198,7 +200,7 @@ session_start();
 <div class="under-nav container">
 	<ul class="uk-tab" data-uk-tab="{connect:'#my-id', animation: 'slide-horizontal'}">
 		<li><a href="">DATES</a></li>
-		<li><a href="">ROOMS</a></li>
+		<li><a href="" id="rooms">ROOMS</a></li>
 		<li><a href="">RESERVE</a></li>
 		<li><a href="">GUEST</a></li>
 		<li><a href="">CONFIRM</a></li>
@@ -217,31 +219,41 @@ session_start();
 					</div>
 					<div class="uk-width-1-4">
 						<div class="input-daterange input-group" id="datepicker">
-							<input type="text" class="input-sm form-control startDate" name="start"/>
+							<input type="text" class="input-sm form-control startDate" name="start" title="startDate"/>
 							<span class="input-group-addon">to</span>
-							<input type="text" class="input-sm form-control endDate" name="end"/>
+							<input type="text" class="input-sm form-control endDate" name="end" title="endDate"/>
 						</div>
 					</div>
 					<div class="uk-width-1-4">
-						<a href="" class="uk-icon-button uk-icon-arrow-circle-right" data-uk-switcher-item="next"></a>
+						<a href="" class="uk-icon-button uk-icon-arrow-circle-right" data-uk-switcher-item="next"
+						   id="next"></a>
 					</div>
 				</div>
 			</div>
 		</li>
 
-		<!-- TODO: Show available rooms for each room type-->
 		<!-- CHOOSE ROOM TYPE -->
 		<li>
 			<div class="uk-block uk-block-muted uk-block-large">
 				<div class="uk-grid">
+					<div class="uk-width-1-10"></div>
 					<div class="uk-width-8-10">
 						<div class="uk-text-center"><h1>Select a room</h1></div>
 						<div class="uk-flex uk-flex-column">
 							<!-- Standard Single -->
-							<div class="uk-panel uk-panel-box uk-margin-bottom uk-margin-left room">
+							<div class="uk-panel uk-panel-box uk-margin-bottom uk-margin-left uk-margin-right room">
 								<div class="uk-grid">
 									<div class="uk-width-1-4">
-										<img src="../images/Hotel.jpg">
+										<a href="../images/single.jpg" title="Standard Single"
+										   data-uk-lightbox="{group:'group1'}" data-lightbox-type='image'>
+											<img src="../images/single.jpg" alt="">
+										</a>
+										<a class="uk-hidden" href="../images/single2.jpg" title="Junior Suite"
+										   data-uk-lightbox="{group:'group1'}" data-lightbox-type='image'></a>
+										<a class="uk-hidden" href="../images/single3.jpg" title="Junior Suite"
+										   data-uk-lightbox="{group:'group1'}" data-lightbox-type='image'></a>
+										<a class="uk-hidden" href="../images/single4.jpg" title="Junior Suite"
+										   data-uk-lightbox="{group:'group1'}" data-lightbox-type='image'></a>
 									</div>
 									<div class="uk-width-3-4">
 										<div class="uk-flex uk-flex-column">
@@ -249,7 +261,6 @@ session_start();
 											<div>
 												<h3>Rooms available:</h3>
 												<div id="avail-1"></div>
-
 											</div>
 											<div class="uk-clearfix">
 												<div class="uk-vertical-align ">
@@ -265,10 +276,19 @@ session_start();
 							</div>
 
 							<!-- Standard Double -->
-							<div class="uk-panel uk-panel-box uk-margin-bottom uk-margin-left room">
+							<div class="uk-panel uk-panel-box uk-margin-bottom uk-margin-left uk-margin-right room">
 								<div class="uk-grid">
 									<div class="uk-width-1-4">
-										<img src="../images/Hotel.jpg">
+										<a href="../images/double.jpg" title="Standard Double"
+										   data-uk-lightbox="{group:'group2'}" data-lightbox-type='image'>
+											<img src="../images/double.jpg">
+										</a>
+										<a class="uk-hidden" href="../images/double2.jpg" title="Junior Suite"
+										   data-uk-lightbox="{group:'group2'}" data-lightbox-type='image'></a>
+										<a class="uk-hidden" href="../images/double3.jpg" title="Junior Suite"
+										   data-uk-lightbox="{group:'group2'}" data-lightbox-type='image'></a>
+										<a class="uk-hidden" href="../images/double2.jpg" title="Junior Suite"
+										   data-uk-lightbox="{group:'group2'}" data-lightbox-type='image'></a>
 									</div>
 									<div class="uk-width-3-4">
 										<div class="uk-flex uk-flex-column">
@@ -276,7 +296,6 @@ session_start();
 											<div>
 												<h3>Rooms available:</h3>
 												<div id="avail-2"></div>
-
 											</div>
 											<div class="uk-clearfix">
 												<div class="uk-vertical-align ">
@@ -292,10 +311,10 @@ session_start();
 							</div>
 
 							<!-- Jr Suite -->
-							<div class="uk-panel uk-panel-box uk-margin-bottom uk-margin-left room">
+							<div class="uk-panel uk-panel-box uk-margin-bottom uk-margin-left uk-margin-right room">
 								<div class="uk-grid">
 									<div class="uk-width-1-4">
-										<img src="../images/Hotel.jpg">
+										<img src="../images/junior.jpg">
 									</div>
 									<div class="uk-width-3-4">
 										<div class="uk-flex uk-flex-column">
@@ -303,7 +322,6 @@ session_start();
 											<div>
 												<h3>Rooms available:</h3>
 												<div id="avail-3"></div>
-
 											</div>
 											<div class="uk-clearfix">
 												<div class="uk-vertical-align ">
@@ -319,10 +337,10 @@ session_start();
 							</div>
 
 							<!-- Executive Suite -->
-							<div class="uk-panel uk-panel-box uk-margin-bottom uk-margin-left room">
+							<div class="uk-panel uk-panel-box uk-margin-bottom uk-margin-left uk-margin-right room">
 								<div class="uk-grid">
 									<div class="uk-width-1-4">
-										<img src="../images/Hotel.jpg">
+										<img src="../images/executive.jpg">
 									</div>
 									<div class="uk-width-3-4">
 										<div class="uk-flex uk-flex-column">
@@ -330,7 +348,6 @@ session_start();
 											<div>
 												<h3>Rooms available:</h3>
 												<div id="avail-4"></div>
-
 											</div>
 											<div class="uk-clearfix">
 												<div class="uk-vertical-align ">
@@ -346,10 +363,10 @@ session_start();
 							</div>
 
 							<!-- Penthouse Suite -->
-							<div class="uk-panel uk-panel-box uk-margin-left room">
+							<div class="uk-panel uk-panel-box uk-margin-left uk-margin-right room">
 								<div class="uk-grid">
 									<div class="uk-width-1-4">
-										<img src="../images/Hotel.jpg">
+										<img src="../images/penthouse.jpg">
 									</div>
 									<div class="uk-width-3-4">
 										<div class="uk-flex uk-flex-column">
@@ -357,7 +374,6 @@ session_start();
 											<div>
 												<h3>Rooms available:</h3>
 												<div id="avail-5"></div>
-
 											</div>
 											<div class="uk-clearfix">
 												<div class="uk-vertical-align ">
@@ -373,6 +389,7 @@ session_start();
 							</div>
 						</div>
 					</div>
+					<div class="uk-width-1-10"></div>
 				</div>
 			</div>
 		</li>
@@ -390,18 +407,19 @@ session_start();
 						<div id="res-room"></div>
 					</div>
 					<div class="uk-width-1-3">
-						<a href="" data-uk-switcher-item="next">NEXT</a>
+						<a href="" class="uk-icon-button uk-icon-arrow-circle-right" data-uk-switcher-item="next"></a>
 					</div>
 				</div>
 			</div>
 		</li>
 
-		<!-- TODO: Show logged in guest info or Register/Sign-in modal -->
+		<!-- TODO: Show logged in guest info or direct to Register/Sign-in modal -->
 		<!-- RESERVE -->
 		<li>
 			<div class="uk-block uk-block-muted uk-block-large">
 
-				<a class="btn btn-md btn-default reserveButton" href="" role="button" data-uk-switcher-item="next">Reserve</a>
+				<a class="btn btn-md btn-default reserveButton" href="" role="button">Reserve</a>
+				<a href="" class="uk-icon-button uk-icon-arrow-circle-right" data-uk-switcher-item="next"></a>
 			</div>
 		</li>
 
@@ -417,12 +435,14 @@ session_start();
 	</ul>
 </div>
 
-<!-- Bootstrap core JavaScript
+<!-- JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="../js/jquery.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.24.3/js/uikit.min.js"></script>
+<script src="../UIKit/js/components/lightbox.min.js"></script>
+<script src="../UIKit/js/components/notify.min.js"></script>
 <script src="../js/jquery.validate.min.js"></script>
 <script src="../js/login.js"></script>
 <script
@@ -454,43 +474,56 @@ session_start();
 				'roomType': '1'
 			}, function (data) {
 				$('#avail-1').html(data);
+				if (data == 0)
+					$('#single').attr('disabled', true);
+				else
+					$('#single').attr('disabled', false);
 			});
 
 			$('#avail-2').load('available.php', {
 				'checkIN': d1,
 				'checkOUT': d2,
 				'roomType': '2'
+			}, function (data) {
+				if (data == 0)
+					$('#double').attr('disabled', 'true');
+				else
+					$('#double').removeAttr('disabled');
 			});
 
 			$('#avail-3').load('available.php', {
 				'checkIN': d1,
 				'checkOUT': d2,
 				'roomType': '3'
+			}, function (data) {
+				if (data == 0)
+					$('#junior').attr('disabled', true);
+				else
+					$('#junior').attr('disabled', false);
 			});
 
 			$('#avail-4').load('available.php', {
 				'checkIN': d1,
 				'checkOUT': d2,
 				'roomType': '4'
+			}, function (data) {
+				if (data == 0)
+					$('#executive').attr('disabled', true);
+				else
+					$('#executive').attr('disabled', false);
 			});
 
 			$('#avail-5').load('available.php', {
 				'checkIN': d1,
 				'checkOUT': d2,
 				'roomType': '5'
+			}, function (data) {
+				if (data == 0)
+					$('#penthouse').attr('disabled', true);
+				else
+					$('#penthouse').attr('disabled', false);
 			});
 		}
-
-		$('.startDate').datepicker().on('changeDate', function (selected) {
-			$('#res-dates').html($(this).datepicker('getDate'));
-			available();
-		});
-
-		$('.endDate').datepicker().on('changeDate', function (selected) {
-			$('#res-dates-2').html($(this).datepicker('getDate'));
-			available();
-		});
-
 
 		// Calulate number of nights from date range selected
 		$('.nightsButton').on('click', function () {
@@ -507,6 +540,22 @@ session_start();
 			$('#res-room').html(roomType);
 		});
 
+		// trigger calculate available rooms
+		$('#next, #rooms').on('click', function () {
+			if ($('#res-dates').is(':empty'))
+				UIkit.notify('<i class="uk-icon-warning"></i> Please Select dates!!', {status: 'danger'});
+			else
+				available();
+		});
+
+		$('.startDate').datepicker().on('changeDate', function (selected) {
+			$('#res-dates').html($(this).datepicker('getDate'));
+		});
+
+		$('.endDate').datepicker().on('changeDate', function (selected) {
+			$('#res-dates-2').html($(this).datepicker('getDate'));
+		});
+
 		// Reserve
 		$('.reserveButton').on('click', function () {
 			var startDate = $('.startDate');
@@ -515,14 +564,24 @@ session_start();
 			var d1 = startDate.datepicker('getDate');
 			var d2 = endDate.datepicker('getDate');
 
-			$.post('makeres.php', {
-				'checkIN': d1,
-				'checkOUT': d2,
-				'roomType': roomType
-			});
+			if ($('#login').text().charAt(7) === ',') {
+				if ($('#res-dates').is(':empty')) {
+					UIkit.notify('<i class="uk-icon-warning"></i> Please Select dates!!', {status: 'danger'});
+				} else {
+					$.post('makeres.php', {
+						'checkIN': d1,
+						'checkOUT': d2,
+						'roomType': roomType
+					});
+				}
+			} else {
+				UIkit.notify('<i class="uk-icon-warning"></i> Please Sign in!!', {status: 'danger'});
+			}
+
+
+
 		});
 	});
 </script>
-
 </body>
 </html>

@@ -170,8 +170,8 @@ session_start();
 							   aria-haspopup="true" aria-expanded="false">Reservations<span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li class="dropdown-header">New Reservations</li>
-								<li><a href="reserve.php">New Reservation</a></li>
-								<li><a href="index.php">Check Availability</a></li>
+								<li><a href="index.php">New Reservation</a></li>
+								<li><a href="reserve.php">Check Availability</a></li>
 								<li class="divider"></li>
 								<li class="dropdown-header">Existing Reservations</li>
 								<li><a href="checkres.php">Check Reservation</a></li>
