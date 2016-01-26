@@ -15,7 +15,6 @@ session_start();
 $email = $_POST['email'];
 $pass = $_POST['pass'];
 
-
 $sql = 'SELECT passwd FROM guests WHERE email="' . $email . '";';
 $result = $link->query($sql);
 

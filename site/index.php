@@ -234,43 +234,144 @@ session_start();
 		<li>
 			<div class="uk-block uk-block-muted uk-block-large">
 				<div class="uk-grid">
-					<div class="uk-width-1-3">
-						Select a Room
-					</div>
-					<div class="uk-width-1-3">
-						<div class="radio">
-							<label>
-								<input type="radio" name='roomType' id="standSingle" value="1" checked>
-								Standard Single
-							</label>
+					<div class="uk-width-8-10">
+						<div class="uk-text-center"><h1>Select a room</h1></div>
+						<div class="uk-flex uk-flex-column">
+							<!-- Standard Single -->
+							<div class="uk-panel uk-panel-box uk-margin-bottom uk-margin-left room">
+								<div class="uk-grid">
+									<div class="uk-width-1-4">
+										<img src="../images/Hotel.jpg">
+									</div>
+									<div class="uk-width-3-4">
+										<div class="uk-flex uk-flex-column">
+											<div class="uk-text-center"><h2>Standard Single</h2></div>
+											<div>
+												<h3>Rooms available:</h3>
+												<div id="avail-1"></div>
+
+											</div>
+											<div class="uk-clearfix">
+												<div class="uk-vertical-align ">
+													<button class="uk-button uk-vertical-align-bottom uk-align-right"
+													        type="button" id="single" room="1"
+													        data-uk-switcher-item="next">Select
+													</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Standard Double -->
+							<div class="uk-panel uk-panel-box uk-margin-bottom uk-margin-left room">
+								<div class="uk-grid">
+									<div class="uk-width-1-4">
+										<img src="../images/Hotel.jpg">
+									</div>
+									<div class="uk-width-3-4">
+										<div class="uk-flex uk-flex-column">
+											<div class="uk-text-center"><h2>Standard Double</h2></div>
+											<div>
+												<h3>Rooms available:</h3>
+												<div id="avail-2"></div>
+
+											</div>
+											<div class="uk-clearfix">
+												<div class="uk-vertical-align ">
+													<button class="uk-button uk-vertical-align-bottom uk-align-right"
+													        type="button" id="double" room="2"
+													        data-uk-switcher-item="next">Select
+													</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Jr Suite -->
+							<div class="uk-panel uk-panel-box uk-margin-bottom uk-margin-left room">
+								<div class="uk-grid">
+									<div class="uk-width-1-4">
+										<img src="../images/Hotel.jpg">
+									</div>
+									<div class="uk-width-3-4">
+										<div class="uk-flex uk-flex-column">
+											<div class="uk-text-center"><h2>Junior Suite</h2></div>
+											<div>
+												<h3>Rooms available:</h3>
+												<div id="avail-3"></div>
+
+											</div>
+											<div class="uk-clearfix">
+												<div class="uk-vertical-align ">
+													<button class="uk-button uk-vertical-align-bottom uk-align-right"
+													        type="button" id="junior" room="3"
+													        data-uk-switcher-item="next">Select
+													</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Executive Suite -->
+							<div class="uk-panel uk-panel-box uk-margin-bottom uk-margin-left room">
+								<div class="uk-grid">
+									<div class="uk-width-1-4">
+										<img src="../images/Hotel.jpg">
+									</div>
+									<div class="uk-width-3-4">
+										<div class="uk-flex uk-flex-column">
+											<div class="uk-text-center"><h2>Executive Suite</h2></div>
+											<div>
+												<h3>Rooms available:</h3>
+												<div id="avail-4"></div>
+
+											</div>
+											<div class="uk-clearfix">
+												<div class="uk-vertical-align ">
+													<button class="uk-button uk-vertical-align-bottom uk-align-right"
+													        type="button" id="executive" room="4"
+													        data-uk-switcher-item="next">Select
+													</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Penthouse Suite -->
+							<div class="uk-panel uk-panel-box uk-margin-left room">
+								<div class="uk-grid">
+									<div class="uk-width-1-4">
+										<img src="../images/Hotel.jpg">
+									</div>
+									<div class="uk-width-3-4">
+										<div class="uk-flex uk-flex-column">
+											<div class="uk-text-center"><h2>Penthouse Suite</h2></div>
+											<div>
+												<h3>Rooms available:</h3>
+												<div id="avail-5"></div>
+
+											</div>
+											<div class="uk-clearfix">
+												<div class="uk-vertical-align ">
+													<button class="uk-button uk-vertical-align-bottom uk-align-right"
+													        type="button" id="penthouse" room="5"
+													        data-uk-switcher-item="next">Select
+													</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
-						<div class="radio">
-							<label>
-								<input type="radio" name='roomType' id="standDouble" value="2">
-								Standard Double
-							</label>
-						</div>
-						<div class="radio">
-							<label>
-								<input type="radio" name='roomType' id="JrSuite" value="3">
-								Jr Suite
-							</label>
-						</div>
-						<div class="radio">
-							<label>
-								<input type="radio" name='roomType' id="execSuite" value="4">
-								Executive Suite
-							</label>
-						</div>
-						<div class="radio">
-							<label>
-								<input type="radio" name='roomType' id="pentSuite" value="5">
-								Penthouse Suite
-							</label>
-						</div>
-					</div>
-					<div class="uk-width-1-3">
-						<a href="" data-uk-switcher-item="next">NEXT</a>
 					</div>
 				</div>
 			</div>
@@ -337,27 +438,74 @@ session_start();
 			autoclose: 'True'
 		});
 
+		var roomType = 0;
+
+		function available() {
+
+			var startDate = $('.startDate');
+			var endDate = $('.endDate');
+
+			var d1 = startDate.datepicker('getDate');
+			var d2 = endDate.datepicker('getDate');
+
+			$.post('available.php', {
+				'checkIN': d1,
+				'checkOUT': d2,
+				'roomType': '1'
+			}, function (data) {
+				$('#avail-1').html(data);
+			});
+
+			$('#avail-2').load('available.php', {
+				'checkIN': d1,
+				'checkOUT': d2,
+				'roomType': '2'
+			});
+
+			$('#avail-3').load('available.php', {
+				'checkIN': d1,
+				'checkOUT': d2,
+				'roomType': '3'
+			});
+
+			$('#avail-4').load('available.php', {
+				'checkIN': d1,
+				'checkOUT': d2,
+				'roomType': '4'
+			});
+
+			$('#avail-5').load('available.php', {
+				'checkIN': d1,
+				'checkOUT': d2,
+				'roomType': '5'
+			});
+		}
+
 		$('.startDate').datepicker().on('changeDate', function (selected) {
 			$('#res-dates').html($(this).datepicker('getDate'));
+			available();
 		});
 
 		$('.endDate').datepicker().on('changeDate', function (selected) {
 			$('#res-dates-2').html($(this).datepicker('getDate'));
+			available();
 		});
 
-		$('input[name=roomType]').on('change', function () {
-			$('#res-room').html($('input[name=roomType]:checked').val());
-		});
 
 		// Calulate number of nights from date range selected
 		$('.nightsButton').on('click', function () {
-		 var d1 = $('.startDate').datepicker('getDate');
-		 var d2 = $('.endDate').datepicker('getDate');
-		 if (d1 && d2) {
-		 var diff = Math.floor((d2.getTime() - d1.getTime()) / 86400000);
-		 $('.nights').val(diff.toString());
-		 }
-		 });
+			var d1 = $('.startDate').datepicker('getDate');
+			var d2 = $('.endDate').datepicker('getDate');
+			if (d1 && d2) {
+				var diff = Math.floor((d2.getTime() - d1.getTime()) / 86400000);
+				$('.nights').val(diff.toString());
+			}
+		});
+
+		$('.uk-button').on('click', function () {
+			roomType = $(this).attr('room');
+			$('#res-room').html(roomType);
+		});
 
 		// Reserve
 		$('.reserveButton').on('click', function () {
@@ -370,7 +518,7 @@ session_start();
 			$.post('makeres.php', {
 				'checkIN': d1,
 				'checkOUT': d2,
-				'roomType': $('input[name=roomType]:checked').val()
+				'roomType': roomType
 			});
 		});
 	});

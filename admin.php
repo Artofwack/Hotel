@@ -92,8 +92,8 @@ session_start();
 		/* Post request every time nav button is clicked */
 		/*$('#guests').on('click', function (){
 		 $('#guest-table').load('site/table.php',{table: 'guests'},function(){
-				rowSelector();
-			});
+		 rowSelector();
+		 });
 		 });*/
 	});
 </script>
