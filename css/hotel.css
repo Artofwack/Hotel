@@ -114,6 +114,74 @@ a.back-to-top {
 	bottom: 20px;
 }
 
+/* vary grid heights
+---------------------------------------------------*/
+.tm-grid-heights > :nth-child(8n-7) > * {
+	height: 80px;
+}
+
+.tm-grid-heights > :nth-child(8n-6) > * {
+	height: 100px;
+}
+
+.tm-grid-heights > :nth-child(8n-5) > * {
+	height: 160px;
+}
+
+.tm-grid-heights > :nth-child(8n-4) > * {
+	height: 120px;
+}
+
+.tm-grid-heights > :nth-child(8n-3) > * {
+	height: 180px;
+}
+
+.tm-grid-heights > :nth-child(8n-2) > * {
+	height: 130px;
+}
+
+.tm-grid-heights > :nth-child(8n-1) > * {
+	height: 150px;
+}
+
+.tm-grid-heights > :nth-child(8n) > * {
+	height: 110px;
+}
+
+/* vary grid widths
+---------------------------------------------------*/
+.tm-grid-widths > :nth-child(8n-7) > * {
+	width: 80px;
+}
+
+.tm-grid-widths > :nth-child(8n-6) > * {
+	width: 100px;
+}
+
+.tm-grid-widths > :nth-child(8n-5) > * {
+	width: 160px;
+}
+
+.tm-grid-widths > :nth-child(8n-4) > * {
+	width: 120px;
+}
+
+.tm-grid-widths > :nth-child(8n-3) > * {
+	width: 180px;
+}
+
+.tm-grid-widths > :nth-child(8n-2) > * {
+	width: 130px;
+}
+
+.tm-grid-widths > :nth-child(8n-1) > * {
+	width: 150px;
+}
+
+.tm-grid-widths > :nth-child(8n) > * {
+	width: 110px;
+}
+
 /* RESPONSIVE CSS
 -------------------------------------------------- */
 

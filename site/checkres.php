@@ -21,11 +21,8 @@ session_start();
 	<!-- Bootstrap core CSS -->
 	<link href="../css/bootstrap.min.css" rel="stylesheet">
 
-	<!-- Bootstrap Cosmo Theme CSS
-	<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/cosmo/bootstrap.min.css" rel="stylesheet"
-	        integrity="sha256-IF1P9CSIVOaY4nBb5jATvBGnxMn/4dB9JNTLqdxKN9w= sha512-UsfHxnPESse3RgYeaoQ7X2yXYSY5f6sB6UT48+F2GhNLqjbPhtwV2WCUQ3eQxeghkbl9PioaTOHNA+T0wNki2w=="
-	        crossorigin="anonymous">
-	-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.24.3/css/uikit.gradient.min.css"/>
+	<link rel="stylesheet" href="../UIKit/css/components/notify.gradient.min.css">
 
 	<!-- Custom styles for this template -->
 	<link href="../css/hotel.css" rel="stylesheet">
@@ -157,12 +154,13 @@ session_start();
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="#">Hotel California</a>
+					<a class="navbar-brand" href="#adminLogon">Hotel California</a>
 				</div>
 				<div id="navbar" class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
 						<li class="active"><a href="hotel.php">Home</a></li>
 						<li><a href="#about">About</a></li>
+						<li><a href="gallery.php">Gallery</a></li>
 						<li><a href="#contact">Contact</a></li>
 						<li><a href="#" data-toggle="modal" data-target="#registerModal">Register</a></li>
 						<li class="dropdown">
@@ -170,8 +168,7 @@ session_start();
 							   aria-haspopup="true" aria-expanded="false">Reservations<span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li class="dropdown-header">New Reservations</li>
-								<li><a href="reserve.php">New Reservation</a></li>
-								<li><a href="index.php">Check Availability</a></li>
+								<li><a href="index.php">New Reservation</a></li>
 								<li class="divider"></li>
 								<li class="dropdown-header">Existing Reservations</li>
 								<li><a href="checkres.php">Check Reservation</a></li>
@@ -205,13 +202,19 @@ session_start();
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="../js/jquery.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.24.3/js/uikit.min.js"></script>
+<script src="../UIKit/js/components/notify.min.js"></script>
 <script src="../js/jquery.validate.min.js"></script>
 <script src="../js/login.js"></script>
 <script>
 	$(document).ready(function () {
-		$('.table').load('checkres2.php', {
-			'table': 'floors'
-		});
+		if ($('#login').text().charAt(7) === ',') {
+			$('.table').load('checkres2.php', {
+				'table': 'floors'
+			});
+		} else {
+			UIkit.notify('<i class="uk-icon-warning"></i> Please Sign in!!', {status: 'danger'});
+		}
 	});
 </script>
 </body>

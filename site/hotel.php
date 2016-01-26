@@ -156,12 +156,13 @@ session_start();
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="#">Hotel California</a>
+					<a class="navbar-brand" href="#adminLogon">Hotel California</a>
 				</div>
 				<div id="navbar" class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
 						<li class="active"><a href="hotel.php">Home</a></li>
 						<li><a href="#about">About</a></li>
+						<li><a href="gallery.php">Gallery</a></li>
 						<li><a href="#contact">Contact</a></li>
 						<li><a href="#" data-toggle="modal" data-target="#registerModal">Register</a></li>
 						<li class="dropdown">
@@ -169,8 +170,7 @@ session_start();
 							   aria-haspopup="true" aria-expanded="false">Reservations<span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li class="dropdown-header">New Reservations</li>
-								<li><a href="reserve.php">New Reservation</a></li>
-								<li><a href="index.php">Check Availability</a></li>
+								<li><a href="index.php">New Reservation</a></li>
 								<li class="divider"></li>
 								<li class="dropdown-header">Existing Reservations</li>
 								<li><a href="checkres.php">Check Reservation</a></li>
@@ -337,7 +337,7 @@ session_start();
 	<hr class="featurette-divider">
 
 	<div class="row featurette">
-		<div class="col-md-7 col-md-push-5" data-uk-scrollspy="{cls:'uk-animation-fade', repeat: true}">
+		<div class="col-md-7 col-md-push-5" data-uk-scrollspy="{cls:'uk-animation-slide-left', repeat: true}">
 			<h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span>
 			</h2>
 
@@ -364,7 +364,7 @@ session_start();
 				tellus ac cursus
 				commodo.</p>
 		</div>
-		<div class="col-md-5" data-uk-scrollspy="{cls:'uk-animation-fade', repeat: true}">
+		<div class="col-md-5" data-uk-scrollspy="{cls:'uk-animation-slide-bottom', repeat: true}">
 			<img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto"
 			     src="../images/swimming-pool-hotel-barcelo-jandia-mar37-2633.jpg"
 			     alt="Generic placeholder image">
@@ -381,7 +381,7 @@ session_start();
 
 		<p>&copy; 2014 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
 
-		<p><a href="adminlogon.php">Admin Logon</a></p>
+		<p><a href="adminlogon.php" id="adminLogon">Admin Logon</a></p>
 	</footer>
 
 </div>
