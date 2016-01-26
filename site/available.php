@@ -13,31 +13,10 @@ $checkIN = $_POST['checkIN'];
 $checkOUT = $_POST['checkOUT'];
 $roomType = $_POST['roomType'];
 
-/* Convert datepicker.js date string to formatted date object for MYSQL */
-$date = DATETIME::createFromFormat("D M d Y H:i:s+", $checkIN);
-$checkIN = $date->format("Y-m-d");
-$date = DATETIME::createFromFormat("D M d Y H:i:s+", $checkOUT);
-$checkOUT = $date->format("Y-m-d");
+$checkIN = convertDates($checkIN);
+$checkOUT = convertDates($checkOUT);
 
-$sql = 'SELECT roomID
-			FROM
-				rooms
-			WHERE
-				roomID
-			NOT IN (
-				SELECT
-					roomID
-				FROM
-					rooms
-				LEFT OUTER JOIN
-					reservations ON reservations.room = rooms.roomID
-				WHERE
-					roomType != "' . $roomType . '"
-					OR ("' . $checkIN . '" BETWEEN reservations.checkIN AND reservations.checkOUT)
-					OR ("' . $checkOUT . '" BETWEEN reservations.checkIN AND reservations.checkOUT)
-					OR ("' . $checkIN . '" < reservations.checkIN AND "' . $checkOUT . '" > reservations.checkOUT)
-			);';
+$res = checkAvailability($checkIN, $checkOUT, $roomType);
 
-$res = $link->query($sql);
+echo '' . mysqli_num_rows($res);
 
-echo mysqli_num_rows($res);

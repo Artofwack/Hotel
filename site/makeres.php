@@ -23,13 +23,11 @@ $guestID = $result['guestID'];
 
 // TODO: Notify if user is not logged in
 if ($guestID != 0) {
-	// Convert datepicker.js date string to formatted date object for MYSQL
-	$date = DATETIME::createFromFormat("D M d Y H:i:s+", $checkIN);
-	$checkIN = $date->format("Y-m-d");
-	$date = DATETIME::createFromFormat("D M d Y H:i:s+", $checkOUT);
-	$checkOUT = $date->format("Y-m-d");
+	// Convert datepicker.js dates to MYSQL date format
+	$checkIN = convertDates($checkIN);
+	$checkOUT = convertDates($checkOUT);
 
-	// Select available room
+	// Select random available room
 	$sql = 'SELECT
 				roomID
 			FROM
