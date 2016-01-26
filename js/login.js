@@ -1,6 +1,8 @@
 /**
  * Created by ArtofWack on 11/2/2015.
  */
+
+
 $(document).ready(function () {
 	var loginForm = $('form');
 	var reg_form = $('.regForm');

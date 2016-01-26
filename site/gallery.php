@@ -149,7 +149,6 @@ session_start();
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
 					        aria-expanded="false" aria-controls="navbar">
-						<span class="sr-only">Toggle navigation</span>
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
@@ -196,13 +195,13 @@ session_start();
 	<div class="uk-flex uk-flex-center">
 		<!-- Filter Controls -->
 		<ul id="my-id" class="uk-subnav uk-subnav-pill">
-			<li data-uk-filter=""><a href="">ALL</a></li>
+			<li data-uk-filter="" class="uk-active"><a href="">ALL</a></li>
 			<li data-uk-filter="filter-a"><a href="">FILTER A</a></li>
 			<li data-uk-filter="filter-b"><a href="">FILTER B</a></li>
 			<li data-uk-filter="filter-c"><a href="">FILTER C</a></li>
 		</ul>
 	</div>
-	<div class="uk-grid-width-small-1-1 uk-grid-width-medium-1-2 uk-grid-width-large-1-4 tm-grid-heights tm-grid-widths"
+	<div class="uk-grid-width-small-1-1 uk-grid-width-medium-1-2 uk-grid-width-large-1-4 tm-grid-heights"
 	     data-uk-grid="{gutter: 20, controls: '#my-id'}">
 		<div data-uk-filter="filter-a">
 			<div class="uk-block-secondary"></div>
@@ -371,6 +370,7 @@ session_start();
 <script src="../js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.24.3/js/uikit.min.js"></script>
 <script src="../UIKit/js/components/grid.min.js"></script>
+<script src="../js/jquery.validate.min.js"></script>
 <script src="../js/login.js"></script>
 </body>
 </html>

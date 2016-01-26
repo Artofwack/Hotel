@@ -264,9 +264,10 @@ session_start();
 											</div>
 											<div class="uk-clearfix">
 												<div class="uk-vertical-align ">
-													<button class="uk-button uk-vertical-align-bottom uk-align-right"
-													        type="button" id="single" room="1"
-													        data-uk-switcher-item="next">Select
+													<button
+														class="uk-button uk-vertical-align-bottom uk-align-right room-button"
+														type="button" id="single" room="1"
+														data-uk-switcher-item="next">Select
 													</button>
 												</div>
 											</div>
@@ -299,9 +300,10 @@ session_start();
 											</div>
 											<div class="uk-clearfix">
 												<div class="uk-vertical-align ">
-													<button class="uk-button uk-vertical-align-bottom uk-align-right"
-													        type="button" id="double" room="2"
-													        data-uk-switcher-item="next">Select
+													<button
+														class="uk-button uk-vertical-align-bottom uk-align-right room-button"
+														type="button" id="double" room="2"
+														data-uk-switcher-item="next">Select
 													</button>
 												</div>
 											</div>
@@ -325,9 +327,10 @@ session_start();
 											</div>
 											<div class="uk-clearfix">
 												<div class="uk-vertical-align ">
-													<button class="uk-button uk-vertical-align-bottom uk-align-right"
-													        type="button" id="junior" room="3"
-													        data-uk-switcher-item="next">Select
+													<button
+														class="uk-button uk-vertical-align-bottom uk-align-right room-button"
+														type="button" id="junior" room="3"
+														data-uk-switcher-item="next">Select
 													</button>
 												</div>
 											</div>
@@ -351,9 +354,10 @@ session_start();
 											</div>
 											<div class="uk-clearfix">
 												<div class="uk-vertical-align ">
-													<button class="uk-button uk-vertical-align-bottom uk-align-right"
-													        type="button" id="executive" room="4"
-													        data-uk-switcher-item="next">Select
+													<button
+														class="uk-button uk-vertical-align-bottom uk-align-right room-button"
+														type="button" id="executive" room="4"
+														data-uk-switcher-item="next">Select
 													</button>
 												</div>
 											</div>
@@ -377,9 +381,10 @@ session_start();
 											</div>
 											<div class="uk-clearfix">
 												<div class="uk-vertical-align ">
-													<button class="uk-button uk-vertical-align-bottom uk-align-right"
-													        type="button" id="penthouse" room="5"
-													        data-uk-switcher-item="next">Select
+													<button
+														class="uk-button uk-vertical-align-bottom uk-align-right room-button"
+														type="button" id="penthouse" room="5"
+														data-uk-switcher-item="next">Select
 													</button>
 												</div>
 											</div>
@@ -418,7 +423,7 @@ session_start();
 		<li>
 			<div class="uk-block uk-block-muted uk-block-large">
 
-				<a class="btn btn-md btn-default reserveButton" href="" role="button">Reserve</a>
+				<button type="button" class="uk-button reserveButton">Reserve</button>
 				<a href="" class="uk-icon-button uk-icon-arrow-circle-right" data-uk-switcher-item="next"></a>
 			</div>
 		</li>
@@ -428,7 +433,7 @@ session_start();
 		<li>
 			<div class="uk-block uk-block-muted uk-block-large">
 				Confirmation
-				<a href="#">DONE</a>
+				<a href="checkres.php">DONE</a>
 			</div>
 		</li>
 
@@ -486,7 +491,7 @@ session_start();
 				'roomType': '2'
 			}, function (data) {
 				if (data == 0)
-					$('#double').attr('disabled', 'true');
+					$('#double').attr('disabled', true);
 				else
 					$('#double').removeAttr('disabled');
 			});
@@ -535,7 +540,7 @@ session_start();
 			}
 		});
 
-		$('.uk-button').on('click', function () {
+		$('.room-button').on('click', function () {
 			roomType = $(this).attr('room');
 			$('#res-room').html(roomType);
 		});
@@ -558,26 +563,23 @@ session_start();
 
 		// Reserve
 		$('.reserveButton').on('click', function () {
-			var startDate = $('.startDate');
-			var endDate = $('.endDate');
+			var startDate = $('.startDate').datepicker('getDate');
+			var endDate = $('.endDate').datepicker('getDate');
 
-			var d1 = startDate.datepicker('getDate');
-			var d2 = endDate.datepicker('getDate');
 
 			if ($('#login').text().charAt(7) === ',') {
 				if ($('#res-dates').is(':empty')) {
 					UIkit.notify('<i class="uk-icon-warning"></i> Please Select dates!!', {status: 'danger'});
 				} else {
 					$.post('makeres.php', {
-						'checkIN': d1,
-						'checkOUT': d2,
+						'checkIN': startDate,
+						'checkOUT': endDate,
 						'roomType': roomType
 					});
 				}
 			} else {
 				UIkit.notify('<i class="uk-icon-warning"></i> Please Sign in!!', {status: 'danger'});
 			}
-
 
 
 		});

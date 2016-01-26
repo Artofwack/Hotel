@@ -56,7 +56,10 @@ if ($guestID != 0) {
 
 	if (mysqli_num_rows($res) != 0) {
 
+		echo $room . "\n";
 		$room = $result['roomID'];
+		$res->free();
+
 
 		$sql = "INSERT INTO reservations (guestID, room, checkIN, checkOUT)";
 		$sql .= " VALUES ('" . $guestID . "', '" . $room . "', '" . $checkIN . "' , '" . $checkOUT . "');";
