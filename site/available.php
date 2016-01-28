@@ -11,7 +11,6 @@ require_once('../config.php');
 
 $checkIN = $_POST['checkIN'];
 $checkOUT = $_POST['checkOUT'];
-$roomType = $_POST['roomType'];
 
 $checkIN = convertDates($checkIN);
 $checkOUT = convertDates($checkOUT);

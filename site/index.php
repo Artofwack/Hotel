@@ -537,13 +537,13 @@ session_start();
 		// Check IN date
 		$('.startDate').datepicker().on('changeDate', function () {
 			startDate = $(this).datepicker('getDate');
-			$('#res-dates').html(startDate);
+			$('#res-dates').html(startDate.toLocaleDateString());
 		});
 
 		//Check OUT date
 		$('.endDate').datepicker().on('changeDate', function () {
 			endDate = $(this).datepicker('getDate');
-			$('#res-dates-2').html(endDate);
+			$('#res-dates-2').html(endDate.toLocaleDateString());
 		});
 
 		// Reserve

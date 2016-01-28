@@ -28,18 +28,24 @@ session_start();
 <!-- ================ Nav Bar ================ -->
 <div class="uk-container uk-container-center uk-margin-top uk-margin-large-bottom">
 	<nav class="uk-navbar uk-margin-large-bottom">
-		<a class="uk-navbar-brand uk-hidden-small" href="site/hotel.php">Hotel California</a>
+		<a class="uk-navbar-brand uk-hidden-small" href="site/logout.php">Hotel California</a>
 		<ul class="uk-navbar-nav uk-hidden-small">
 			<li>
 				<a href="site/logout.php">Frontpage</a>
 			</li>
 		</ul>
-		<ul class="uk-navbar-nav uk-hidden-small" data-uk-switcher="{connect:'#panel', animation: 'fade'}">
+		<ul class="uk-navbar-nav uk-hidden-small" data-uk-switcher="{connect:'#panel', animation: 'slide-bottom'}">
 			<li>
 				<a href="#" id="guests">Guests</a>
 			</li>
 			<li>
 				<a href="#" id="reserve">Reservations</a>
+			</li>
+			<li>
+				<a href="#" id="rooms">Available Rooms</a>
+			</li>
+			<li>
+				<div class="uk-hidden" id="guestConsole"></div>
 			</li>
 		</ul>
 		<ul class="uk-navbar-nav uk-navbar-flip uk-hidden-small">
@@ -56,11 +62,39 @@ session_start();
 <!-- ================ Panel ================ -->
 <div class="uk-container uk-container-center">
 	<ul id='panel' class="uk-switcher">
+		<!-- Guests Table -->
 		<li>
 			<div id="guest-table" class="uk-container uk-container-center uk-block uk-table"></div>
 		</li>
+		<!-- Reservations Table -->
 		<li>
 			<div id="res-table" class="uk-container uk-container-center uk-block uk-table"></div>
+		</li>
+		<!-- Rooms Table -->
+		<li>
+			<div id="rooms-table" class="uk-container uk-container-center uk-block"></div>
+		</li>
+		<!-- Guests Console -->
+		<li>
+			<div id="guest-Console" class="uk-container uk-container-center uk-block">
+				<div class="uk-grid">
+					<div class="uk-width-1-2"><div class="uk-panel uk-panel-box" id="guestName"></div></div>
+					<div class="uk-width-1-2"><div class="uk-grid">
+							<div class="uk-width-1-2"><div class="uk-panel uk-panel-box" id="guestCheckedIn"></div></div>
+							<div class="uk-width-1-2"><div class="uk-panel uk-panel-box" id="guestBalance"></div></div>
+						</div></div>
+				</div>
+				<div class="uk-grid">
+					<div class="uk-width-1-2"><div class="uk-panel uk-panel-box uk-flex uk-flex-column"></div></div>
+					<div class="uk-width-1-2"><div class="uk-grid">
+							<div class="uk-width-1-2"><div class="uk-grid">
+									<div class="uk-width-1-2"><button type="button" class="uk-button" id="checkIN">Check In</button></div>
+									<div class="uk-width-1-2"><button type="button" class="uk-button" id="checkOUT">Check OUT</button></div>
+								</div> </div>
+							<div class="uk-width-1-2"><button type="button" class="uk-button" id="pay">Payment</button></div>
+						</div></div>
+				</div>
+			</div>
 		</li>
 	</ul>
 </div>
@@ -71,30 +105,65 @@ session_start();
 <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.24.3/js/uikit.min.js"></script>
 <script>
 	$(document).ready(function () {
-		function rowSelector() {
-			$('td').on('click', function () {
-				$(this).closest('tr').toggleClass('red-row');
-			});
+		var guest;
+
+		function fillConsole(data){
+			$('#guestName').html(data['name']);
+			$('#guestCheckedIn').html(data['check']);
+			$('#guestBalance').html(data['balance']);
 		}
 
-		$.post('site/gentable.php', {'table': 'guests'}, function (data) {
-			$('#guest-table').html(data);
-			rowSelector();
-		});
+		$('#guest-table').load('admin/adminTable.php', {'request':'guests'});
 
 		$.post('site/table.php', {'table': 'floors'}, function (data) {
 			$('#res-table').html(data);
-			rowSelector();
 		});
 
-		rowSelector();
+		$('body').on('click', '.guestSel', function(){
+			guest = $(this).attr('guest');
 
-		/* Post request every time nav button is clicked */
-		/*$('#guests').on('click', function (){
-		 $('#guest-table').load('site/table.php',{table: 'guests'},function(){
-		 rowSelector();
-		 });
-		 });*/
+			$.ajax({
+				type: 'post',
+				dataType: 'json',
+				url: 'admin/adminTable.php',
+				data: {
+					request: 'console',
+					guestID: guest
+				}, success: function (data) {
+					fillConsole(data);
+				}
+			});
+		});
+
+		$('#checkIN').on('click', function() {
+			$.post('admin/adminTable.php', {
+				'request':'checkIN',
+				'guestID': guest
+			}, function (data) {
+				$('#guest-table').load('admin/adminTable.php', {'request':'guests'});
+				fillConsole(data);
+			}, 'json');
+		});
+
+		$('#checkOUT').on('click', function() {
+			$.post('admin/adminTable.php', {
+				'request':'checkOUT',
+				'guestID': guest
+			}, function (data) {
+				$('#guest-table').load('admin/adminTable.php', {'request':'guests'});
+				fillConsole(data);
+			}, 'json');
+		});
+
+		$('#pay').on('click', function() {
+			$.post('admin/adminTable.php', {
+				'request':'payment',
+				'guestID': guest
+			}, function (data) {
+				$('#guest-table').load('admin/adminTable.php', {'request':'guests'});
+				fillConsole(data);
+			}, 'json');
+		});
 	});
 </script>
 </body>
