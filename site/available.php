@@ -16,7 +16,13 @@ $roomType = $_POST['roomType'];
 $checkIN = convertDates($checkIN);
 $checkOUT = convertDates($checkOUT);
 
-$res = checkAvailability($checkIN, $checkOUT, $roomType);
+for ($type = 1; $type < 6; $type++) {
+	$res = checkAvailability($checkIN, $checkOUT, $type);
+	$arr[$type] = mysqli_num_rows($res);
+}
 
-echo '' . mysqli_num_rows($res);
-
+if (isset($arr)) {
+	$result = json_encode($arr);
+	header('Content-Type: application/json');
+	echo $result;
+}

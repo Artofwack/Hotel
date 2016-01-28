@@ -464,82 +464,63 @@ session_start();
 		});
 
 		var roomType = 0;
+		var startDate;
+		var endDate;
 
+		// Check room availability through Ajax call that returns JSON array
 		function available() {
+			$.ajax({
+				type: 'post',
+				dataType: 'json',
+				url: 'available.php',
+				data: {
+					'checkIN': startDate,
+					'checkOUT': endDate
+				},
+				success: function (data) {
+					$('#avail-1').html(data[1]);
+					$('#avail-2').html(data[2]);
+					$('#avail-3').html(data[3]);
+					$('#avail-4').html(data[4]);
+					$('#avail-5').html(data[5]);
 
-			var startDate = $('.startDate');
-			var endDate = $('.endDate');
+					if (data[1] === '0')
+						$('#single').attr('disabled', true);
+					else
+						$('#single').attr('disabled', false);
 
-			var d1 = startDate.datepicker('getDate');
-			var d2 = endDate.datepicker('getDate');
+					if (data[2] == 0)
+						$('#double').attr('disabled', true);
+					else
+						$('#double').removeAttr('disabled');
 
-			$.post('available.php', {
-				'checkIN': d1,
-				'checkOUT': d2,
-				'roomType': '1'
-			}, function (data) {
-				$('#avail-1').html(data);
-				if (data == 0)
-					$('#single').attr('disabled', true);
-				else
-					$('#single').attr('disabled', false);
-			});
+					if (data[3] === 0)
+						$('#junior').attr('disabled', true);
+					else
+						$('#junior').attr('disabled', false);
 
-			$('#avail-2').load('available.php', {
-				'checkIN': d1,
-				'checkOUT': d2,
-				'roomType': '2'
-			}, function (data) {
-				if (data == 0)
-					$('#double').attr('disabled', true);
-				else
-					$('#double').removeAttr('disabled');
-			});
+					if (data[4] == 0)
+						$('#executive').attr('disabled', true);
+					else
+						$('#executive').attr('disabled', false);
 
-			$('#avail-3').load('available.php', {
-				'checkIN': d1,
-				'checkOUT': d2,
-				'roomType': '3'
-			}, function (data) {
-				if (data == 0)
-					$('#junior').attr('disabled', true);
-				else
-					$('#junior').attr('disabled', false);
-			});
-
-			$('#avail-4').load('available.php', {
-				'checkIN': d1,
-				'checkOUT': d2,
-				'roomType': '4'
-			}, function (data) {
-				if (data == 0)
-					$('#executive').attr('disabled', true);
-				else
-					$('#executive').attr('disabled', false);
-			});
-
-			$('#avail-5').load('available.php', {
-				'checkIN': d1,
-				'checkOUT': d2,
-				'roomType': '5'
-			}, function (data) {
-				if (data == 0)
-					$('#penthouse').attr('disabled', true);
-				else
-					$('#penthouse').attr('disabled', false);
+					if (data[5] == 0)
+						$('#penthouse').attr('disabled', true);
+					else
+						$('#penthouse').attr('disabled', false);
+				}
 			});
 		}
 
 		// Calulate number of nights from date range selected
 		$('.nightsButton').on('click', function () {
-			var d1 = $('.startDate').datepicker('getDate');
-			var d2 = $('.endDate').datepicker('getDate');
-			if (d1 && d2) {
-				var diff = Math.floor((d2.getTime() - d1.getTime()) / 86400000);
+			if (startDate && endDate) {
+				var diff = Math.floor((endDate.getTime() - startDate.getTime()) / 86400000);
 				$('.nights').val(diff.toString());
 			}
 		});
 
+		// Select room type
 		$('.room-button').on('click', function () {
 			roomType = $(this).attr('room');
 			$('#res-room').html(roomType);
@@ -553,20 +534,20 @@ session_start();
 				available();
 		});
 
-		$('.startDate').datepicker().on('changeDate', function (selected) {
-			$('#res-dates').html($(this).datepicker('getDate'));
+		// Check IN date
+		$('.startDate').datepicker().on('changeDate', function () {
+			startDate = $(this).datepicker('getDate');
+			$('#res-dates').html(startDate);
 		});
 
-		$('.endDate').datepicker().on('changeDate', function (selected) {
-			$('#res-dates-2').html($(this).datepicker('getDate'));
+		//Check OUT date
+		$('.endDate').datepicker().on('changeDate', function () {
+			endDate = $(this).datepicker('getDate');
+			$('#res-dates-2').html(endDate);
 		});
 
 		// Reserve
 		$('.reserveButton').on('click', function () {
-			var startDate = $('.startDate').datepicker('getDate');
-			var endDate = $('.endDate').datepicker('getDate');
-
-
 			if ($('#login').text().charAt(7) === ',') {
 				if ($('#res-dates').is(':empty')) {
 					UIkit.notify('<i class="uk-icon-warning"></i> Please Select dates!!', {status: 'danger'});
@@ -580,8 +561,6 @@ session_start();
 			} else {
 				UIkit.notify('<i class="uk-icon-warning"></i> Please Sign in!!', {status: 'danger'});
 			}
-
-
 		});
 	});
 </script>
