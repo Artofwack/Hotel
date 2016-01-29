@@ -16,8 +16,8 @@ $pass = Password::hash('dark');
 
 //$sql = 'INSERT INTO admins(username,email,password) VALUES ("' . $usr . '","' . $email . '", "' . $pass . '");';
 //$sql = ' INSERT INTO rooms(roomType) VALUES (5);';
-
-
+//$sql = 'INSERT INTO rooms(roomType) VALUES (5);';
+//for($i = 0;$i<2;$i++)
 
 $result = $link->query($sql);
 

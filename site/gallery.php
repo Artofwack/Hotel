@@ -204,7 +204,7 @@ session_start();
 	<div class="uk-grid-width-small-1-1 uk-grid-width-medium-1-2 uk-grid-width-large-1-4 tm-grid-heights"
 	     data-uk-grid="{gutter: 20, controls: '#my-id'}">
 		<div data-uk-filter="filter-a">
-			<div class="uk-block-secondary"></div>
+			<img src="../images/Resorts/06.-Pangulasian-Island-Pool-Villa-Facade1-300x225.jpg">
 		</div>
 		<div data-uk-filter="filter-c">
 			<div class="uk-block-primary">2</div>
@@ -359,6 +359,165 @@ session_start();
 		<div data-uk-filter="filter-a">
 			<div class="uk-block-secondary"></div>
 		</div>
+
+		<!--
+
+		<div data-uk-filter="filter-c">
+			<div class="uk-block-primary">2</div>
+		</div>
+		<div data-uk-filter="filter-b">
+			<div class="uk-panel-box">3</div>
+		</div>
+		<div data-uk-filter="filter-c">
+			<div class="uk-block-primary">2</div>
+		</div>
+		<div data-uk-filter="filter-b">
+			<div class="uk-panel-box">3</div>
+		</div>
+		<div data-uk-filter="filter-c">
+			<div class="uk-block-primary">2</div>
+		</div>
+		<div data-uk-filter="filter-a">
+			<div class="uk-block-secondary">7</div>
+		</div>
+		<div data-uk-filter="filter-b">
+			<div class="uk-panel-box">8</div>
+		</div>
+		<div data-uk-filter="filter-a">
+			<div class="uk-block-secondary">4</div>
+		</div>
+		<div data-uk-filter="filter-c">
+			<div class="uk-block-primary">5</div>
+		</div>
+		<div data-uk-filter="filter-a">
+			<div class="uk-block-secondary">7</div>
+		</div>
+		<div data-uk-filter="filter-a">
+			<div class="uk-block-secondary"></div>
+		</div>
+		<div data-uk-filter="filter-c">
+			<div class="uk-block-primary">5</div>
+		</div>
+		<div data-uk-filter="filter-a">
+			<div class="uk-block-secondary">4</div>
+		</div>
+		<div data-uk-filter="filter-c">
+			<div class="uk-block-primary">5</div>
+		</div>
+		<div data-uk-filter="filter-b">
+			<div class="uk-panel-box">6</div>
+		</div>
+		<div data-uk-filter="filter-b">
+			<div class="uk-panel-box">3</div>
+		</div>
+		<div data-uk-filter="filter-a">
+			<div class="uk-block-secondary">4</div>
+		</div>
+		<div data-uk-filter="filter-c">
+			<div class="uk-block-primary">5</div>
+		</div>
+		<div data-uk-filter="filter-b">
+			<div class="uk-panel-box">6</div>
+		</div>
+		<div data-uk-filter="filter-a">
+			<div class="uk-block-secondary">7</div>
+		</div>
+		<div data-uk-filter="filter-b">
+			<div class="uk-panel-box">8</div>
+		</div>
+		<div data-uk-filter="filter-b">
+			<div class="uk-panel-box">6</div>
+		</div>
+		<div data-uk-filter="filter-a">
+			<div class="uk-block-secondary">7</div>
+		</div>
+		<div data-uk-filter="filter-b">
+			<div class="uk-panel-box">8</div>
+		</div>
+		<div data-uk-filter="filter-a">
+			<div class="uk-block-secondary"></div>
+		</div>
+		<div data-uk-filter="filter-a">
+			<div class="uk-block-secondary"></div>
+		</div>
+		<div data-uk-filter="filter-c">
+			<div class="uk-block-primary">2</div>
+		</div>
+		<div data-uk-filter="filter-b">
+			<div class="uk-panel-box">3</div>
+		</div>
+		<div data-uk-filter="filter-c">
+			<div class="uk-block-primary">2</div>
+		</div>
+		<div data-uk-filter="filter-b">
+			<div class="uk-panel-box">3</div>
+		</div>
+		<div data-uk-filter="filter-c">
+			<div class="uk-block-primary">2</div>
+		</div>
+		<div data-uk-filter="filter-a">
+			<div class="uk-block-secondary">7</div>
+		</div>
+		<div data-uk-filter="filter-b">
+			<div class="uk-panel-box">8</div>
+		</div>
+		<div data-uk-filter="filter-a">
+			<div class="uk-block-secondary">4</div>
+		</div>
+		<div data-uk-filter="filter-c">
+			<div class="uk-block-primary">5</div>
+		</div>
+		<div data-uk-filter="filter-a">
+			<div class="uk-block-secondary">7</div>
+		</div>
+		<div data-uk-filter="filter-a">
+			<div class="uk-block-secondary"></div>
+		</div>
+		<div data-uk-filter="filter-c">
+			<div class="uk-block-primary">5</div>
+		</div>
+		<div data-uk-filter="filter-a">
+			<div class="uk-block-secondary">4</div>
+		</div>
+		<div data-uk-filter="filter-c">
+			<div class="uk-block-primary">5</div>
+		</div>
+		<div data-uk-filter="filter-b">
+			<div class="uk-panel-box">6</div>
+		</div>
+		<div data-uk-filter="filter-b">
+			<div class="uk-panel-box">3</div>
+		</div>
+		<div data-uk-filter="filter-a">
+			<div class="uk-block-secondary">4</div>
+		</div>
+		<div data-uk-filter="filter-c">
+			<div class="uk-block-primary">5</div>
+		</div>
+		<div data-uk-filter="filter-b">
+			<div class="uk-panel-box">6</div>
+		</div>
+		<div data-uk-filter="filter-a">
+			<div class="uk-block-secondary">7</div>
+		</div>
+		<div data-uk-filter="filter-b">
+			<div class="uk-panel-box">8</div>
+		</div>
+		<div data-uk-filter="filter-b">
+			<div class="uk-panel-box">6</div>
+		</div>
+		<div data-uk-filter="filter-a">
+			<div class="uk-block-secondary">7</div>
+		</div>
+		<div data-uk-filter="filter-b">
+			<div class="uk-panel-box">8</div>
+		</div>
+		<div data-uk-filter="filter-a">
+			<div class="uk-block-secondary"></div>
+		</div>
+
+		-->
+
 	</div>
 </div>
 

@@ -286,7 +286,7 @@ session_start();
 			     src="../images/Hotel.jpg"
 			     alt="Generic placeholder image" width="140" height="140">
 
-			<h2>Ammeneties</h2>
+			<h2>Resort</h2>
 
 			<p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras
 				mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris

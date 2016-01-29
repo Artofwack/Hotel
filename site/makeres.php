@@ -72,12 +72,12 @@ if ($guestID != 0) {
 			fclose($file);
 		}
 
-		/*
+
 		// TODO: Send confirmation email
 		$msg = 'Hello from the other side!!!!';
 		$msg = escapeshellarg($msg);
+		$sub = "Subject goes here";
 		$email = escapeshellarg($email);
-		shell_exec('../execs/sendmail.sh "' . $msg . '" "' . $email . '" ');
-		*/
+		shell_exec('../execs/sendmail.sh "' . $msg . '" "' . $sub . '" "' . $email . '"');
 	}
 }
